@@ -47,7 +47,7 @@ Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada 
 -}
 --puedo usar maximo y concatenar con el maximo de la cola
 ordenar :: [Integer]->[Integer]
-ordenar (x:y:ys) = maximo(x:y:ys):ordenar()
+ordenar (x:y:ys) = maximo(x:y:ys):ordenar(quitar y ys)
 
 --defino la funcion menor para poder ordenar pero no es necesaria porque al ir agregando los mayores van quedando al final, en cambio si uso esta funcion siempre obtengo una lista de menores
 menor :: [Integer]->Integer
