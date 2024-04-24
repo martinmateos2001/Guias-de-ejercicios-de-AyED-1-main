@@ -43,11 +43,11 @@ maximo (x:y:ys) |x>=y = maximo (x:ys) -- x>=y me evaluo de nuevo x con la cola q
 
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
-
 -}
 --puedo usar maximo y concatenar con el maximo de la cola
 ordenar :: [Integer]->[Integer]
-ordenar (x:y:ys) = maximo(x:y:ys):ordenar(quitar y ys)
+ordenar (x:[])= (x:[])
+ordenar (x:y:ys) = maximo(x:y:ys):ordenar(quitar (maximo (x:y:ys)) (x:y:ys))
 
 --defino la funcion menor para poder ordenar pero no es necesaria porque al ir agregando los mayores van quedando al final, en cambio si uso esta funcion siempre obtengo una lista de menores
 menor :: [Integer]->Integer
