@@ -89,6 +89,16 @@ cantDigitos n
     |n <10 = 1
     |otherwise = 1 + cantDigitos(sacarUnidades n)
     
+{- 
+-- Ejercicio 9, esCapicua :: Integer->Bool, un numero capicua es aque que lee igual en los dos sentidos. --
+-}
+esCapicua :: Integer->Bool
+esCapicua n = n == alReves n
+
+alReves :: Integer->Integer -- devuelve n escrito al revés
+alReves n 
+    |n>=0 && n <10 = n 
+    |n>=10 = (digitoUnidades n)*10^((cantDigitos n)-1) + alReves(sacarUnidades n)
 
 -- ejercicio 13 
 problemaDobleSumaPotencias :: Integer-> Integer->Integer
