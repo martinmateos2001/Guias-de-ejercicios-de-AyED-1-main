@@ -6,6 +6,14 @@ longList [] = 0
 longList (x:xs) 
     |(x:xs) /= [] = 1 + longList xs
 
+{-
+ejercicio 1.2, devolver el ultimo valor la lista.
+-}
+
+ultimo :: (Eq a)=> [a]->a
+ultimo (x:[])=x
+ultimo (x:xs) 
+    |(x:xs) /= (x:[]) = ultimo (xs)
 
 {-
 Ejercicio 2.1 
