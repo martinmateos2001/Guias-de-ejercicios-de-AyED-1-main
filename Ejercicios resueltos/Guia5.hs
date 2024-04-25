@@ -1,4 +1,13 @@
 {-
+Ejercicio 1, devolver la cantidad de elementos de una lista
+-}
+longList :: (Eq t)=> [t]->Integer
+longList [] = 0
+longList (x:xs) 
+    |(x:xs) /= [] = 1 + longList xs
+
+
+{-
 Ejercicio 2.1 
 -}
 
