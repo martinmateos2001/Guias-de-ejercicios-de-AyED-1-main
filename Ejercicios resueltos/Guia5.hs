@@ -82,3 +82,12 @@ sacarBlancosRepetidos (x:[]) = (x:[])
 sacarBlancosRepetidos (x:y:ys)
     |x== ' ' && y==x = sacarBlancosRepetidos (x:ys)
     |otherwise = (x:sacarBlancosRepetidos(y:ys))
+
+{-
+4b, contar palabras, dada una lista de caracteres devuelve la cantidad de palabras que tiene.
+-}
+contP :: [Char]->Integer
+contP (x:[]) = 1
+contP (x:y:ys)
+    |x/=y && y==' ' = 1 + contP (y:ys)
+    |otherwise = 0 + contP (y:ys)
