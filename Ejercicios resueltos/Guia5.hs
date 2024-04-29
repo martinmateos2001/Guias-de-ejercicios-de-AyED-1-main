@@ -72,3 +72,13 @@ menor (x:[]) = x
 menor (x:y:ys)
     |x<=y = menor(x:ys)
     |otherwise = menor(y:ys) 
+
+
+{-
+ejercicio 4a) sacar blancos repetidos, reemplazar cada subsecuencia de blancos contiguos de primera lista por un solo blanco en la lista resultado.
+-}
+sacarBlancosRepetidos :: [Char] -> [Char]
+sacarBlancosRepetidos (x:[]) = (x:[])
+sacarBlancosRepetidos (x:y:ys)
+    |x== ' ' && y==x = sacarBlancosRepetidos (x:ys)
+    |otherwise = (x:sacarBlancosRepetidos(y:ys))
