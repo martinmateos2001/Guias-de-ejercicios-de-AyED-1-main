@@ -91,3 +91,31 @@ contP (x:[]) = 1
 contP (x:y:ys)
     |x/=y && y==' ' = 1 + contP (y:ys)
     |otherwise = 0 + contP (y:ys)
+
+
+{-
+4D, dada una lista de caracteres devuelve la palabra mas larga.
+-}
+
+palabraMasLarga :: [Char]->[Char]
+palabraMasLarga (x:[])=(x:[])
+palabraMasLarga (x:y:ys) 
+    |contadorChar (primerPalabra(x:y:ys)) >= contadorChar(primerPalabra(cortarLista (x:y:ys))) = primerPalabra (x:y:ys)
+    |otherwise = palabraMasLarga (cortarLista(x:y:ys))
+
+contadorChar :: [Char]->Integer
+contadorChar (x:y:ys) | x==' ' = 0
+contadorChar (x:y:ys)
+    |x /= ' ' = 1 + contadorChar (y:ys)
+
+cortarLista :: [Char]->[Char]
+cortarLista (x:y:ys) 
+    |x/=y && y == ' ' = ys
+    |otherwise = cortarLista(y:ys)
+
+primerPalabra :: [Char]->[Char]
+primerPalabra (x:y:ys) 
+    |y==' ' = (x:[])
+    |otherwise = (x:primerPalabra(y:ys))
+
+compararTamaño :: []
