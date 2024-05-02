@@ -6,7 +6,7 @@ ejecutar = runTestTT testRelacionesValidas
 -- "nombre" ~: (funcion parametros) ~?= resultado_esperado
 
 testRelacionesValidas = test [
-  "componentes repetidas" ~: (relacionesValidas [("ana", "ana")]) ~?= False, -- aca me dió una falla
+  "componentes repetidas" ~: (relacionesValidas [("ana", "ana")]) ~?= False, -- aprobó
   "tupla repetida" ~: (relacionesValidas [("ana", "pedro"), ("ana", "pedro")]) ~?= False, --aprobó
   "tupla repetida invertida" ~: (relacionesValidas [("ana", "pedro"), ("pedro", "ana")]) ~?= False, --aprobó
   "todas diferentes" ~: (relacionesValidas [("ana", "pedro"), ("ana", "carlos")]) ~?= True --aprobó
