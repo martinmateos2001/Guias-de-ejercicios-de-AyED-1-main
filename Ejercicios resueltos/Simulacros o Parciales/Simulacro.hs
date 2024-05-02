@@ -1,5 +1,5 @@
 module Simulacro where
-
+--ejercicio1
 relacionesValidas :: [(String,String)] -> Bool
 relacionesValidas (list) = not(hayElementosDeTuplasIguales (list)) && not (hayRepetidos(list))
     
@@ -31,3 +31,5 @@ repetido (t1:t2:ts) -- pregunta si el primer elemento es igual al siguiente, si 
 hayRepetidos :: [(String,String)]->Bool -- si hay algun elemento de la lista repetido da True, caso contrario False
 hayRepetidos (x:[]) = False
 hayRepetidos (t1:t2:ts) = repetido (t1:t2:ts) || hayRepetidos (t2:ts)
+
+--ejercicio 2 ¿me piden que de la lista de relaciones validas devuelva ?
