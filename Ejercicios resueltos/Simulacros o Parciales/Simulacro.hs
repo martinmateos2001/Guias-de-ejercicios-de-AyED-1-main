@@ -1,7 +1,7 @@
 module Simulacro where
 
 relacionesValidas :: [(String,String)] -> Bool
-relacionesValidas (t1:t2:ts) = not(hayElementosDeTuplasIguales (t1:t2:ts)) && not (hayRepetidos(t1:t2:ts))
+relacionesValidas (list) = not(hayElementosDeTuplasIguales (list)) && not (hayRepetidos(list))
     
     {-
     |hayElementosDeTuplasIguales (t1:t2:ts) == False && hayRepetidos (t1:t2:ts) == False = True
