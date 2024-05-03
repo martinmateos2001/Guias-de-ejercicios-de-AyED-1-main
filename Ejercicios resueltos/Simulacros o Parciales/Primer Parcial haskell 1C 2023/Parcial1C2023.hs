@@ -1,11 +1,10 @@
 module Parcial1C2023 where
 --1.1
-votosEnBlanco :: [(String,String)] -> [Int] -> Int 
-votosEnBlanco (formula:restoFormulas) (voto:restoVotos) 
-    |(formulasValidas (formula:restoFormulas) == True) && (numeroFormulas (formula:restoFormulas) == numeroVotos (voto:restoVotos)) && (formula == ("","")) = voto
-    |otherwise = votosEnBlanco restoFormulas restoVotos
+votosEnBlanco :: [(String,String)] -> [Int] -> Int -> Int 
+votosEnBlanco 
    
 --el numero de elementos de la lista de formulas es igual al de votos
+{-
 numeroFormulas :: [(String,String)]->Int
 numeroFormulas [] = 0
 numeroFormulas (formula:restoFormulas) |(formula:restoFormulas) /= [] = 1 + numeroFormulas restoFormulas
@@ -13,7 +12,18 @@ numeroFormulas (formula:restoFormulas) |(formula:restoFormulas) /= [] = 1 + nume
 numeroVotos :: [Int]->Int
 numeroVotos []=0
 numeroVotos (voto:votos) |(voto >= 0) && ((voto:votos) /= []) = 1 + numeroVotos(votos)
+-}
+numElemLista :: (Eq a) => [a] -> Int
+numElemLista [] = 0
+numElemLista (elem:restoDeElementos) |(elem:restoDeElementos) /= [] = 1 numElemLista(restoDeElementos)
 
+votosTotales :: [Int]->Int
+votosTotales []=0
+votosTotales (voto:restoDeVotos) = voto + votosTotales(restoDeVotos)
+
+--Entonces el voto en blanco es igual votos totales menos la resta de las lista que no son ("","")
+numVotosEnBlanco :: [(String,String)]->[Int]->Int
+numVotosEnBlanco
 
 --1.2
 formulasValidas :: [(String,String)] -> Bool -- evaluo si cada formula de la lista es formula valida.
