@@ -17,16 +17,28 @@ ultimo (x:xs)
 
 {-
 1.3
+entendi que tengo que devolver la lista menos el ultimo el elemento
 -}
+--como me piden que el numero de elementos sea >1
+contarElementos :: (Eq t) => [t] -> Int
+contarElementos [] = 0
+contarElementos [x] = 1
+contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 
 principio :: (Eq t) => [t] -> [t]
+principio (a:b:[]) = [a]
+principio (a:rLista) 
+    |contarElementos (a:rLista) > 0 && (a:rLista) /= [] = (a:(principio rLista))
 
-{-
-Ejercicio 2.1 
--}
+{-1.4 reverso, devuelve la lista al reves-}
+reverso :: (Eq t)=> [t]->[t]
+reverso []=[]
+reverso [x]=[x]
+reverso lista = ((ultimo lista):(reverso (tail lista)))
 
+{-Ejercicio 2.1 -}
 pertenece :: (Eq t) => t -> [t] -> Bool -- Eq significa cualquier tipo
-pertenece _ [] = False
+pertenece (_) [] = False
 pertenece x (y:ys)
     |x == y = True
     |otherwise = pertenece x ys
@@ -35,10 +47,8 @@ pertenece x (y:ys)
 pertenece x [] = False
 pertenece x ys = x == head ys || pertenece x (tail ys)
 -}
-{-
-Ejercicio 2.4, si hay repetidos en una lista es true
--}
 
+{-Ejercicio 2.4, si hay repetidos en una lista es true-}
 hayRepetidos :: (Eq t) => [t]-> Bool
 hayRepetidos [] = False
 hayRepetidos (x:xs) = pertenece x xs || hayRepetidos xs  
@@ -124,4 +134,4 @@ primerPalabra (x:y:ys)
     |y==' ' = (x:[])
     |otherwise = (x:primerPalabra(y:ys))
 
-compararTamaño :: []
+--compararTamaño :: []
