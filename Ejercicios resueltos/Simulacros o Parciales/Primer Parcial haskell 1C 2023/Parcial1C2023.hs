@@ -1,22 +1,22 @@
 module Parcial1C2023 where
 
 --1.1
-votosEnBlanco :: [(String,String)] -> [Int] -> Int -> Int 
+votosEnBlanco :: [(String,String)] -> [Integer] -> Integer -> Integer 
 votosEnBlanco formulas votos cantidadTotalDeVotos 
     |formulasValidas(formulas) == True && votosValidos(votos) == True && numElemLista (formulas) == numElemLista(votos) && votosTotales(votos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(votos)
 
 -- numero de elementos de una lista.
-numElemLista :: (Eq a) => [a] -> Int
+numElemLista :: (Eq a) => [a] -> Integer
 numElemLista [] = 0
 numElemLista (elem:restoDeElementos) |(elem:restoDeElementos) /= [] = 1 + numElemLista(restoDeElementos)
 
-votosTotales :: [Int]->Int
+votosTotales :: [Integer]->Integer
 votosTotales []=0
 votosTotales (voto:restoDeVotos) = voto + votosTotales(restoDeVotos)
 
-votosValidos :: [Int] -> Bool
+votosValidos :: [Integer] -> Bool
 votosValidos [] = False
-votosValidos [x]=True
+votosValidos [x]|x>=0=True
 votosValidos (voto:restoDeVotos) = voto>=0 && votosValidos(restoDeVotos)
 
 --1.2
@@ -59,10 +59,16 @@ asegura:
     %votosDelPresidente= (votos del presidente *100)/total de votos
 -}
 
-porcentajeVotos :: String->[(String,String)]->[Int]->Int
-porcentajeVotos presidente formulas votos 
-    |formulasValidas (formulas) == True && numElemLista(formulas) == numElemLista(votos) && numElemLista >0 && votosValidosEstrictos == True = porcentajePresidente(presidente formulas votos)
 
-votosValidosEstrictos :: [Int]->Bool
-votosValidosEstrictos []=False
-votos
+
+requierePorcentajeVotos :: [(String, String)] -> [Integer] -> Bool
+requierePorcentajeVotos formulas votos = formulasValidas(formulas) && numElemLista(formulas) == numElemLista(votos) && numElemLista(formulas) >0 && votosValidos(votos) && votoMayorACero(votos)
+
+votoMayorACero :: [Integer]->Bool
+votoMayorACero [] = False
+votoMayorACero [x] |x>0=True
+votoMayorACero (voto:restoDeVotos) = voto>0 || votoMayorACero(restoDeVotos) 
+
+
+dividir :: Integer->Integer->Float
+dividir a b = (fromIntegral a :: Float)/(fromIntegral b :: Float)
