@@ -1,22 +1,9 @@
 module Parcial1C2023 where
+
 --1.1
 votosEnBlanco :: [(String,String)] -> [Int] -> Int -> Int 
 votosEnBlanco listaDeFormulas listaDeVotos cantidadTotalDeVotos 
     |formulasValidas(listaDeFormulas) == True && numElemLista (listaDeFormulas) == numElemLista(listaDeVotos) && votosTotales(listaDeVotos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(listaDeVotos)
-{-
-Esta funciona, me habia olvidado de guardar, lo unico diferente es que cuento el numero de elementos de las listas con dos funciones distintas.
-
-votosEnBlanco listaDeFormulas listaDeVotos cantidadTotalDeVotos 
-    |formulasValidas(listaDeFormulas) == True && numeroFormulas (listaDeFormulas) == numeroVotos(listaDeVotos) && votosTotales(listaDeVotos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(listaDeVotos)
-numeroFormulas :: [(String,String)]->Int
-numeroFormulas [] = 0
-numeroFormulas (formula:restoFormulas) |(formula:restoFormulas) /= [] = 1 + numeroFormulas restoFormulas
-
-numeroVotos :: [Int]->Int
-numeroVotos []=0
-numeroVotos (voto:votos) |(voto >= 0) && ((voto:votos) /= []) = 1 + numeroVotos(votos)
-    -}
-
 
 -- numero de elementos de una lista.
 numElemLista :: (Eq a) => [a] -> Int
