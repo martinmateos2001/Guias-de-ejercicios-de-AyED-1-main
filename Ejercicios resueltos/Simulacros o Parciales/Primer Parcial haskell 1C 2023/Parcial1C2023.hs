@@ -3,7 +3,7 @@ module Parcial1C2023 where
 --1.1
 votosEnBlanco :: [(String,String)] -> [Int] -> Int -> Int 
 votosEnBlanco formulas votos cantidadTotalDeVotos 
-    |formulasValidas(formulas) == True && numElemLista (formulas) == numElemLista(votos) && votosTotales(votos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(votos)
+    |formulasValidas(formulas) == True && votosValidos(votos) == True && numElemLista (formulas) == numElemLista(votos) && votosTotales(votos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(votos)
 
 -- numero de elementos de una lista.
 numElemLista :: (Eq a) => [a] -> Int
