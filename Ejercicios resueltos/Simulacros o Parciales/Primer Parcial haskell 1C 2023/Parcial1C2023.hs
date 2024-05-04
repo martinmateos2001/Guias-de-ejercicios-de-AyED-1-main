@@ -15,11 +15,13 @@ votosTotales []=0
 votosTotales (voto:restoDeVotos) = voto + votosTotales(restoDeVotos)
 
 votosValidos :: [Int] -> Bool
-votosValidos [] = True
+votosValidos [] = False
+votosValidos [x]=True
 votosValidos (voto:restoDeVotos) = voto>=0 && votosValidos(restoDeVotos)
 
 --1.2
 formulasValidas :: [(String,String)] -> Bool -- evaluo si cada formula de la lista es formula valida.
+formulasValidas [] = False
 formulasValidas [x] = formulaValida [x]
 formulasValidas (formula:restoFormulas) = formulaValida (formula:restoFormulas) && formulasValidas restoFormulas
    
@@ -46,6 +48,21 @@ requiere:
 *La primera componente de la lista de formulas es presidente
 *formulasValidas(formulas)
 *num(formulas)=num(votos)
-*
+*elementos de votos >=0 y al menos uno >0
+*num(formulas)>0
+
+asegura:
+*res = porcentaje de votos obtenidos sobre el total de formula encabezada por presidente
+    osea que necesito sacar el porcentaje de la formula de presidente.
+    total de votos ---- %100
+    votos del presidente -- x= votos del presidente*100/total de votos
+    %votosDelPresidente= (votos del presidente *100)/total de votos
 -}
 
+porcentajeVotos :: String->[(String,String)]->[Int]->Int
+porcentajeVotos presidente formulas votos 
+    |formulasValidas (formulas) == True && numElemLista(formulas) == numElemLista(votos) && numElemLista >0 && votosValidosEstrictos == True = porcentajePresidente(presidente formulas votos)
+
+votosValidosEstrictos :: [Int]->Bool
+votosValidosEstrictos []=False
+votos
