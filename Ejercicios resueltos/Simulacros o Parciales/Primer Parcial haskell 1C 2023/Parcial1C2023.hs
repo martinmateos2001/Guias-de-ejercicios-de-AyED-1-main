@@ -32,7 +32,7 @@ formulaValida [(a,b)]
     |otherwise = False
 formulaValida ((a,b):(c,d):restoFormulas)
     |a==b && (a,b)/=("","") = False -- mismo candidato es falso
-    |(a==c || b==d || a==d || b==c) = False -- no puede haber formulas repetidas ni personas en otras listas
+    |(a==c || b==d || a==d || b==c) == True = False -- no puede haber formulas repetidas ni personas en otras listas
     |otherwise= formulaValida ((a,b):restoFormulas) -- veo si la formula no se repite.
 {-
 1.3
@@ -65,15 +65,15 @@ asegura:
 
 porcentajeVotos :: String -> [(String,String)] -> [Int]->Float --devuelve el porcentaje de votos del candidato a presidente seleccionado
 porcentajeVotos presidente formulas votos
-    |requierePorcentajeVotos formulas votos ==True = dividir ((votosPresidente presidente formulas votos)*100) (votosTotales votos)
+    |funcionRequieres formulas votos ==True = dividir ((votosPresidente presidente formulas votos)*100) (votosTotales votos)
 
 votosPresidente :: String -> [(String,String)] -> [Int]->Int --recorre la lista de formulas buscando si el primer parametro de las duplas es igual a presidente y devuelve voto.
 votosPresidente presidente ((xPresidente,vice):restoDeFormulas) (voto:restoDeVotos)
     |presidente==xPresidente = voto
     |otherwise = votosPresidente presidente restoDeFormulas restoDeVotos
 
-requierePorcentajeVotos :: [(String, String)] -> [Int] -> Bool --Condiciones para que se ejecuta porcentajeVotos
-requierePorcentajeVotos formulas votos = formulasValidas(formulas) && numElemLista(formulas) == numElemLista(votos) && numElemLista(formulas) >0 && votosValidos(votos) && votoMayorACero(votos)
+funcionRequieres :: [(String, String)] -> [Int] -> Bool --Condiciones para que se ejecuta porcentajeVotos
+funcionRequieres formulas votos = formulasValidas(formulas) && numElemLista(formulas) == numElemLista(votos) && numElemLista(formulas) >0 && votosValidos(votos) && votoMayorACero(votos)
 
 votoMayorACero :: [Int]->Bool --Al menos un voto es mayor que cero
 votoMayorACero [] = False
@@ -84,3 +84,32 @@ votoMayorACero (voto:restoDeVotos) = voto>0 || votoMayorACero(restoDeVotos)
 dividir :: Int->Int->Float --toma dos parametros int y luego los divide transformandolos al tipo Float
 dividir a b = (fromIntegral a)/(fromIntegral b)
 
+{-
+1.4
+problema proximoPresidente(formulas : seq < String ×String >, votos : seq < Z>) : String
+requiere:
+-La primera componente de las duplas es presidente.
+-num(formulas)=num(votos)
+-todo elemento de votos es mayor o igual a 0
+-un elemente de votos es mayor a 0
+-num(formulas)>0
+asegura:
+-res=candidato a presidente mas votado
+
+OBSERVACION: salvo el primer requiere lo demas es requierePorcetajeVotos.
+-}
+
+numMayor :: [Int] ->Int
+numMayor [x]=x
+numMayor (x:y:ys) 
+    |x>=y = numMayor(x:ys)
+    |otherwise = numMayor(y:ys)
+
+proximoPresidente :: [(String,String)] -> [Int]->String
+proximoPresidente formulas votos 
+    |funcionRequieres formulas votos == True && head votos == numMayor votos = fst(head (formulas))
+    |funcionRequieres formulas votos == True && head votos /= numMayor votos = proximoPresidente (tail formulas) (tail votos)
+
+{- candidatoMasVotado :: [(String,String)] -> [Int]->String
+candidatoMasVotado (formula:restoDeFormulas) (voto:restoDeVotos) 
+    |voto==numMayor votos = fst formula -}
