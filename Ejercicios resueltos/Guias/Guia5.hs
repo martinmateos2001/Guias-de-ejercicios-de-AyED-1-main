@@ -16,6 +16,12 @@ ultimo (x:xs)
     |(x:xs) /= (x:[]) = ultimo (xs)
 
 {-
+1.3
+-}
+
+principio :: (Eq t) => [t] -> [t]
+
+{-
 Ejercicio 2.1 
 -}
 
