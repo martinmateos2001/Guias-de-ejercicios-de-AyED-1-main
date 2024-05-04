@@ -1,20 +1,20 @@
 module Parcial1C2023 where
 
 --1.1
-votosEnBlanco :: [(String,String)] -> [Integer] -> Integer -> Integer 
+votosEnBlanco :: [(String,String)] -> [Int] -> Int -> Int
 votosEnBlanco formulas votos cantidadTotalDeVotos 
     |formulasValidas(formulas) == True && votosValidos(votos) == True && numElemLista (formulas) == numElemLista(votos) && votosTotales(votos) <= cantidadTotalDeVotos = cantidadTotalDeVotos - votosTotales(votos)
 
 -- numero de elementos de una lista.
-numElemLista :: (Eq a) => [a] -> Integer
+numElemLista :: (Eq a) => [a] -> Int
 numElemLista [] = 0
 numElemLista (elem:restoDeElementos) |(elem:restoDeElementos) /= [] = 1 + numElemLista(restoDeElementos)
 
-votosTotales :: [Integer]->Integer
-votosTotales []=0
+votosTotales :: [Int]->Int
+votosTotales [x]=x
 votosTotales (voto:restoDeVotos) = voto + votosTotales(restoDeVotos)
 
-votosValidos :: [Integer] -> Bool
+votosValidos :: [Int] -> Bool
 votosValidos [] = False
 votosValidos [x]|x>=0=True
 votosValidos (voto:restoDeVotos) = voto>=0 && votosValidos(restoDeVotos)
@@ -59,16 +59,28 @@ asegura:
     %votosDelPresidente= (votos del presidente *100)/total de votos
 -}
 
+--porcentajeVotos :: String ->[(String,String)] -> [Integer] -> Float
+--porcentajeVotos presidente formulas votos
+--    |requierePorcentajeVotos formulas votos == True && presidente == (fst(head formulas)) =
 
+porcentajeVotos :: String -> [(String,String)] -> [Int]->Float --devuelve el porcentaje de votos del candidato a presidente seleccionado
+porcentajeVotos presidente formulas votos
+    |requierePorcentajeVotos formulas votos ==True = dividir ((votosPresidente presidente formulas votos)*100) (votosTotales votos)
 
-requierePorcentajeVotos :: [(String, String)] -> [Integer] -> Bool
+votosPresidente :: String -> [(String,String)] -> [Int]->Int --recorre la lista de formulas buscando si el primer parametro de las duplas es igual a presidente y devuelve voto.
+votosPresidente presidente ((xPresidente,vice):restoDeFormulas) (voto:restoDeVotos)
+    |presidente==xPresidente = voto
+    |otherwise = votosPresidente presidente restoDeFormulas restoDeVotos
+
+requierePorcentajeVotos :: [(String, String)] -> [Int] -> Bool --Condiciones para que se ejecuta porcentajeVotos
 requierePorcentajeVotos formulas votos = formulasValidas(formulas) && numElemLista(formulas) == numElemLista(votos) && numElemLista(formulas) >0 && votosValidos(votos) && votoMayorACero(votos)
 
-votoMayorACero :: [Integer]->Bool
+votoMayorACero :: [Int]->Bool --Al menos un voto es mayor que cero
 votoMayorACero [] = False
 votoMayorACero [x] |x>0=True
 votoMayorACero (voto:restoDeVotos) = voto>0 || votoMayorACero(restoDeVotos) 
 
 
-dividir :: Integer->Integer->Float
-dividir a b = (fromIntegral a :: Float)/(fromIntegral b :: Float)
+dividir :: Int->Int->Float --toma dos parametros int y luego los divide transformandolos al tipo Float
+dividir a b = (fromIntegral a)/(fromIntegral b)
+
