@@ -53,6 +53,11 @@ todosIguales :: (Eq t) => [t] -> Bool
 todosIguales [t] = True
 todosIguales (t:ts) = t==(head ts) && todosIguales ts
 
+{-2.3-}
+todosDistintos :: (Eq t) => [t] -> Bool
+todosDistintos [t] = True
+todosDistintos (t:ts) = t/=(head ts) && todosDistintos ts
+
 {-Ejercicio 2.4, si hay repetidos en una lista es true-}
 hayRepetidos :: (Eq t) => [t]-> Bool
 hayRepetidos [] = False
