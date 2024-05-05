@@ -46,3 +46,19 @@ equiposValidos (equipo:rDeEquipos) = equipoValido (equipo:rDeEquipos) && equipos
 equipoValido :: [(String,String)] -> Bool
 equipoValido [(a,b)] = a/=b
 equipoValido ((a,b):(c,d):ts) = a/=c && b/=d && equipoValido((a,b):ts) --osea que cuando llegue a (a,b):[], (a,b) es distinto de todas lista y por consiguiente si a/=b cumple con las condiciones.
+
+{-
+problema porcentajeDeGoles (goleador: String, goleadoresPorEquipo: seq⟨String x String⟩,goles:seq< Z >) : R
+REQUIERE:
+1- (a,b) perteneciente a goleadoresPorEquipo --> b=goleador 
+2- EquiposValidos(goleadoresPorEquipo) 
+3- |goleadoresPorEquipo| = |goles|
+4- Todos los elementos de goles son mayores o iguales a 0
+5- Hay al menos un elemento de goles mayores estricto a 0
+ASEGURA:
+- res= golDeGoleador*100/sum(goles)
+-}
+
+mayorQueCero :: [Integer] -> Bool
+mayorQueCero [x] = x>0
+mayorQueCero (x:xs) = x > 0 || mayorQueCero xs
