@@ -90,7 +90,11 @@ eliminarRepetidos (x:xs)
 
 {-2.8-}
 mismosElementos :: (Eq t) => [t] -> [t] -> Bool
-mismosElementos lista1 lista2 
+mismosElementos lista1 lista2 = esSubConjunto lista1 lista2 ==True && esSubConjunto lista2 lista1 == True
+
+esSubConjunto :: (Eq t) => [t] -> [t] ->Bool
+esSubConjunto [x] lista = pertenece x lista
+esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConjunto (eliminarRepetidos xs) lista 
 
 {-
 Ejercicio 3.3 
