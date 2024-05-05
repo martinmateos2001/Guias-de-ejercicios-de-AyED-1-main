@@ -99,6 +99,7 @@ esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConj
 {-2.9, un numero es capicua si se lee igual en ambos sentidos, ejemplo 11,112211, etc.-}
 capicua :: (Eq t) => [t] -> Bool
 capicua lista = lista == reverso lista
+
 {-
 Ejercicio 3.3 
 -}
