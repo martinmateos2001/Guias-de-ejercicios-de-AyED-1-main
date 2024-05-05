@@ -150,6 +150,19 @@ pares (x:xs)
 
 esPar :: Integer -> Bool
 esPar x = mod x 2 == 0
+
+{-3.8, dada una lista y un numero, devuelvo otra lista con los numeros que son multiplos del numero.-}
+multiplosDeN :: Integer -> [Integer] -> [Integer]
+multiplosDeN n [x]
+    |esMultiplo x n == True = [x]
+    |otherwise = []
+multiplosDeN n (x:xs) 
+    |esMultiplo x n == True = x:multiplosDeN n xs
+    |otherwise = multiplosDeN n xs
+
+esMultiplo :: Integer -> Integer -> Bool -- leer como ¿a esMultiplo de b?
+esMultiplo a b = mod a b == 0
+
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
 -}
