@@ -163,15 +163,13 @@ multiplosDeN n (x:xs)
 esMultiplo :: Integer -> Integer -> Bool -- leer como ¿a esMultiplo de b?
 esMultiplo a b = mod a b == 0
 
-{-
-Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
--}
---puedo usar maximo y concatenar con el maximo de la cola
+{-Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
+Uso la funcion menor, concatenar (:) y quitar, para ir armanda la lista de menor a mayor.-}
 ordenar :: [Integer]->[Integer]
 ordenar (x:[])= (x:[])
-ordenar (x:y:ys) = menor(x:y:ys):ordenar(quitar (menor (x:y:ys)) (x:y:ys))
+ordenar lista = (menor lista):ordenar(quitar (menor lista) lista)
 
---defino la funcion menor para poder ordenar pero no es necesaria porque al ir agregando los mayores van quedando al final, en cambio si uso esta funcion siempre obtengo una lista de menores
+--defino la funcion menor para poder ordenar agregando el menor de la lista primero.
 menor :: [Integer]->Integer
 menor (x:[]) = x
 menor (x:y:ys)
