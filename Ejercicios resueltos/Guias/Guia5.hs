@@ -127,7 +127,10 @@ sumarN :: Integer -> [Integer] -> [Integer]
 sumarN n [x] = [x+n]
 sumarN n (x:xs) = ((x+n):sumarN n xs)
 
-
+{-3.5, Dada una lista de numeros devuelvo otra con los elementos de la anterior pero sumando el primer elemento-}
+sumarElPrimero :: [Integer] -> [Integer]
+sumarElPrimero lista = sumarN (head lista) lista
+ 
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
 -}
