@@ -35,7 +35,7 @@ reverso :: (Eq t)=> [t]->[t]
 reverso []=[]
 reverso [x]=[x]
 reverso lista = ((ultimo lista):(reverso (principio lista)))
-
+-------------------------------------------------------------------------------------------2
 {-Ejercicio 2.1 -}
 pertenece :: (Eq t) => t -> [t] -> Bool -- Eq significa cualquier tipo
 pertenece (_) [] = False
@@ -100,6 +100,7 @@ esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConj
 capicua :: (Eq t) => [t] -> Bool
 capicua lista = lista == reverso lista
 
+-------------------------------------------------------------------3
 {-3.1, implementar sumatoria desde i=0 a n=elem(lista)-1 de una lista de numeros, osea la sumatoria de todos los elementos de la lista-}
 sumatoria :: [Integer]->Integer
 sumatoria [] = 0
@@ -138,7 +139,17 @@ sumarElUltimo lista
     |contarElementos lista > 0 = sumarN ultimoLista lista
     where ultimoLista = ultimo lista
 
+{-3.7, dada una lista de numeros, devuelvo la lista pero solo con numeros pares.-}
+pares :: [Integer] -> [Integer]
+pares [x]   
+    |esPar x == True = [x]
+    |otherwise = []
+pares (x:xs) 
+    |esPar x == True = x:pares(xs)
+    |otherwise = pares xs
 
+esPar :: Integer -> Bool
+esPar x = mod x 2 == 0
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
 -}
@@ -154,7 +165,7 @@ menor (x:y:ys)
     |x<=y = menor(x:ys)
     |otherwise = menor(y:ys) 
 
-
+-----------------------------------------------------------------------------------------4
 {-
 ejercicio 4a) sacar blancos repetidos, reemplazar cada subsecuencia de blancos contiguos de primera lista por un solo blanco en la lista resultado.
 -}
