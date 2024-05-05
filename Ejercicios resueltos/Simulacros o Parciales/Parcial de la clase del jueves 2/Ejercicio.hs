@@ -10,8 +10,9 @@ Asegura:
 - res = totalGolesTorneo - sum|goles|
 -}
 
---golesDeNoGoleadores :: [(String, String)] -> [Integer] -> Int
-
+golesDeNoGoleadores :: [(String, String)] -> [Integer] -> Integer -> Integer
+golesDeNoGoleadores goleadoresPorEquipo goles totalGolesTorneo
+    |(equiposValidos(goleadoresPorEquipo) && numElementos(goleadoresPorEquipo) == numElementos(goles) && golesValidos(goles) && sumElementos(goles) <= totalGolesTorneo) == True = totalGolesTorneo - sumElementos(goles)
 
 -- para el requiere 2
 numElementos :: (Eq t) => [t] -> Integer
