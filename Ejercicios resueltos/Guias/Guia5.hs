@@ -80,6 +80,18 @@ quitarTodos :: (Eq t) => t -> [t] -> [t]
 quitarTodos e lista 
     |pertenece e lista == True = quitarTodos e (quitar e lista)
     |otherwise= lista
+
+{-2.7-}
+eliminarRepetidos :: (Eq t) => [t] -> [t]
+eliminarRepetidos [] = [] 
+eliminarRepetidos (x:xs) 
+    |pertenece x xs = x:(eliminarRepetidos(quitarTodos x xs))
+    |otherwise = (x:eliminarRepetidos xs)
+
+{-2.8-}
+mismosElementos :: (Eq t) => [t] -> [t] -> Bool
+mismosElementos lista1 lista2 
+
 {-
 Ejercicio 3.3 
 -}
