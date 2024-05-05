@@ -18,3 +18,8 @@ numElementos :: (Eq t) => [t] -> Integer
 numElementos []=0
 numElementos (x:xs) 
     |(x:xs) /= [] = 1 + numElementos xs
+
+-- para el requiere 3
+golesValidos :: [Integer] -> Bool
+golesValidos [x] = x>=0
+golesValidos (x:xs) = x >= 0 && golesValidos xs
