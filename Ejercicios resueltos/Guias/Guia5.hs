@@ -10,8 +10,8 @@ longList (x:xs)
 ejercicio 1.2, devolver el ultimo valor la lista.
 -}
 
-ultimo :: (Eq a)=> [a]->a
-ultimo (x:[])=x
+ultimo :: (Eq a) => [a] -> a
+ultimo (x:[]) = x
 ultimo (x:xs) 
     |(x:xs) /= [] = ultimo (xs)
 
@@ -132,6 +132,13 @@ sumarElPrimero :: [Integer] -> [Integer]
 sumarElPrimero lista
     |contarElementos lista > 0 = sumarN (head lista) lista
  
+{-3.6, igual al anterior pero sumo el ultimo elemento-}
+sumarElUltimo :: [Integer] -> [Integer]
+sumarElUltimo lista 
+    |contarElementos lista > 0 = sumarN ultimoLista lista
+    where ultimoLista = ultimo lista
+
+
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
 -}
