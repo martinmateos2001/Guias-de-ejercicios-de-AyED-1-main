@@ -100,6 +100,11 @@ esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConj
 capicua :: (Eq t) => [t] -> Bool
 capicua lista = lista == reverso lista
 
+{-3.1, implementar sumatoria desde i=0 a n=elem(lista)-1 de una lista de numeros, osea la sumatoria de todos los elementos de la lista-}
+sumatoria :: [Integer]->Integer
+sumatoria [] = 0
+sumatoria (x:xs) = x + sumatoria(xs)
+
 {-
 Ejercicio 3.3 
 -}
