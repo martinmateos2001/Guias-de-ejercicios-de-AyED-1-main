@@ -75,6 +75,11 @@ quitar x (y:ys)
     |x==y {-&& x==head ys-} = ys -- agruegue el x==head xs porque sino cuando x es igual al primer elemento de la lista lo saca pero asi deja de funcionar el resto ¿ :| ?
     |otherwise = y:quitar x ys 
 
+{-2.6-}
+quitarTodos :: (Eq t) => t -> [t] -> [t]
+quitarTodos e lista 
+    |pertenece e lista == True = quitarTodos e (quitar e lista)
+    |otherwise= lista
 {-
 Ejercicio 3.3 
 -}
