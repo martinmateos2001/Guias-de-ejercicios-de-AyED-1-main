@@ -23,3 +23,8 @@ numElementos (x:xs)
 golesValidos :: [Integer] -> Bool
 golesValidos [x] = x>=0
 golesValidos (x:xs) = x >= 0 && golesValidos xs
+
+-- para el requiere 4
+sumElementos :: [Integer] -> Integer
+sumElementos [] = 0 
+sumElementos (x:xs) = x + sumElementos (xs) 
