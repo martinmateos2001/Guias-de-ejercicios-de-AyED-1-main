@@ -13,7 +13,7 @@ ejercicio 1.2, devolver el ultimo valor la lista.
 ultimo :: (Eq a)=> [a]->a
 ultimo (x:[])=x
 ultimo (x:xs) 
-    |(x:xs) /= (x:[]) = ultimo (xs)
+    |(x:xs) /= [] = ultimo (xs)
 
 {-
 1.3
@@ -34,7 +34,7 @@ principio (a:rLista)
 reverso :: (Eq t)=> [t]->[t]
 reverso []=[]
 reverso [x]=[x]
-reverso lista = ((ultimo lista):(reverso (tail lista)))
+reverso lista = ((ultimo lista):(reverso (principio lista)))
 
 {-Ejercicio 2.1 -}
 pertenece :: (Eq t) => t -> [t] -> Bool -- Eq significa cualquier tipo
@@ -96,6 +96,9 @@ esSubConjunto :: (Eq t) => [t] -> [t] ->Bool
 esSubConjunto [x] lista = pertenece x lista
 esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConjunto (eliminarRepetidos xs) lista 
 
+{-2.9, un numero es capicua si se lee igual en ambos sentidos, ejemplo 11,112211, etc.-}
+capicua :: (Eq t) => [t] -> Bool
+capicua lista = lista == reverso lista
 {-
 Ejercicio 3.3 
 -}
