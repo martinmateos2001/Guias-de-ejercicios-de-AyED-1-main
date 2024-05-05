@@ -116,8 +116,8 @@ Ejercicio 3.3
 
 maximo :: [Integer]->Integer
 maximo (x:[]) = x -- es lo ultimo que recorre
-maximo (x:y:ys) |x>=y = maximo (x:ys) -- x>=y me evaluo de nuevo x con la cola que se dividira en en y':ys por la forma de la funcion, que quedara en maximo x:y':ys y asi hasya el caso de arriba 
-                |otherwise = maximo (y:ys) -- si no es mayor o igual entonces es menor y quedaria maximo y:y':xs 
+maximo (x:y:ys) |contarElementos (x:y:ys) >1 && x>=y = maximo (x:ys) -- x>=y me evaluo de nuevo x con la cola que se dividira en en y':ys por la forma de la funcion, que quedara en maximo x:y':ys y asi hasya el caso de arriba 
+                |contarElementos (x:y:ys) >1 && x<y = maximo (y:ys) -- si no es mayor o igual entonces es menor y quedaria maximo y:y':xs 
 
 {-
 Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
