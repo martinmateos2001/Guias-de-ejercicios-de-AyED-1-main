@@ -28,3 +28,20 @@ golesValidos (x:xs) = x >= 0 && golesValidos xs
 sumElementos :: [Integer] -> Integer
 sumElementos [] = 0 
 sumElementos (x:xs) = x + sumElementos (xs) 
+
+{-
+para el requiere 1 que es el EJERICICIO 2.
+Da True si y solo si goleadoresPorEquipo no contiene nombres de clubes repetidos (1), ni goleadores repetidos (2), ni jugadores con nombre de club (3).
+-Por 3 si (a,b) -> a/=b
+-Por 2 si (a,b) y (c,d) -> b/=d
+-Por 1 si (a,b) y (c,d) -> a/=c
+
+-}
+
+equiposValidos :: [(String,String)] -> Bool
+equiposValidos [x] = equipoValido [x]
+equiposValidos (equipo:rDeEquipos) = equipoValido (equipo:rDeEquipos) && equiposValidos (rDeEquipos)
+
+equipoValido :: [(String,String)] -> Bool
+equipoValido [(a,b)] = a/=b
+equipoValido ((a,b):(c,d):ts) = a/=c && b/=d && equipoValido((a,b):ts) --osea que cuando llegue a (a,b):[], (a,b) es distinto de todas lista y por consiguiente si a/=b cumple con las condiciones.
