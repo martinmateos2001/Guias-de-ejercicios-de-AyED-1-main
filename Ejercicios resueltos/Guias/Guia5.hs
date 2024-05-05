@@ -48,6 +48,11 @@ pertenece x [] = False
 pertenece x ys = x == head ys || pertenece x (tail ys)
 -}
 
+{-2.2-}
+todosIguales :: (Eq t) => [t] -> Bool
+todosIguales [t] = True
+todosIguales (t:ts) = t==(head ts) && todosIguales ts
+
 {-Ejercicio 2.4, si hay repetidos en una lista es true-}
 hayRepetidos :: (Eq t) => [t]-> Bool
 hayRepetidos [] = False
