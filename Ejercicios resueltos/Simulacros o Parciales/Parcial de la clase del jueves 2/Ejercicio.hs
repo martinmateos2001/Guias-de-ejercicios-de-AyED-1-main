@@ -77,3 +77,29 @@ goleadorPorcentaje :: String -> [(String,String)] -> [Integer] -> [Integer] -> F
 goleadorPorcentaje goleador ((a,b):restoDeGoleadoresPorEquipo) (gol:restoDeGoles) goles   
     |requiereEJ3 goleador ((a,b):restoDeGoleadoresPorEquipo) goles == True && goleador == b = division (100*gol) (sumElementos(goles))
     |requiereEJ3 goleador ((a,b):restoDeGoleadoresPorEquipo) goles == True && goleador /= b = goleadorPorcentaje goleador restoDeGoleadoresPorEquipo restoDeGoles goles 
+
+{-
+Ejercicio 4, Botín de Oro.
+botinDeOro (goleadoresPorEquipo: seq⟨String x String⟩, goles:seq< Z >) : String
+REQUIERE:
+- equiposValidos(goleadoresPorEquipo)
+- |goleadoresPorEquipo| = |goles|
+- Todos los elementos de goles son mayores o iguales a 0
+- |goles| > 0
+ASEGURA:
+- res = goleador con mas goles. 
+-}
+
+aseguraEj4 :: [(String, String)] -> [Integer] -> Bool
+aseguraEj4 goleadoresPorEquipo goles = equiposValidos(goleadoresPorEquipo) && numElementos(goleadoresPorEquipo) == numElementos(goles) && golesValidos(goles) && numElementos(goles) > 0
+
+numMayor :: [Integer] -> Integer
+numMayor [x] = x
+numMayor (x:y:xs) 
+    |x>=y = numMayor (x:xs)
+    |otherwise = numMayor (y:xs)
+
+botinDeOro :: [(String, String)] -> [Integer] -> String
+botinDeOro (goleador:restoDeGoleadoresPorEquipo) (gol:restoDeGoles) 
+    |aseguraEj4 (goleador:restoDeGoleadoresPorEquipo) (gol:restoDeGoles) == True && gol == numMayor(gol:restoDeGoles) = snd(goleador)
+    |aseguraEj4 (goleador:restoDeGoleadoresPorEquipo) (gol:restoDeGoles) == True && gol /= numMayor(gol:restoDeGoles) = botinDeOro restoDeGoleadoresPorEquipo restoDeGoles
