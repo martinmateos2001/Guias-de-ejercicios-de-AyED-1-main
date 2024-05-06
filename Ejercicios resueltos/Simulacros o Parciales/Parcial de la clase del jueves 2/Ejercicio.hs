@@ -62,3 +62,18 @@ ASEGURA:
 mayorQueCero :: [Integer] -> Bool
 mayorQueCero [x] = x>0
 mayorQueCero (x:xs) = x > 0 || mayorQueCero xs
+
+--Para resolver este ejercicio pueden utilizar la siguiente función que devuelve como Float la división entre dos números de tipo Int:
+division :: Integer -> Integer -> Float
+division a b = (fromIntegral a) / (fromIntegral b)
+
+porcentajeDeGoles :: String -> [(String,String)] -> [Integer] -> Float
+porcentajeDeGoles goleador goleadoresPorEquipo goles = goleadorPorcentaje goleador goleadoresPorEquipo goles goles
+
+requiereEJ3 :: String -> [(String,String)] -> [Integer] -> Bool
+requiereEJ3 goleador goleadoresPorEquipo goles = mayorQueCero(goles) && equiposValidos(goleadoresPorEquipo) && numElementos(goleadoresPorEquipo) == numElementos(goles) && golesValidos(goles) 
+
+goleadorPorcentaje :: String -> [(String,String)] -> [Integer] -> [Integer] -> Float
+goleadorPorcentaje goleador ((a,b):restoDeGoleadoresPorEquipo) (gol:restoDeGoles) goles   
+    |requiereEJ3 goleador ((a,b):restoDeGoleadoresPorEquipo) goles == True && goleador == b = division (100*gol) (sumElementos(goles))
+    |requiereEJ3 goleador ((a,b):restoDeGoleadoresPorEquipo) goles == True && goleador /= b = goleadorPorcentaje goleador restoDeGoleadoresPorEquipo restoDeGoles goles 
