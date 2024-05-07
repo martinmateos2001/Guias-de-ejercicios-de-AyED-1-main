@@ -26,5 +26,5 @@ cantDivisores n a
 cantDivisores n a 
     |n > 0 && a > (-n) && a < n && mod n a == 0 = 1 + cantDivisores n (a-1) 
     |n > 0 && a > (-n) && a < n && mod n a /= 0 = 0 + cantDivisores n (a-1)
-    |n < 0 && a > (-n) && a < n && mod n a == 0 = 1 + cantDivisores n (a+1)
-    |n < 0 && a > (-n) && a < n && mod n a /= 0 = 0 + cantDivisores n (a+1)
+    |n < 0 && a > n && a < (-n) && mod n a == 0 = 1 + cantDivisores n (a+1)
+    |n < 0 && a > n && a < (-n) && mod n a /= 0 = 0 + cantDivisores n (a+1)
