@@ -1,7 +1,13 @@
 {-Primos en Cero
 Dada una secuencia s de enteros, la devuelve pero en la posicion que habia un numero primo lo cambia por un cero.-}
 
---primosEnCero :: [Int] -> [Int]
+primosEnCero :: [Int] -> [Int]
+primosEnCero [x]
+    |esPrimo x == True = [0]
+    |esPrimo x == False = [x]
+primosEnCero (x:xs) 
+    |esPrimo x == True = 0:(primosEnCero xs)
+    |esPrimo x == False = x:(primosEnCero xs)
 
 esPrimo :: Int -> Bool -- es Primo si la cantidad de divisores es igual 4 {-1, 1, -n, n}
 esPrimo n = cantDivisores n n == 4
