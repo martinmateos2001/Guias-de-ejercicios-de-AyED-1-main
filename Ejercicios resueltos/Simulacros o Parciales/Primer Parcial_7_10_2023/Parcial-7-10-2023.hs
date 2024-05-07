@@ -11,6 +11,8 @@ primosEnCero (x:xs)
 
 esPrimo :: Int -> Bool -- es Primo si la cantidad de divisores es igual 4 {-1, 1, -n, n}
 esPrimo n = cantDivisores n n == 4
+esPrimo 1 = True
+esPrimo (-1) = True
 
 cantDivisores :: Int -> Int -> Int -- divido a n por a  y si da cero es divisor, a entre [-n, n]
 cantDivisores n a 
