@@ -13,7 +13,7 @@ def imprimir_un_verso():
 #imprimir_un_verso()
 
 #1.3
-def raizDe2(x:int):
+def raizDe2(x:int) -> float:
     return round(math.sqrt(x), 4)
 
 #print(raizDe2(2))
@@ -31,7 +31,13 @@ def factorial(x:int):
 #print(factorial(3))
 
 #1.5
-def perimetro (radio:int):
+def perimetro (radio:int)-> float:
     x=2*radio*math.pi
     return x
-print(perimetro(2))
+#print(perimetro(2))
+
+#Ejercicios 2
+#2.1
+def imprimir_saludo(nombre:str) -> str:
+    print("hola " + nombre)
+imprimir_saludo("marton")
