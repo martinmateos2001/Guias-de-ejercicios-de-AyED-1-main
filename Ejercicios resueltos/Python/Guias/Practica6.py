@@ -46,5 +46,10 @@ def raiz_cuadrada_de(x:int) -> float:
 def fahrenheit_a_celcius(f:float) -> float:
     c=(f-32)*5/9
     return c
-print (fahrenheit_a_celcius(212))
+#print (fahrenheit_a_celcius(212))
 
+#2.4
+def imprimir_dos_veces(estribillo:str) -> str:
+    print(2*estribillo)
+
+#imprimir_dos_veces("Cuak ")
