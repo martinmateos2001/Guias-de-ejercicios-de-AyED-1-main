@@ -28,4 +28,10 @@ def factorial(x:int):
             x=x*(i-1)
             i=i-1
         return x
-print(factorial(3))
+#print(factorial(3))
+
+#1.5
+def perimetro (radio:int):
+    x=2*radio*math.pi
+    return x
+print(perimetro(2))
