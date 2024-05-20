@@ -12,12 +12,6 @@ def imprimir_un_verso():
 
 #imprimir_un_verso()
 
-#1.3 y 2.2
-def raiz_cuadrada_de(x:int) -> float:
-    return round(math.sqrt(x), 4)
-
-#print(raiz_cuadrada_de(2))
-
 #1.4, lo hice para todo x jaja, terrible capo
 def factorial(x:int):
     i=x
@@ -40,5 +34,17 @@ def perimetro (radio:int)-> float:
 #2.1
 def imprimir_saludo(nombre:str) -> str:
     print("hola " + nombre)
-imprimir_saludo("marton")
+#imprimir_saludo("marton")
+
+#1.3 y 2.2
+def raiz_cuadrada_de(x:int) -> float:
+    return round(math.sqrt(x), 4)
+
+#print(raiz_cuadrada_de(2))
+
+#2.3
+def fahrenheit_a_celcius(f:float) -> float:
+    c=(f-32)*5/9
+    return c
+print (fahrenheit_a_celcius(212))
 
