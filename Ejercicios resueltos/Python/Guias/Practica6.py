@@ -55,7 +55,7 @@ def imprimir_dos_veces(estribillo:str) -> str:
 #imprimir_dos_veces("Cuak ")
 
 #2.5
-def resto(x,n:int) -> int:
+def resto(x:int,n:int) -> int:
     while x>=0:
         if x<n:
             return x
@@ -64,6 +64,14 @@ def resto(x,n:int) -> int:
     return x
 #print(resto(26,6))
 
+def es_multiplo_de(x:int, n:int) -> bool:
+    if resto(x,n)==0:
+        return True
+    else:
+        return False
+print(es_multiplo_de(8,3))
+
+#2.6
 def es_par(n:int) -> bool:
     if resto(n,2) == 0:
         return True
