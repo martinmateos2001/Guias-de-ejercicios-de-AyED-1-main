@@ -105,4 +105,10 @@ def ambos_son_0 (x:int, y:int) -> bool:
 def es_nombre_largo(nombre:str) -> bool:
     es = 3<=len(nombre) and len(nombre)<=8
     return es
-print(es_nombre_largo("nombre"))
+#print(es_nombre_largo("nombre"))
+
+#3.4
+def es_bisiesto(año:int)->bool:
+    es= es_multiplo_de(año,400) or (es_multiplo_de(año, 4)==True and es_multiplo_de(año, 100)==False)
+    return es
+print(es_bisiesto(2023))
