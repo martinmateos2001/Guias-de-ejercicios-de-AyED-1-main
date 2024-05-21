@@ -100,3 +100,9 @@ def ambos_son_0 (x:int, y:int) -> bool:
     son = x==0 and y==0
     return son
 #print(ambos_son_0 (0,1)) 
+
+#3.3
+def es_nombre_largo(nombre:str) -> bool:
+    es = 3<=len(nombre) and len(nombre)<=8
+    return es
+print(es_nombre_largo("nombre"))
