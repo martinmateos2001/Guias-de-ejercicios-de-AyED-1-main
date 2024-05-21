@@ -69,7 +69,7 @@ def es_multiplo_de(x:int, n:int) -> bool:
         return True
     else:
         return False
-print(es_multiplo_de(8,3))
+#print(es_multiplo_de(8,3))
 
 #2.6
 def es_par(n:int) -> bool:
@@ -77,4 +77,14 @@ def es_par(n:int) -> bool:
         return True
     else:
         False
-print(es_par(6))
+#print(es_par(6))
+
+#2.7
+def cantidad_de_pizzas(comensales:int,min_cant_de_porciones:int)-> int:
+    x=comensales*min_cant_de_porciones
+    if resto(x,8) != 0:
+        return math.floor((x/8)+1)
+    else:
+        return x/8
+
+print(cantidad_de_pizzas(4,7))
