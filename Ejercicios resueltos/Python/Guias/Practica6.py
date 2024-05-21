@@ -86,5 +86,11 @@ def cantidad_de_pizzas(comensales:int,min_cant_de_porciones:int)-> int:
         return math.floor((x/8)+1)
     else:
         return x/8
+#print(cantidad_de_pizzas(4,7))
 
-print(cantidad_de_pizzas(4,7))
+# Ejercicios 3
+#3.1
+def alguno_es_0(n1:int, n2:int)->bool:
+    x= n1==0 or n2==0
+    return x
+print(alguno_es_0 (1, 1))
