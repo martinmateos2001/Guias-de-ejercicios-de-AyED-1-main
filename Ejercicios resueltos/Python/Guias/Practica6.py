@@ -119,28 +119,41 @@ def es_bisiesto(año:int)->bool:
 3M----900Kg --> 1M---300Kg
 >3M| 1M----200Kg
 '''
+altura:int=3.5
+
 def peso_pino(h:int)->int: #h es la altura en metros.
     if h<=3:
         h=h*3
     else:
         h=900+(h-3)*200
     return h
-print("El peso del arbol es: "+ str(peso_pino(3.5))+ "Kg")
+print("El peso del arbol es: "+ str(peso_pino(altura))+ "Kg")
 
 #4.2
 def es_peso_util(p:int):
     es = p>=400 and p<=1000
-    if es==True:
+    return es
+    '''if es==True:
         print("El peso de " + str(p) + "Kg ES válido")
     else:
-         print("El peso de " + str(p) + "Kg NO ES válido")
+         print("El peso de " + str(p) + "Kg NO ES válido")'''
 #es_peso_util(1300)
 
 #4.3, la altura en la que sirve un pino es entre 1.33333M y 4M
 def sirve_pino(h:int):
-    sirve = 1+1/3 <= h and h <= 3.5
+    sirve = h >= 1+1/3 and h <= 3.5
     if sirve == True:
         print("La altura de " +str(h)+"M SÍ sirve.")
     else:
         print("La altura de " +str(h)+"M NO sirve.")
 #sirve_pino(1)
+
+#4.4
+def sirve_pino_compuesto(h:int):
+    sirve= es_peso_util(peso_pino(h))
+    if sirve == True:
+        print("La altura de " +str(h)+"M SÍ sirve.")
+    else:
+        print("La altura de " +str(h)+"M NO sirve.")
+sirve_pino_compuesto(altura)
+    
