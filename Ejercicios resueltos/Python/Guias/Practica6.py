@@ -53,3 +53,20 @@ def imprimir_dos_veces(estribillo:str) -> str:
     print(2*estribillo)
 
 #imprimir_dos_veces("Cuak ")
+
+#2.5
+def resto(x,n:int) -> int:
+    while x>=0:
+        if x<n:
+            return x
+        else:
+            x=x-n
+    return x
+#print(resto(26,6))
+
+def es_par(n:int) -> bool:
+    if resto(n,2) == 0:
+        return True
+    else:
+        False
+print(es_par(6))
