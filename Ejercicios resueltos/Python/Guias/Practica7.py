@@ -36,5 +36,12 @@ def divide_a_todos(n:int, ls:list):
         print("NO" +  msj)
     else:
         print("SI" + msj)
-divide_a_todos(2, [2, 4, 6])
+#divide_a_todos(2, [2, 4, 6])
 
+#1.3, sumar total.
+def suma_total(ls:list):
+    k=0
+    for i in range(0, len(ls)):
+        k=ls[i]+k
+    print("La suma de todos los elementos es " + str(k) + ".")
+#suma_total([2,2])
