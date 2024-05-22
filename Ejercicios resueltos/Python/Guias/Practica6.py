@@ -250,12 +250,13 @@ def eco_10_veces():
 #eco_10_veces()
 
 #6.4
-def cuenta_regresiva(n:int):
+def cuenta_regresiva(n:int, mjs:str):
+        print("Va a suceder algo")
         while n>=0:
             if n!=0:
                 print(n)
                 n-=1
             if n==0:
-                print("Despegue!!!!")
+                print(mjs)
                 n-=1
-cuenta_regresiva(3)
+cuenta_regresiva(3, "Nooooo, mi novia se inmolooooo!!!!! :´( ")
