@@ -241,6 +241,21 @@ def lista_pares_entre_10_y_40():
     return l
 def pares_entre_10_y_40():
     print(lista_pares_entre_10_y_40())
-pares_entre_10_y_40()
+#pares_entre_10_y_40()
 
-#6.2
+#6.3
+def eco_10_veces():
+    eco="eco"
+    print(10*eco)
+#eco_10_veces()
+
+#6.4
+def cuenta_regresiva(n:int):
+        while n>=0:
+            if n!=0:
+                print(n)
+                n-=1
+            if n==0:
+                print("Despegue!!!!")
+                n-=1
+cuenta_regresiva(3)
