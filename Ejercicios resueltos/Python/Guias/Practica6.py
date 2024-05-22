@@ -225,6 +225,7 @@ def hasta_10():
     print(hasta_10_aux())
 #hasta_10()
 
+#6.2
 def lista_pares_entre_10_y_40():
     i=10
     p=0
@@ -241,3 +242,5 @@ def lista_pares_entre_10_y_40():
 def pares_entre_10_y_40():
     print(lista_pares_entre_10_y_40())
 pares_entre_10_y_40()
+
+#6.2
