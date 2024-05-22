@@ -211,3 +211,18 @@ def vacaciones_o_trabajar(sexo:str, años:int):
             else:
                 print("Te toca trabajar.")
 #vacaciones_o_trabajar("M", 65)
+
+# Ejercicios 6 (condicion: usar while)
+#6.1
+def hasta_10_aux():
+    i=0
+    lista:list=[]
+    while i<10:
+        lista.insert(i,i+1)
+        i=i+1
+    return lista
+def hasta_10():
+    print(hasta_10_aux())
+#hasta_10()
+
+
