@@ -127,7 +127,7 @@ def peso_pino(h:int)->int: #h es la altura en metros.
     else:
         h=900+(h-3)*200
     return h
-print("El peso del arbol es: "+ str(peso_pino(altura))+ "Kg")
+#print("El peso del arbol es: "+ str(peso_pino(altura))+ "Kg")
 
 #4.2
 def es_peso_util(p:int):
@@ -155,5 +155,59 @@ def sirve_pino_compuesto(h:int):
         print("La altura de " +str(h)+"M SÍ sirve.")
     else:
         print("La altura de " +str(h)+"M NO sirve.")
-sirve_pino_compuesto(altura)
-    
+#sirve_pino_compuesto(altura)
+
+# Ejercicios 5
+#5.1
+def es_par(n:int)->bool:
+    if n % 2 ==0:
+        return True
+    else:
+        return False
+def devolver_el_doble_si_es_par(n:int):
+    if es_par(n) == True:
+        print(str(n) + " es par, se le devuelve: " + str(2*n)+".")
+    else:
+        print(str(n) + " no es par.")
+#devolver_el_doble_si_es_par(10)
+
+#5.2
+def devolver_valor_si_es_par_sino_el_que_sigue(n:int):
+    if es_par(n)==True:
+        print("Es par, por lo tanto: " + str(n))
+    else:
+        print(str(n) + " no es par, por lo tanto: " + str(n+1))
+#devolver_valor_si_es_par_sino_el_que_sigue(9)
+
+#5.3
+def devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo9(n:int):
+    if n % 3 == 0 and n % 9 != 0:
+        print(str(n) + " es múltiplo de 3, por lo tanto: " + str(n*2) + ".")
+    if n % 9 == 0:
+        print(str(n) + " es múltiplo de 9, por lo tanto: " + str(n*3) + ".")
+    if n % 3 != 0 and n % 9 != 0:
+        print(str(n) + " no es multiplo de 3 o 9, por lo tanto: " + str(n))
+#devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo9(7)
+
+#5.4
+def lindo_nombre(nombre:str):
+    if len(nombre) >= 5:
+        print("\"Tu nombre tiene muchas letras!\"")
+    else:
+        print("\"Tu nombre tiene menos de 5 caracteres\"")
+#lindo_nombre("Mara")
+
+#5.6
+def vacaciones_o_trabajar(sexo:str, años:int):
+    if len(sexo)==1:
+        if sexo=="M":
+            if años>=65 or años<18:
+                print("Andá de vacaciones.")
+            else:
+                print("Te toca trabajar.")
+        if sexo=="F":
+            if años>=60 or años<18:
+                print("Andá de vacaciones.")
+            else:
+                print("Te toca trabajar.")
+#vacaciones_o_trabajar("M", 65)
