@@ -225,4 +225,19 @@ def hasta_10():
     print(hasta_10_aux())
 #hasta_10()
 
-
+def lista_pares_entre_10_y_40():
+    i=10
+    p=0
+    l:list=[]
+    while i<=40:
+        if i % 2 == 0:
+            l.insert(p, i)
+            i += 1
+            p +=1
+        else:
+            i += 1
+            p +=1
+    return l
+def pares_entre_10_y_40():
+    print(lista_pares_entre_10_y_40())
+pares_entre_10_y_40()
