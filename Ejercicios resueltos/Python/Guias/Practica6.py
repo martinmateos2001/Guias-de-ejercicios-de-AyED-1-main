@@ -259,4 +259,35 @@ def cuenta_regresiva(n:int, mjs:str):
             if n==0:
                 print(mjs)
                 n-=1
-cuenta_regresiva(3, "Nooooo, mi novia se inmolooooo!!!!! :´( ")
+#cuenta_regresiva(3, "Nooooo, mi novia se inmolooooo!!!!! :´( ")
+
+# Ejercicios 7, hacer los ejercicios de 6 usando for num in range(i=inicio, f=final, p=paso)
+#7.1 escribir los numeros del uno al diez
+def uno_a_diez():
+    for i in range(1, 11):
+        print(i)
+#uno_a_diez()
+
+#7.2, escribir los pares entre 10 y 40
+def pares_10_40():
+    for i in range(10, 41, 2):
+        print(i)
+#pares_10_40()
+
+#7.3, imprimir eco 10 veces, mejor hago una funcion que repita x veces una palabra
+def repetir_palabra(palabra:str, numero:int):
+    for i in range(0, numero):
+        print(palabra)
+#repetir_palabra("eco", 10)
+
+#7.4, hacer la cuenta regresiva
+def cuenta_regresiva_for(num:int):
+    x=num
+    for i in range (0, num):
+        if x!=0:
+            print(x)
+            x -=1
+        if x==0:
+            print("Despegue")
+#cuenta_regresiva_for(3)
+
