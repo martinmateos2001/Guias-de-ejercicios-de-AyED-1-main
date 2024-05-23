@@ -49,4 +49,13 @@ def suma_total(ls:list):
 #Usando sum() que es nativa.
 def sumar_lista(ls:list):
     print("La suma de los elementos es " + str(sum(ls))) 
-sumar_lista([1,2,3])
+#sumar_lista([1,2,3])
+
+#1.4, si estan ordenados de menor a mayor da true.
+#usando funciones nativas: sort(), ordena de menor a mayor la lista.
+def ordenados(ls:list):
+    b:list = ls.sort()
+    print(ls)
+    print(b)
+    print(b == ls)
+ordenados([4,2,3,5])
