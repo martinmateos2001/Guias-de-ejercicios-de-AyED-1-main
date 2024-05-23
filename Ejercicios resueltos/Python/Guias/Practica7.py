@@ -45,3 +45,8 @@ def suma_total(ls:list):
         k=ls[i]+k
     print("La suma de todos los elementos es " + str(k) + ".")
 #suma_total([2,2])
+
+#Usando sum() que es nativa.
+def sumar_lista(ls:list):
+    print("La suma de los elementos es " + str(sum(ls))) 
+sumar_lista([1,2,3])
