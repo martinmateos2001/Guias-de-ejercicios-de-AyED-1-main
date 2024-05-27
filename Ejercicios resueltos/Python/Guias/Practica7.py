@@ -2,7 +2,7 @@ import math
 
 # Primera Parte
 #1.1, ejecutar de tres formas distintas a pertence, dada una seq de num, ver si x pertece.
-def pertence_In(ls:list, n) -> bool:
+def pertence_In(ls:list[int], n:int) -> bool:
     return n in ls
 #print(pertence_In([1,2,3,4], 3))
 
@@ -22,7 +22,8 @@ def pertenece_for(ls:list, n:int):
     for i in range(0, len(ls)):
         if n==ls[i]:
             b=True
-    print(b)
+    #print(b)
+    return b
 #pertenece_for([1,2,3], 5)
 
 #1.2, divide a todos.
@@ -98,3 +99,38 @@ def al_reves_3(text):
 def palindromo(s):
     return(s == al_reves(s))
 #print(palindromo("aaaa"))
+
+#2.1, dada una lista numerica, reemplaza en las posiciones pares por cero. La lista es inout
+def reemplaza_pares(ls:list[int])-> None:
+    i=0
+    long=len(ls)
+    while i<long:
+        if i%2==0:
+            ls[i]=0
+        i+=1
+#lista=[2,1,4]
+#reemplaza_pares(lista)
+
+#print(f"reemplaza_pares:{lista}")
+
+def reemplaza_pares_for(ls:list[int]) -> None:
+    for i in range(0, len(ls), 2):
+        ls[i]=0
+#reemplaza_pares_for(lista)
+
+#print(f"reemplaza_pares_for:{lista}")
+
+#5.2, pertenece a cada uno, usar pertenece_In
+def pertenece_a_cada_uno_v2(s:list[list[int]], e:int, res:list[bool])->None:
+    res.clear() #se limpia.
+    for v in s: #v es valor.
+        res.append(pertenece_for(v, e))
+
+""" Chequeo:
+lista=[[1,2], [5,3], [5,8]]
+res=[True, False]
+print(f"res al principio:{res}") 
+pertenece_a_cada_uno_v2(lista, 5, res)
+print(f"pertenece_a_cada_uno_v2:{res}")
+"""
+
