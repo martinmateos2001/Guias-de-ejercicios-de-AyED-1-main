@@ -76,3 +76,13 @@ def palabras_mayores_a_7(ls:list):
             i += 1
     return False
 #print(palabras_mayores_a_7(["hola", "falso", "chauuuuuuu"]))
+
+#1.6
+def al_reves(s:str):
+    invertida = "".join(reversed(s))
+    return invertida
+print(al_reves("aaa"))
+def palindromo(s):
+    return(s == al_reves(s))
+
+print(palindromo("aaaa"))
