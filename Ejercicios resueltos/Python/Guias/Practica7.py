@@ -81,8 +81,20 @@ def palabras_mayores_a_7(ls:list):
 def al_reves(s:str):
     invertida = "".join(reversed(s))
     return invertida
-print(al_reves("aaa"))
+#print(al_reves("aaa"))
+
+def al_reves_2(s:str):
+    reves = s[::-1]
+    print(reves)
+#al_reves_2("abcd")
+
+def al_reves_3(text):
+    reves = ""
+    for i in text:
+        reves = i + reves #como reves esta a la derecha de la suma, los caracteres se van a ir anidando atras
+    print(reves)
+#al_reves_3("marto")
+
 def palindromo(s):
     return(s == al_reves(s))
-
-print(palindromo("aaaa"))
+#print(palindromo("aaaa"))
