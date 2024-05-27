@@ -53,9 +53,15 @@ def sumar_lista(ls:list):
 
 #1.4, si estan ordenados de menor a mayor da true.
 #usando funciones nativas: sort(), ordena de menor a mayor la lista.
+#prueba=[4,2,3]
+
+#list.sort() modifica la lista pero no retorna la lista actualizada.
+def ordenar(ls:list):
+    ls.sort()
+    return ls
+#print(ordenar(prueba))
+
 def ordenados(ls:list):
-    b:list = ls.sort()
-    print(ls)
+    b= ls == ordenar(ls)
     print(b)
-    print(b == ls)
-ordenados([4,2,3,5])
+#ordenados(prueba)
