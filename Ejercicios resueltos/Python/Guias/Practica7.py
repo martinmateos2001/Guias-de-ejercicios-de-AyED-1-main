@@ -65,3 +65,14 @@ def ordenados(ls:list):
     b= ls == ordenar(ls)
     print(b)
 #ordenados(prueba)
+
+#1.5, dada una lista de palabras, devolver true si alguna tiene longitud mayor a 7.
+def palabras_mayores_a_7(ls:list):
+    i=0
+    while i < len(ls):
+        if len(ls[i]) > 7:
+            return True
+        else:
+            i += 1
+    return False
+#print(palabras_mayores_a_7(["hola", "falso", "chauuuuuuu"]))
