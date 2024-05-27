@@ -134,3 +134,4 @@ pertenece_a_cada_uno_v2(lista, 5, res)
 print(f"pertenece_a_cada_uno_v2:{res}")
 """
 
+#Practicar recorrer columnas de matrices.
