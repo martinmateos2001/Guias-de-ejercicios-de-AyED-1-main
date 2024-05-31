@@ -123,7 +123,7 @@ def reemplaza_pares_for(ls:'list[int]') -> None:
 
 #print(f"reemplaza_pares_for:{lista}")
 
-#5.2, pertenece a cada uno, usar pertenece_In
+#2.5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
     res.clear() #se limpia.
     for v in s: #v es valor.
