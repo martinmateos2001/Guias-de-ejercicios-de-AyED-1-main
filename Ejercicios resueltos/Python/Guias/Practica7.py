@@ -142,7 +142,7 @@ def fortaleza_PWD_v2 (cadena: str) -> str:
  
     if tiene_may and tiene_num and tiene_min and mayor_a_8 :
         return "VERDE"
-    elif len(cadena) < 5 :
+    elif len(cadena) < 5 : #if y else pueden haber uno solo, elif pueden haber varios y funcionan igual al if.
         return "ROJA"
     else :
         return "AMARILLA"
@@ -156,12 +156,12 @@ def fortaleza_PWD_v1 (cadena: str) -> str:
     mayor_a_8: bool = len(cadena) > 8
  
     for c in cadena:
-        if c.isalpha():
-            if c.islower():
+        if c.isalpha(): #pregunta si el caracter c es alfanumerico.
+            if c.islower(): #pregunta si el caracter c es minuscula.
                 tiene_min = True
-            elif c.isupper():
+            elif c.isupper(): #pregunta si el caracter c es mayuscula.
                 tiene_may = True
-        elif c.isdigit():
+        elif c.isdigit(): #pregunta si el caracter c es numerico.
             tiene_mum = True
  
     if tiene_may and tiene_mum and tiene_min and mayor_a_8 :
@@ -171,6 +171,37 @@ def fortaleza_PWD_v1 (cadena: str) -> str:
     else :
         return "AMARILLA"
 
+"""
+Ejercicio 1.8
+    Dada una lista de tuplas que representan operaciones bancarias donde la primer componente indica el ingreso ("I") o retiro ("R") de dinero y la segunda componente el monto de dinero
+    devolver el saldo final tras las operaciones.
+"""
+def moviento(operacion:str, dinero_en_cuenta:int, monto):
+    if operacion == "I":
+        dinero_en_cuenta = dinero_en_cuenta + monto
+    else:
+        dinero_en_cuenta = dinero_en_cuenta - monto
+    return dinero_en_cuenta
+
+def saldo_final(movimientos:'list[(str, int)]'):
+    dinero:int = 0
+    for tupla in movimientos:
+        dinero = moviento(tupla[0], dinero, tupla[1])
+    return dinero
+
+def saldo_final_v2(movimientos:'list[(str, int)]'): #como son pocas operaciones funciona mejor, pero en caso contrario
+    res:int = 0
+    for tupla in movimientos:
+        if tupla[0] == "I":
+            res = res + tupla[1]
+        else:
+            res = res - tupla[1]
+    return res
+""""
+historial:'list[(str, int)]' = [("I", 2000), ("R", 20),("R", 1000),("I", 300)]
+print(saldo_final(historial))
+print(saldo_final_v2(historial))
+"""
 #2.1, dada una lista numerica, reemplaza en las posiciones pares por cero. La lista es inout
 def reemplaza_pares(ls:'list[int]')-> None:
     i=0
