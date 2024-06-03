@@ -202,6 +202,37 @@ historial:'list[(str, int)]' = [("I", 2000), ("R", 20),("R", 1000),("I", 300)]
 print(saldo_final(historial))
 print(saldo_final_v2(historial))
 """
+
+"""
+Ejercicio 9:
+    Devolver True si una palabra tiene mas de 3 vocales distintas.
+"""
+def eliminar_repetidos(l:list) -> list:
+    res:list = l 
+    for e in l:
+        i:int = l.index(e) + 1
+        while i < len(l):
+            if e == l[i]:
+                res.remove(l[i])
+                i += 1
+            else:
+                i+=1 
+    return res
+print(eliminar_repetidos([1,11,1,1,1,1,1]))
+print(eliminar_repetidos("holaaa"))
+
+
+def al_menos_3_vocales(cadena:str) -> bool:
+    contador_vocales:int = 0
+    vocales:str = "aeiou"
+    for c in eliminar_repetidos(cadena):
+        if pertenece_for(vocales, c):
+            contador_vocales += 1 
+    return contador_vocales >= 3
+
+print(al_menos_3_vocales("palabra")) #False
+print(al_menos_3_vocales("permutacion")) #True 
+
 #2.1, dada una lista numerica, reemplaza en las posiciones pares por cero. La lista es inout
 def reemplaza_pares(ls:'list[int]')-> None:
     i=0
