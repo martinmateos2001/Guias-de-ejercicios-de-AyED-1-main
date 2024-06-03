@@ -76,7 +76,8 @@ def palabras_mayores_a_7(ls:list):
     return False
 #print(palabras_mayores_a_7(["hola", "falso", "chauuuuuuu"]))
 
-#1.6
+"""Ejercicio 1.6"""
+
 def al_reves(s:str):
     invertida = "".join(reversed(s))
     return invertida
@@ -97,6 +98,78 @@ def al_reves_3(text):
 def palindromo(s):
     return(s == al_reves(s))
 #print(palindromo("aaaa"))
+
+"""
+Ejercicio 1.7
+    Analizar contraseña:
+        VERDE:
+            a) len(contraseña) > 8
+            b) Contiene al menos una letra minuscula
+            c) Contiene al menos una letra mayuscula
+            d) Tiene al menos un digito numerico
+        ROJA:
+            a) len(contraseña) < 5
+        AMARILLA:
+            Caso contrario
+"""
+def tiene_minuscula (cadena: str) -> bool :
+    res: bool = False
+    for c in cadena:
+        if 'a' <= c and c <= 'z' :
+            res = True
+    return res 
+ 
+def tiene_mayuscula (cadena: str) -> bool :
+    res: bool = False
+    for c in cadena:
+        if 'A' <= c and c <= 'Z' :
+            res = True
+    return res 
+ 
+def tiene_numeros (cadena: str) -> bool :
+    res: bool = False
+    for c in cadena:
+        if '0' <= c and c <= '9' :
+            res = True
+    return res 
+ 
+ 
+def fortaleza_PWD_v2 (cadena: str) -> str:
+    tiene_min: bool = tiene_minuscula(cadena)
+    tiene_may: bool = tiene_mayuscula(cadena)
+    tiene_num: bool = tiene_numeros(cadena)
+    mayor_a_8: bool = len(cadena) > 8
+ 
+    if tiene_may and tiene_num and tiene_min and mayor_a_8 :
+        return "VERDE"
+    elif len(cadena) < 5 :
+        return "ROJA"
+    else :
+        return "AMARILLA"
+ 
+#x = fortaleza_PWD_v2 ("a6$_Afghij5Dklmnopqrstuvwxyz")
+ 
+def fortaleza_PWD_v1 (cadena: str) -> str:
+    tiene_min: bool = False
+    tiene_may: bool = False
+    tiene_mum: bool = False
+    mayor_a_8: bool = len(cadena) > 8
+ 
+    for c in cadena:
+        if c.isalpha():
+            if c.islower():
+                tiene_min = True
+            elif c.isupper():
+                tiene_may = True
+        elif c.isdigit():
+            tiene_mum = True
+ 
+    if tiene_may and tiene_mum and tiene_min and mayor_a_8 :
+        return "VERDE"
+    elif len(cadena) < 5 :
+        return "ROJA"
+    else :
+        return "AMARILLA"
 
 #2.1, dada una lista numerica, reemplaza en las posiciones pares por cero. La lista es inout
 def reemplaza_pares(ls:'list[int]')-> None:
