@@ -249,11 +249,24 @@ def pertenece_dict(d:dict, k) -> bool:
         if e == k:
             return True
     return False
+def mi_split(linea: str) -> 'list[str]': 
+    res:list[str] = []
+    palabra = ""
+    for char in linea:
+        if char == " " or char == "\t" or char == "\n" or char == "\r":
+            if len(palabra) > 0:
+                res.append(palabra)
+                palabra = ""
+        else:
+            palabra += char
+    if len(palabra) > 0:  # para añadir la última palabra si no termina en un espacio
+        res.append(palabra)
+    return res
 
 def palabras_de_arch(nombre_archivo:str) -> 'list[str]':
     with open(nombre_archivo, 'r') as archivo:
         contenido:str = archivo.read()
-        return mi_split(contenido) # es lo mismo que: contenido.split() ¿ :| ?, esta en el archivo del profe.
+        return mi_split(contenido) # es lo mismo que: contenido.split() ¿ :| ?
 
 """ 
 Revisar archivo del profe tranquilo en casa, es el link que ya tengo.    
