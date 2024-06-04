@@ -131,7 +131,7 @@ Ejercicio 13
     Generar una cola de numeros al azar 
 """
 
-def generar_nros_al_azar_cola(cantidad:int, desde:int, hasta:int) -> Cola[int]:
+def generar_nros_al_azar_cola(cantidad:int, desde:int, hasta:int) -> 'Cola[int]':
     res:Cola[int] = Cola()
     for _ in range(cantidad):
         x:int = random.randint(desde, hasta)
@@ -153,7 +153,7 @@ Ejercicio 16
     2.  implentar jugar_carton_de_bingo(in carton:list[int], in bolillero:Cola[int]) -> int que toma un carton de bingo y una cola de enteros 
         (que corresponden a las bolillas numeradas) y determina cual es la cantidad de jugadas de ese bolillero que se necesitan para ganar.
 """
-def armar_sec_de_bingo() -> Cola[int]:
+def armar_sec_de_bingo() -> 'Cola[int]':
     res:Cola[int] = Cola()
     nros:list = [] #esta lista se usa para que luego no se repitan valores en cola.
     while len(nros) < 100:
@@ -214,7 +214,7 @@ v:str = diccionario['yo'] #v = "martonnn"
 #dicc_vacio:[str, str] = {}
 
 #recuperar claves de un diccionario
-claves:list[str] = diccionario.keys()
+claves:'list[str]' = diccionario.keys()
 for clave in claves:
     valor:str = diccionario[clave]
     print(clave + "-" + valor)
@@ -250,7 +250,7 @@ def pertenece_dict(d:dict, k) -> bool:
             return True
     return False
 
-def palabras_de_arch(nombre_archivo:str) -> list[str]:
+def palabras_de_arch(nombre_archivo:str) -> 'list[str]':
     with open(nombre_archivo, 'r') as archivo:
         contenido:str = archivo.read()
         return mi_split(contenido) # es lo mismo que: contenido.split() ¿ :| ?, esta en el archivo del profe.
