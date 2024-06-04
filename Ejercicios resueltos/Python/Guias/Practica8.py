@@ -249,24 +249,25 @@ def pertenece_dict(d:dict, k) -> bool:
         if e == k:
             return True
     return False
-def mi_split(linea: str) -> 'list[str]': 
+
+def mi_split(linea: str) -> 'list[str]': #esta funcion devuelve una lista de palabras, dado un string muy grande.
     res:list[str] = []
     palabra = ""
     for char in linea:
-        if char == " " or char == "\t" or char == "\n" or char == "\r":
-            if len(palabra) > 0:
-                res.append(palabra)
-                palabra = ""
-        else:
+        if char == " " or char == "\t" or char == "\n" or char == "\r": # ¿char es un espacio o algun tipo de salto de linea? si es así:
+            if len(palabra) > 0: #si la lognitud de palabra es mayor a cero hace:
+                res.append(palabra) #agrega palabra a la lista de palabras
+                palabra = "" #vuelve palabra a caracter vacio para llenar con los caracteres que no son espacios o saltos de linea
+        else: # si char no es salto de linea o espacio lo agrega a palabra.
             palabra += char
     if len(palabra) > 0:  # para añadir la última palabra si no termina en un espacio
         res.append(palabra)
     return res
 
 def palabras_de_arch(nombre_archivo:str) -> 'list[str]':
-    with open(nombre_archivo, 'r') as archivo:
-        contenido:str = archivo.read()
-        return mi_split(contenido) # es lo mismo que: contenido.split() ¿ :| ?
+    with open(nombre_archivo, 'r') as archivo: #abre el archivo como solo lectura
+        contenido:str = archivo.read() #toma todo su texto en un solo string llamado contenido
+        return mi_split(contenido) #devuelve la lista de palabras. mi_split es lo mismo que: contenido.split() ¿ :| ?
 
 """ 
 Revisar archivo del profe tranquilo en casa, es el link que ya tengo.    
