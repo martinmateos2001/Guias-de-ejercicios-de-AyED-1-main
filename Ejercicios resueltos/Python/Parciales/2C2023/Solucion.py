@@ -50,8 +50,6 @@ print("acomadadas: " + str(l_ok))
 
 """
 Ejercicio 2:
-    Dada una lista de enteros que indica entrada y salida de personas y una variable que indica 
-    el momento, devolver el pico de entrada a partir de la variable.
     problema pos_umbral (in s: seq<Z>, in u: Z) : Z {
         requiere: u ≥ 0
         asegura: {res=-1 si el umbral no se supera en ningún momento }
@@ -66,5 +64,39 @@ Ejercicio 2:
 """
 def pos_umbral(lista:'list[int]', u:int) -> int:
     res:int = 0
-    ls:'list[int]' = copiar_lista(lista)
-     
+    ingresos:int = 0
+    ls:'list[int]' = []
+    for e in lista: #Lista con los numeros positivos
+        if e > 0:
+            ls.append(e)
+    
+    for i in range(len(ls)):
+        e:int = ls[i]
+        ingresos += e #sumo los ingresos
+        if ingresos > u: # si ingresos es mayor al umbral retorno res = i + 1
+            res = i+2
+            return res 
+    res = -1 # solo sucede si no se supera el umbral
+    return res
+       
+
+print(pos_umbral([1,-2,0,5,-7,3], 5)) 
+
+"""
+Ejercicio 3:
+    problema columnas_repetidas(in mat:seq<seq<Z>> ) : Bool {
+        requiere: {|mat| > 0}
+        requiere: {todos los elementos de mat tienen igual longitud m, con m > 0
+        (los elementos de mat son secuencias)}
+        requiere: {todos los elementos de mat tienen longitud par (la cantidad de
+        columnas de la matriz es par)}
+        asegura: {(res = true) <=> las primeras m/2 columnas de mat son iguales a
+        las últimas m/2 columnas}
+    }
+
+    Por ejemplo, dada la matriz:
+        m = [[1,2,1,2],[-5,6,-5,6],[0,1,0,1]]
+    se debería devolver res = true
+    TIP: para dividir un número entero x por 2 y obtener como resultado un número
+    entero puede utilizarse la siguiente instrucción: int(x/2)
+"""
