@@ -20,6 +20,8 @@ Estructura para usar ARCHIVOS:
 + mi_archivo.close()
 """
 
+"""         --- PILAS ---           """
+
 """Ejercicio 9"""# ejercicio introductoria a pilas.
 def contar_elementos_pila(p:Pila) -> int:
     cantidad:int = 0
@@ -51,14 +53,14 @@ mi_pila.put(8)
     
 #print( "\nEjericio 8")
 # Ejercicio 8
-def generar_nros_al_azar(cantidad:int, desde:int, hasta:int) -> Pila[int]:
+def generar_nros_al_azar(cantidad:int, desde:int, hasta:int) -> 'Pila[int]':
     p = Pila()
     for _ in range(cantidad):
         valor:int = random.randint(desde, hasta)
         p.put(valor)
     return p
 
-def imprimir_pila(p:Pila[int]) -> int:
+def imprimir_pila(p:'Pila[int]') -> int:
     paux = copiar_pila(p)
     while(not paux.empty()):
         elem = paux.get()
@@ -72,7 +74,7 @@ def imprimir_pila(p:Pila[int]) -> int:
 #print(p.queue) #muestra la pila como una lista
 
 #print("\nEjercicio 10")
-def buscar_el_maximo(p:Pila[int]) -> int:
+def buscar_el_maximo(p:'Pila[int]') -> int:
     paux = copiar_pila(p)
     res:int = paux.get()
     while (not paux.empty()):
@@ -83,7 +85,7 @@ def buscar_el_maximo(p:Pila[int]) -> int:
 
 #print(buscar_el_maximo(p))
 
-# Empezamos con Archivos
+"""         ---  ARCHIVOS ---           """
 
 """
 Ejercicio 1.1
@@ -97,6 +99,20 @@ def contar_lineas(nombre_archivo:str) -> int:
  
 #print(contar_lineas("archivo.txt"))
 
+"""
+Ejercicio 1.2
+"""
+def existe_palabra(palabra:str, nombre_archivo:str) -> bool:
+    res:bool = False
+    with open(nombre_archivo, "w") as archivo: #la ventaja de usar with es que al finalizar el codigo el archivo se cierra automaticamente.
+        lineas:list[str] = archivo.readlines()
+    for linea in lineas:
+        if palabra in linea:
+            res = True
+    return res
+arch_ej_1_2:str = "Ej_1_2.txt"
+word_1_2:str = "hola"
+print(existe_palabra(word_1_2, arch_ej_1_2))
 
 """
 Ejercicio 2
@@ -123,6 +139,7 @@ def es_comentario(linea:str) -> bool:
 #clonar_sin_comentarios("archivo.txt") #funciona
 
 """
+            --- DICCIONARIOS ---
 Hoy empezamos con colas y diccionarios.
     Los metodos de las colas son iguales a los de las pilas, pero cambia que las colas son FIFO, primero en entrar primero en salir.
     Ejemplo [1,2,34,5], el primer elemento es 
