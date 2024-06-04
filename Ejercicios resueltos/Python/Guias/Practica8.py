@@ -104,15 +104,15 @@ Ejercicio 1.2
 """
 def existe_palabra(palabra:str, nombre_archivo:str) -> bool:
     res:bool = False
-    with open(nombre_archivo, "w") as archivo: #la ventaja de usar with es que al finalizar el codigo el archivo se cierra automaticamente.
+    with open(nombre_archivo, "r") as archivo: #la ventaja de usar with es que al finalizar el codigo el archivo se cierra automaticamente.
         lineas:list[str] = archivo.readlines()
     for linea in lineas:
         if palabra in linea:
             res = True
     return res
-arch_ej_1_2:str = "Ej_1_2.txt"
+arch_ej_1_2:str = "D:\Multimedia\Estudios\Marton\Materias carrera\Programacion - AyED 1\Guias-de-ejercicios-de-AyED-1-main\Ejercicios resueltos\Python\Guias\Ej_1_2.txt"
 word_1_2:str = "hola"
-print(existe_palabra(word_1_2, arch_ej_1_2))
+#print("¿Mi palabra existe? " + str(existe_palabra(word_1_2, arch_ej_1_2))) YEY :)
 
 """
 Ejercicio 2
@@ -238,10 +238,11 @@ v:str = diccionario['yo'] #v = "martonnn"
 #dicc_vacio:[str, str] = {}
 
 #recuperar claves de un diccionario
-claves:'list[str]' = diccionario.keys()
-for clave in claves:
-    valor:str = diccionario[clave]
-    print(clave + "-" + valor)
+def imprimir_claves(diccionario:dict):
+    claves:'list[str]' = diccionario.keys()
+    for clave in claves:
+        valor:str = diccionario[clave]
+        print(clave + "-" + valor)
 
 """
 .keys() devuelve una lista con las claves
