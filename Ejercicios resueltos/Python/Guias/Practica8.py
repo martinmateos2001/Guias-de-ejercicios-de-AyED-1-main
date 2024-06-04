@@ -5,14 +5,14 @@ from queue import Queue as Cola
 #clase 29/5
 """
 Empezamos viendo pilas, luego archivos.
-Para usar pilas hay que importar queue
+Para usar PILAS hay que importar queue
 Estructura de pilas:
 + p = Pila() #crea la pila
 + p.put(x) # apila a x
 + elemento = p.get() # desapila un elemento y lo guarda en la variable elemento
 + p.empty() # Pregunta si la pila esta vacía, devuelve un booleano
 
-Estructura para usar archivos:
+Estructura para usar ARCHIVOS:
 + mi_archivo = open("dir del archivos", "f") #f es la orden que puede ser lectura(r), escritura(w) (si el archivo no existe lo crea) o append(a)
 + lineas:[str] = mi_archivo.readlines(x) #Devuelve las lineas del archivo
                  mi_archivo.write(x)
@@ -20,7 +20,7 @@ Estructura para usar archivos:
 + mi_archivo.close()
 """
 
-# ejercicio introductoria a pilas.
+"""Ejercicio 9"""# ejercicio introductoria a pilas.
 def contar_elementos_pila(p:Pila) -> int:
     cantidad:int = 0
     paux:Pila = copiar_pila(p) #trabaja con la copia.
@@ -85,7 +85,9 @@ def buscar_el_maximo(p:Pila[int]) -> int:
 
 # Empezamos con Archivos
 
-#print("\nEjercicio 1.1")
+"""
+Ejercicio 1.1
+"""
 def contar_lineas(nombre_archivo:str) -> int:
     archivo = open(nombre_archivo, "r")
     lineas:list[str] = archivo.readlines()
@@ -95,6 +97,10 @@ def contar_lineas(nombre_archivo:str) -> int:
  
 #print(contar_lineas("archivo.txt"))
 
+
+"""
+Ejercicio 2
+"""
 def clonar_sin_comentarios(nombre_archivo:str):
     archivo:typing.IO = open(nombre_archivo, "r")
     archivo_clonado:typing.IO = open(nombre_archivo + "_clonado", "w")
@@ -139,6 +145,7 @@ def generar_nros_al_azar_cola(cantidad:int, desde:int, hasta:int) -> 'Cola[int]'
     return res
 #print(generar_nros_al_azar_cola(10, 0, 50)) no sirve para imprimir la cola
 
+"""Funcion auxiliar"""
 def imprimir_pila_o_cola(pila_o_cola):
     print("---")
     while(not(pila_o_cola.empty())):
