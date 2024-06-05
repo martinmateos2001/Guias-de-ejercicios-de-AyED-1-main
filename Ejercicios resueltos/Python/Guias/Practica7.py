@@ -209,7 +209,6 @@ Ejercicio 1.9:
 """
 def eliminar_repetidos(lista:list) -> list:
     res:list = []
-    indice:int = 1
     for e in lista:
         if not(pertenece_for(res, e)):
             res.append(e)
@@ -287,7 +286,30 @@ def sin_vocales(cadena:str) -> str:
     return cadena
 print("sin vocales: " + sin_vocales("hello"))
 
-#2.5.2, pertenece a cada uno, usar pertenece_In
+"""
+Ejercicio 2.4:
+    Dada una lista de caracteres si alguno es una vocal se reemplaza por: '_'
+"""
+def reemplaza_vocales(caracteres:'list[chr]') -> 'list[chr]':
+    vocales:list[chr] = ['a', 'e', 'i', 'o', 'u']
+    caracteres_aux:'list[chr]' = []
+    for c in caracteres:
+        if (pertenece_for(vocales, c)):
+            caracteres_aux += ['_']
+        else:
+            caracteres_aux += [c]
+
+    caracteres = []
+
+    for c in caracteres_aux:
+        caracteres.append(c)
+
+    return caracteres
+
+print(reemplaza_vocales('hola'))
+
+
+#5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
     res.clear() #se limpia.
     for v in s: #v es valor.
