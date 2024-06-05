@@ -276,7 +276,16 @@ print(reemplaza_pares_v2(lista))
 Ejercicio 2.3:
     Dada una cadena de caracteres devolver la misma cadena sin caracteres.
 """
-
+def sin_vocales(cadena:str) -> str:
+    vocales:list[chr] = ['a', 'e', 'i', 'o', 'u']
+    cadena_aux:list[chr] = [] 
+    for caracter in cadena:
+        cadena_aux.append(caracter)
+    for char in cadena_aux:
+        if (pertenece_for(vocales, char)):
+            cadena = cadena.replace(char, '')
+    return cadena
+print("sin vocales: " + sin_vocales("hello"))
 
 #2.5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
