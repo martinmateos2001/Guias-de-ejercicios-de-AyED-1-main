@@ -288,7 +288,8 @@ print("sin vocales: " + sin_vocales("hello"))
 
 """
 Ejercicio 2.4:
-    Dada una lista de caracteres si alguno es una vocal se reemplaza por: '_'
+    Dada una lista de caracteres si alguno es una vocal se reemplaza por: '_' |
+    El parametro de entrada es tipo in.
 """
 def reemplaza_vocales(caracteres:'list[chr]') -> 'list[chr]':
     vocales:list[chr] = ['a', 'e', 'i', 'o', 'u']
@@ -299,12 +300,7 @@ def reemplaza_vocales(caracteres:'list[chr]') -> 'list[chr]':
         else:
             caracteres_aux += [c]
 
-    caracteres = []
-
-    for c in caracteres_aux:
-        caracteres.append(c)
-
-    return caracteres
+    return caracteres_aux
 
 print(reemplaza_vocales('hola'))
 
