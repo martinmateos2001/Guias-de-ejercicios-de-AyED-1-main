@@ -302,8 +302,26 @@ def reemplaza_vocales(caracteres:'list[chr]') -> 'list[chr]':
 
     return caracteres_aux
 
-print(reemplaza_vocales('hola'))
 
+#print(reemplaza_vocales('hola'))
+
+"""
+Ejercicio 2.5:
+    problema da vuelta str (in s:seq⟨Char⟩) : seq⟨Char⟩ {
+        requiere: { T rue }
+        asegura: {|res| = |s|}
+        asegura: { Para todo i ∈ Z si 0 ≤ i < |res| → res[i] = s[|s| − i − 1]}
+    }
+"""
+def da_vuelta_str(s:'list[chr]') -> 'list[chr]':
+    i = len(s)-1
+    s_al_reves:list[chr] = []
+    while i>-1:
+        s_al_reves += s[i] 
+        i -= 1
+    return s_al_reves
+
+print(da_vuelta_str("hola"))
 
 #5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
