@@ -167,8 +167,20 @@ def invertir_lineas(nombre_archivo:str) -> typing.IO:
     archivo.close()
     reverso.close()
     
-invertir_lineas(arch_ej_1_2)
+#invertir_lineas(arch_ej_1_2)
 
+"""
+Ejercicio 4, agregar frase al final de un archivo.
+"""
+def agregar_frase_al_final(nombre_archivo:str, frase:str) -> typing.IO:
+    with open(nombre_archivo, "r") as archivo:
+        lineas:list[str] = archivo.readlines()
+    lineas.append(frase)
+    with open(nombre_archivo, "w") as archivo:
+        for linea in lineas:
+            archivo.write(linea)
+
+agregar_frase_al_final(arch_ej_1_2, "nueva linea")
 
 """
             --- DICCIONARIOS ---
