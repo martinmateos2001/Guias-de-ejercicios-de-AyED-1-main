@@ -15,7 +15,7 @@ def pertenece_while(ls:list, n:int) -> bool:
     return b
 #print(pertenece_while([1,2,3,4], 5))
 
-def pertenece_for(ls:list, n:int):
+def pertenece_for(ls:list, n):
     b=False
     for i in range(0, len(ls)):
         if n==ls[i]:
@@ -211,7 +211,7 @@ def eliminar_repetidos(lista:list) -> list:
     res:list = []
     indice:int = 1
     for e in lista:
-        if not(e in res):
+        if not(pertenece_for(res, e)):
             res.append(e)
     return res
 
@@ -271,6 +271,11 @@ def reemplaza_pares_v2(ls:'list[int]') -> 'list[int]':
         res.append(e) 
     return res
 print(reemplaza_pares_v2(lista))
+
+"""
+Ejercicio 2.3:
+    Dada una cadena de caracteres devolver la misma cadena sin caracteres.
+"""
 
 
 #2.5.2, pertenece a cada uno, usar pertenece_In
