@@ -38,12 +38,12 @@ def divide_a_todos(n:int, ls:list):
 #divide_a_todos(2, [2, 4, 6])
 
 #1.3, sumar total.
-def suma_total(ls:list):
+def suma_total(ls:'list[int]') -> int:
     k=0
-    for i in range(0, len(ls)):
-        k=ls[i]+k
-    print("La suma de todos los elementos es " + str(k) + ".")
-#suma_total([2,2])
+    for i in range(len(ls)):
+        k += ls[i]
+    return k
+
 
 #Usando sum() que es nativa.
 def sumar_lista(ls:list):
@@ -207,7 +207,7 @@ print(saldo_final_v2(historial))
 Ejercicio 1.9:
     Devolver True si una palabra tiene mas de 3 vocales distintas.
 """
-def eliminar_repetidos(lista:list) -> list:
+def eliminar_repetidos(lista:list) -> list: #Este es el ejercicio 2.6
     res:list = []
     for e in lista:
         if not(pertenece_for(res, e)):
@@ -322,6 +322,33 @@ def da_vuelta_str(s:'list[chr]') -> 'list[chr]':
     return s_al_reves
 
 print(da_vuelta_str("hola"))
+
+"""
+Ejercicio 3:
+    problema aprobado (in notas: seq⟨Z⟩) : Z {
+        requiere: {|notas| > 0}
+        requiere: {Para todo i ∈ Z si 0 ≤ i < |notas| → 0 ≤ notas[i] ≤ 10)}
+        asegura: {res = 1 ↔ todos los elementos de notas son mayores o iguales a 4 y el promedio es mayor o igual a 7}
+        asegura: {res = 2 ↔ todos los elementos de notas son mayores o iguales a 4 y el promedio est´a entre 4 (inclusive) y 7}
+        asegura: {res = 3 ↔ alguno de los elementos de notas es menor a 4 o el promedio es menor a 4}
+    }
+"""
+def aprobado(notas:'list[int]') -> int:
+    aprobadas:int = 0
+    promedio = suma_total(notas)/len(notas)
+    for nota in notas:
+        if nota >= 4:
+            aprobadas += 1
+    if aprobadas == len(notas) and promedio >= 7:
+        return 1
+    elif aprobadas == len(notas) and promedio >= 4 and promedio < 7:
+        return 2
+    elif aprobadas < len(notas) or promedio < 4:
+        return 3
+
+print(aprobado([7,7])) #res = 1
+print(aprobado([6,7])) #res = 2
+print(aprobado([3,9])) #res = 3, 
 
 #5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
