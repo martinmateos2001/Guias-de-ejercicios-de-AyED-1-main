@@ -207,28 +207,34 @@ print(saldo_final_v2(historial))
 Ejercicio 1.9:
     Devolver True si una palabra tiene mas de 3 vocales distintas.
 """
-def eliminar_repetidos(l:list) -> list:
-    res:list = l 
-    for e in l:
-        i:int = l.index(e) + 1
-        while i < len(l):
-            if e == l[i]:
-                res.remove(l[i])
-                i += 1
-            else:
-                i+=1 
+def eliminar_repetidos(lista:list) -> list:
+    res:list = []
+    indice:int = 1
+    for e in lista:
+        if not(e in res):
+            res.append(e)
     return res
-#print(eliminar_repetidos([1,11,1,1,1,1,1]))
-#print(eliminar_repetidos("holaaa"))
+
+print(eliminar_repetidos([1,11,1,1,1,1,1]))
+print(eliminar_repetidos("holaaa"))
 
 
 def al_menos_3_vocales(cadena:str) -> bool:
-    contador_vocales:int = 0
-    vocales:str = "aeiou"
-    for c in eliminar_repetidos(cadena):
-        if pertenece_for(vocales, c):
-            contador_vocales += 1 
-    return contador_vocales >= 3
+    vocales:list[chr] = ['a', 'e', 'i', 'o', 'u']
+    contador:int = 0
+    cadena_mod:str = eliminar_repetidos(cadena)
+    for c in cadena_mod:
+        if c in vocales:
+            contador += 1
+    res:bool = contador >= 3
+    return res
+
+cadena1:str = "hello" #false
+cadena2:str = "hielo" #true
+
+print(cadena1 + " es " + str(al_menos_3_vocales(cadena1)))
+print(cadena2 + " es " + str(al_menos_3_vocales(cadena2)))
+        
 
 #print(al_menos_3_vocales("palabra")) #False
 #print(al_menos_3_vocales("permutacion")) #True 
