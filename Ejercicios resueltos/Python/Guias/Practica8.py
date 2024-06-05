@@ -129,7 +129,7 @@ def cantidad_apariciones(nombre_archivo:str, palabra:str) -> int:
                 contador += 1
     return contador
 
-print(cantidad_apariciones(arch_ej_1_2, word_1_2))
+#print(cantidad_apariciones(arch_ej_1_2, word_1_2))
 """
 Ejercicio 2
 """
@@ -147,12 +147,28 @@ def clonar_sin_comentarios(nombre_archivo:str):
 
 def es_comentario(linea:str) -> bool:
     i:int = 0
-    while(i<len(linea) and linea[i] == ' '):
+    while(i<len(linea) and linea[i] == ' '): #Lee los espacios en blanco por ejemplo: "      #esto es un comentario"
         i+=1
-    
-    return i < len(linea) and linea[i] == '#'
+
+    return i < len(linea) and linea[i] == '#' 
 
 #clonar_sin_comentarios("archivo.txt") #funciona
+
+"""
+Ejercicio 3
+"""
+def invertir_lineas(nombre_archivo:str) -> typing.IO:
+    archivo:typing.IO = open(nombre_archivo, "r")
+    lineas:list[str] = archivo.readlines()
+    lineas.reverse()
+    reverso:typing.IO = open(nombre_archivo + "_reverso", "w")
+    for e in lineas:
+        reverso.writelines(e)
+    archivo.close()
+    reverso.close()
+    
+invertir_lineas(arch_ej_1_2)
+
 
 """
             --- DICCIONARIOS ---
