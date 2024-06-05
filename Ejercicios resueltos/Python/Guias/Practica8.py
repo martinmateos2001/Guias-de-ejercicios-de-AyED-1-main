@@ -109,11 +109,27 @@ def existe_palabra(palabra:str, nombre_archivo:str) -> bool:
     for linea in lineas:
         if palabra in linea:
             res = True
+    archivo.close()
     return res
 arch_ej_1_2:str = "D:\Multimedia\Estudios\Marton\Materias carrera\Programacion - AyED 1\Guias-de-ejercicios-de-AyED-1-main\Ejercicios resueltos\Python\Guias\Ej_1_2.txt"
 word_1_2:str = "hola"
 #print("¿Mi palabra existe? " + str(existe_palabra(word_1_2, arch_ej_1_2))) YEY :)
 
+"""
+Ejercicio 1.3
+    implementar una funcion que indique cuantas veces aparece una palabra en un archivo.
+"""
+def cantidad_apariciones(nombre_archivo:str, palabra:str) -> int:
+    with open(nombre_archivo, "r") as archivo:
+        lineas:list[str] = archivo.readlines()
+    contador:int = 0
+    for linea in lineas:
+        for word in linea.split():
+            if palabra == word:
+                contador += 1
+    return contador
+
+print(cantidad_apariciones(arch_ej_1_2, word_1_2))
 """
 Ejercicio 2
 """
