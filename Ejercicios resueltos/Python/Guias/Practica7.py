@@ -204,7 +204,7 @@ print(saldo_final_v2(historial))
 """
 
 """
-Ejercicio 9:
+Ejercicio 1.9:
     Devolver True si una palabra tiene mas de 3 vocales distintas.
 """
 def eliminar_repetidos(l:list) -> list:
@@ -218,8 +218,8 @@ def eliminar_repetidos(l:list) -> list:
             else:
                 i+=1 
     return res
-print(eliminar_repetidos([1,11,1,1,1,1,1]))
-print(eliminar_repetidos("holaaa"))
+#print(eliminar_repetidos([1,11,1,1,1,1,1]))
+#print(eliminar_repetidos("holaaa"))
 
 
 def al_menos_3_vocales(cadena:str) -> bool:
@@ -230,8 +230,8 @@ def al_menos_3_vocales(cadena:str) -> bool:
             contador_vocales += 1 
     return contador_vocales >= 3
 
-print(al_menos_3_vocales("palabra")) #False
-print(al_menos_3_vocales("permutacion")) #True 
+#print(al_menos_3_vocales("palabra")) #False
+#print(al_menos_3_vocales("permutacion")) #True 
 
 #2.1, dada una lista numerica, reemplaza en las posiciones pares por cero. La lista es inout
 def reemplaza_pares(ls:'list[int]')-> None:
@@ -241,7 +241,7 @@ def reemplaza_pares(ls:'list[int]')-> None:
         if i%2==0:
             ls[i]=0
         i+=1
-#lista=[2,1,4]
+lista=[2,1,4]
 #reemplaza_pares(lista)
 
 #print(f"reemplaza_pares:{lista}")
@@ -250,8 +250,22 @@ def reemplaza_pares_for(ls:'list[int]') -> None:
     for i in range(0, len(ls), 2):
         ls[i]=0
 #reemplaza_pares_for(lista)
-
 #print(f"reemplaza_pares_for:{lista}")
+
+"""
+Ejercicio 2.2:
+    Lo mismo que en el punto anterior pero sin modificar la lista original.
+"""
+def reemplaza_pares_v2(ls:'list[int]') -> 'list[int]':
+    #comparo con la original y modifico la copia.
+    res:'list[int]' = []
+    for e in ls:
+        if e%2 == 0:
+            e=0
+        res.append(e) 
+    return res
+print(reemplaza_pares_v2(lista))
+
 
 #2.5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
