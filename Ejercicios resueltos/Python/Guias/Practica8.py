@@ -180,7 +180,20 @@ def agregar_frase_al_final(nombre_archivo:str, frase:str) -> typing.IO:
         for linea in lineas:
             archivo.write(linea)
 
-agregar_frase_al_final(arch_ej_1_2, "nueva linea")
+#agregar_frase_al_final(arch_ej_1_2, "nueva linea")
+
+"""
+Ejercicio 5:
+    Implementar una funcion que agregue una frase al comienzo del archivo original
+"""
+def agregar_frase_al_principio(nombre_archivo:str, frase:str) -> typing.IO:
+    with open(nombre_archivo, "r") as archivo:
+        lineas:list[str] = archivo.readlines()
+    nuevo_texto:list[str] = [frase + '\n'] + lineas
+    with open(nombre_archivo,"w") as archivo:
+        for linea in nuevo_texto:
+            archivo.write(linea)
+agregar_frase_al_principio(arch_ej_1_2, "estoy al principio")
 
 """
             --- DICCIONARIOS ---
