@@ -3,8 +3,13 @@ import typing
 from queue import LifoQueue as Pila # Del modulo queue se importa la clase LifoQueue como Pila
 from queue import Queue as Cola 
 #clase 29/5
-"""
-Empezamos viendo pilas, luego archivos.
+def pertenece(elemento, lista:list) -> bool:
+    res:bool = False
+    for e in lista:
+        if(elemento == e):
+            res = True
+    return res
+"""PILAS   
 Para usar PILAS hay que importar queue
 Estructura de pilas:
 + p = Pila() #crea la pila
@@ -130,8 +135,9 @@ def cantidad_apariciones(nombre_archivo:str, palabra:str) -> int:
     return contador
 
 #print(cantidad_apariciones(arch_ej_1_2, word_1_2))
-"""
-Ejercicio 2
+
+
+"""Ejercicio 2
 """
 def clonar_sin_comentarios(nombre_archivo:str):
     archivo:typing.IO = open(nombre_archivo, "r")
@@ -145,7 +151,7 @@ def clonar_sin_comentarios(nombre_archivo:str):
     archivo.close()
     archivo_clonado.close
 
-def es_comentario(linea:str) -> bool:
+def es_comentario(linea:str) -> bool: #auxiliar
     i:int = 0
     while(i<len(linea) and linea[i] == ' '): #Lee los espacios en blanco por ejemplo: "      #esto es un comentario"
         i+=1
@@ -154,8 +160,7 @@ def es_comentario(linea:str) -> bool:
 
 #clonar_sin_comentarios("archivo.txt") #funciona
 
-"""
-Ejercicio 3
+"""Ejercicio 3
 """
 def invertir_lineas(nombre_archivo:str) -> typing.IO:
     archivo:typing.IO = open(nombre_archivo, "r")
@@ -166,11 +171,10 @@ def invertir_lineas(nombre_archivo:str) -> typing.IO:
         reverso.writelines(e)
     archivo.close()
     reverso.close()
-    
 #invertir_lineas(arch_ej_1_2)
 
-"""
-Ejercicio 4, agregar frase al final de un archivo.
+"""Ejercicio 4:
+agregar frase al final de un archivo.
 """
 def agregar_frase_al_final(nombre_archivo:str, frase:str) -> typing.IO:
     with open(nombre_archivo, "r") as archivo:
@@ -179,12 +183,10 @@ def agregar_frase_al_final(nombre_archivo:str, frase:str) -> typing.IO:
     with open(nombre_archivo, "w") as archivo:
         for linea in lineas:
             archivo.write(linea)
-
 #agregar_frase_al_final(arch_ej_1_2, "nueva linea")
 
-"""
-Ejercicio 5:
-    Implementar una funcion que agregue una frase al comienzo del archivo original
+"""Ejercicio 5:
+Implementar una funcion que agregue una frase al comienzo del archivo original
 """
 def agregar_frase_al_principio(nombre_archivo:str, frase:str) -> typing.IO:
     with open(nombre_archivo, "r") as archivo:
@@ -193,10 +195,37 @@ def agregar_frase_al_principio(nombre_archivo:str, frase:str) -> typing.IO:
     with open(nombre_archivo,"w") as archivo:
         for linea in nuevo_texto:
             archivo.write(linea)
-agregar_frase_al_principio(arch_ej_1_2, "estoy al principio")
+#agregar_frase_al_principio(arch_ej_1_2, "estoy al principio")
 
+"""Ejericicio 6:
+Implementar una funcion listar palabras_de_archivo(in nombre_archivo : str) → list, que lea un archivo en
+modo binario y devuelva la lista de palabras legibles, donde vamos a definir una palabra legible como:
+    secuencias de texto formadas por numeros, letras mayusculas/min´usculas y los caracteres ‘ ’(espacio) y ‘ ’(guion bajo)
+    que tienen longitud >= 5
+Una vez implementada la funcion, probarla con diferentes archivos binarios (.exe, .zip, .wav, .mp3, etc).
+
+Para resolver este ejercicio se puede abrir un archivo en modo binario ‘b’. Al hacer read() vamos a obtener
+una secuencia de bytes, que al hacer chr(byte) nos va a devolver un car´acter correspondiente al byte
+leido.
 """
-            --- DICCIONARIOS ---
+def palabras_de_archivo(nombre_archivo:str) -> list:
+    res:list = []
+    palabra:str = ""
+    linea:str
+    with open(nombre_archivo, 'rb') as archivo:
+        linea = archivo.read()
+    for byte in linea:
+        c = chr(byte)
+        if c.isalnum() or c.isalpha() or c == ' ' or c=='_':
+            palabra += c
+        else:
+            if (not(pertenece(palabra, res))):
+                res.append(palabra)
+                palabra = ""
+    return res
+#print(palabras_de_archivo(arch_ej_1_2)) # :)
+
+""" COLAS - TEORIA 
 Hoy empezamos con colas y diccionarios.
     Los metodos de las colas son iguales a los de las pilas, pero cambia que las colas son FIFO, primero en entrar primero en salir.
     Ejemplo [1,2,34,5], el primer elemento es 
@@ -206,11 +235,9 @@ Hoy empezamos con colas y diccionarios.
     c.empty() # pregunta si la cola está vacia.
 """
 
+"""Ejercicio 13
+Generar una cola de numeros al azar 
 """
-Ejercicio 13
-    Generar una cola de numeros al azar 
-"""
-
 def generar_nros_al_azar_cola(cantidad:int, desde:int, hasta:int) -> 'Cola[int]':
     res:Cola[int] = Cola()
     for _ in range(cantidad):
@@ -227,12 +254,13 @@ def imprimir_pila_o_cola(pila_o_cola):
     print("---")
 #imprimir_pila_o_cola(generar_nros_al_azar_cola(10, 0, 50))
 
+"""Ejercicio 16
+Bingo: un carton de 12 numeros al azar entre 0 y 99.
+1.  Implementar una funcion armar_secuencia_de_bingo() → Cola[int] que genere una cola con los numeros del 0 al 99 ordenados al azar.
+2.  implentar jugar_carton_de_bingo(in carton:list[int], in bolillero:Cola[int]) -> int que toma un carton de bingo y una cola de enteros 
+    (que corresponden a las bolillas numeradas) y determina cual es la cantidad de jugadas de ese bolillero que se necesitan para ganar.
 """
-Ejercicio 16
-    Bingo: un carton de 12 numeros al azar entre 0 y 99.
-    1.  Implementar una funcion armar_secuencia_de_bingo() → Cola[int] que genere una cola con los numeros del 0 al 99 ordenados al azar.
-    2.  implentar jugar_carton_de_bingo(in carton:list[int], in bolillero:Cola[int]) -> int que toma un carton de bingo y una cola de enteros 
-        (que corresponden a las bolillas numeradas) y determina cual es la cantidad de jugadas de ese bolillero que se necesitan para ganar.
+"""16.1
 """
 def armar_sec_de_bingo() -> 'Cola[int]':
     res:Cola[int] = Cola()
@@ -243,10 +271,9 @@ def armar_sec_de_bingo() -> 'Cola[int]':
             res.put(v)
             nros.append(v)
     return res
-
 #imprimir_pila_o_cola(armar_sec_de_bingo())
 
-def copiar_cola(original:Cola) -> Cola:
+def copiar_cola(original:Cola) -> Cola: #Auxiliar
     res:Cola = Cola() #la copia.
     cola_tmp:Cola = Cola() #temporal porque se usa para llenar de nuevo la original.
     while not(original.empty()):
@@ -257,6 +284,8 @@ def copiar_cola(original:Cola) -> Cola:
         v = cola_tmp.get()
         original.put(v)
     return res
+
+"""Ejercicio 16.2
 """
 def jugar_carton_bingo(carton:list, bolillero:Cola) -> int:
     jugadas:int = 0
@@ -268,9 +297,8 @@ def jugar_carton_bingo(carton:list, bolillero:Cola) -> int:
         if pertenece(carton, jugada): #importar Practica 6
             aciertos += 1
     return jugadas
-"""
 
-"""
+""" DICCIONARIOS - TEORIA
 Arrancamos con diccionarios.
 Posee claves y valores.
 Se asignan como tipo dict
@@ -301,18 +329,16 @@ def imprimir_claves(diccionario:dict):
         valor:str = diccionario[clave]
         print(clave + "-" + valor)
 
-"""
+""" METODOS DE DICCIONARIOS
 .keys() devuelve una lista con las claves
 .items() devuelve la lista con las duplas clave-valor
 .values() devuelve la lista con los valores de las claves
 """
 
+"""Ejercicio 19 
+Leer un archivo de texto y agrupar la cantidad de palabras de acuerdo a su longitud.
+Implementar la funcion agrupar_por_longitud(in nombre_archivo:str) -> dict
 """
-Ejercicio 19 
-    Leer un archivo de texto y agrupar la cantidad de palabras de acuerdo a su longitud.
-    Implementar la funcion agrupar_por_longitud(in nombre_archivo:str) -> dict
-"""
-
 def agrupar_por_longitud(nombre_archivo:str) -> dict:
     palabras:list[str] = palabras_de_arch(nombre_archivo) #funcion auxiliar que recoge las palabras del archivo
     res:dict = {}
@@ -355,7 +381,6 @@ def palabras_de_arch(nombre_archivo:str) -> 'list[str]':
 Revisar archivo del profe tranquilo en casa, es el link que ya tengo.    
 """
 
-"""
-Ejercicio 19:
-    Implementar un funcion que devuelve la palabra mas frecuente, se aconseja usar diccionarios.
+"""Ejercicio 19:
+Implementar un funcion que devuelve la palabra mas frecuente, se aconseja usar diccionarios.
 """

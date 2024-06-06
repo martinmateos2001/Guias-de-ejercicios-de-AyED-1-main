@@ -1,4 +1,4 @@
-estoy al principio
+estoy al principio #el numeral no aparece#     hay espacios en el medio    "las comillas tampoco"
 Escribo esto otra vez la puta madre
 segunda linea hola
 hola hola
