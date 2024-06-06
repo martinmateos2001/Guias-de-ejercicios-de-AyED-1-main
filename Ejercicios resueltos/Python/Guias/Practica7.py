@@ -346,9 +346,60 @@ def aprobado(notas:'list[int]') -> int:
     elif aprobadas < len(notas) or promedio < 4:
         return 3
 
+"""res aprobado
 print(aprobado([7,7])) #res = 1
 print(aprobado([6,7])) #res = 2
 print(aprobado([3,9])) #res = 3, 
+"""
+
+"""Ejercicio 4.1:
+    Ingresar nombres a una lista hasta que se ingrese la palabra listo.
+"""
+def ingresar_nombres() -> 'list[str]':
+    lista_de_nombres:'list[str]' = []
+    fin:str = "listo"
+    nombre:str = ""
+    while nombre != fin:
+        nombre = input()
+        if nombre != fin:
+            lista_de_nombres.append(nombre)
+    return lista_de_nombres
+#print(ingresar_nombres())
+
+
+"""Ejercicio 4.2:
+Implementar una funcion que devuelve una lista con el historial de un monedero electronico (por ejemplo la SUBE).
+El usuario debe seleccionar en cada paso si quiere:
+    “C” = Cargar creditos,
+    “D” = Descontar creditos,
+    “X” = Finalizar la simulaci´on (terminar el programa)
+En los casos de cargar y descontar creditos, el programa debe ademas solicitar el monto para la operacion. Vamos a
+asumir que el monedero comienza en cero. Para guardar la informacion grabaremos en el historial tuplas que representen
+los casos de cargar (“C”, monto a cargar) y descontar credito (“D”, monto a descontar).
+"""
+def historial_movimientos_sube() -> 'list[(str, int)]':
+    res:'list[(str, int)]' = []
+    fin:str = "X"
+    operacion:str = ""
+    monto:int = 0
+    elemento:tuple[str, int] = ("", 0)
+    texto:str = "Ingrese 'C' para cargar creditos.\nIngrese 'D' para descontar credito\nIngrese 'X' para salir\n" 
+    error:str = "El codigo de operacion no es correcto\n"  
+    while operacion != fin:
+        print(texto)
+        operacion = input()
+        if operacion == "C" or operacion == "D":
+            print("Ingrese el monto de la operacion")
+            monto = input()
+            elemento = (operacion, monto)
+            res.append(elemento)
+        elif operacion == "X":
+            print("Adios\n")
+            operacion = fin
+        else:
+            print(error)
+    return res
+#print(historial_movimientos_sube())
 
 #5.2, pertenece a cada uno, usar pertenece_In
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
