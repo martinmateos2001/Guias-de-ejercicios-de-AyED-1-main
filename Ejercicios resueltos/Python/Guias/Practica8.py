@@ -116,7 +116,7 @@ def existe_palabra(palabra:str, nombre_archivo:str) -> bool:
             res = True
     archivo.close()
     return res
-arch_ej_1_2:str = "D:\Multimedia\Estudios\Marton\Materias carrera\Programacion - AyED 1\Guias-de-ejercicios-de-AyED-1-main\Ejercicios resueltos\Python\Guias\Ej_1_2.txt"
+archivo_de_pruebas:str = "D:\Multimedia\Estudios\Marton\Materias carrera\Programacion - AyED 1\Guias-de-ejercicios-de-AyED-1-main\Ejercicios resueltos\Python\Guias\Pruebas.txt"
 word_1_2:str = "hola"
 #print("¿Mi palabra existe? " + str(existe_palabra(word_1_2, arch_ej_1_2))) YEY :)
 
@@ -223,7 +223,7 @@ def palabras_de_archivo(nombre_archivo:str) -> list:
                 res.append(palabra)
                 palabra = ""
     return res
-#print(palabras_de_archivo(arch_ej_1_2)) # :)
+print(palabras_de_archivo(archivo_de_pruebas)) # :)
 
 """ COLAS - TEORIA 
 Hoy empezamos con colas y diccionarios.
