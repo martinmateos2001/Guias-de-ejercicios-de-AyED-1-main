@@ -225,6 +225,16 @@ def palabras_de_archivo(nombre_archivo:str) -> list:
     return res
 print(palabras_de_archivo(archivo_de_pruebas)) # :)
 
+"""Ejercicio 7:
+Implementar una funcion calcular_promedio_por_estudiante(in nombre archivo notas : str, in nombre archivo promedios : str), 
+que lea un archivo de texto separado por comas (comma-separated values, o .csv) que contiene las notas de toda la carrera de 
+un grupo de estudiantes y calcule el promedio final de uno. El resultado se guardara en un archivo ”nombre archivo promedios.csv”
+El archivo tiene el siguiente formato:
+    nro de LU ( str ) , materia ( str ) , fecha ( str ) , nota ( float )
+Para modularizar el codigo, implementar la funcion promedio_estudiante(in nombre archivo, in lu : str) → float.
+"""
+
+
 """ COLAS - TEORIA 
 Hoy empezamos con colas y diccionarios.
     Los metodos de las colas son iguales a los de las pilas, pero cambia que las colas son FIFO, primero en entrar primero en salir.
