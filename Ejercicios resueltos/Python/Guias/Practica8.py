@@ -457,6 +457,7 @@ def actualizar_stock(inventario:'dict[str, dict]', nombre:str, cantidad:int) -> 
             i += 1
     else:
         print("El producto no pertenece al inventario.")
+    return inventario
 
 mi_inventario:dict = {
     'leche' : {
@@ -480,3 +481,19 @@ print(lista_valores)
 print(mi_inventario)
 actualizar_stock(mi_inventario, "d", 0)
 print(mi_inventario)"""
+
+def actualizar_precios(inventario:'dict[str, dict]', nombre:str, precio:float) -> dict:
+    claves:list = inventario.keys()
+    valores:list = list(inventario.values()) # otra forma es  valores = [x for x in inventario.values()]
+
+    if pertenece_dict(inventario, nombre):    
+        i:int = 0
+        for c in claves:
+            valor = valores[i]
+            if c==nombre:
+                valor['precio'] = precio
+                inventario[c] = valor
+            i += 1
+    else:
+        print("El producto no pertenece al inventario.")
+    return inventario
