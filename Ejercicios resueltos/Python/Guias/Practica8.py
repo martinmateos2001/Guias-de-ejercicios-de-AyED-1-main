@@ -1,5 +1,17 @@
+"""random
+Este módulo implementa generadores de números pseudoaleatorios para varias distribuciones.
+"""
 import random
+
+"""typing
+Este modulo se utliza para integrar e implementar nuevos tipos de datos (En este caso).
+ejemplo
+"""
 import typing 
+
+"""queue:
+A palabras simples es un modulo que permite manipular colas.
+"""
 from queue import LifoQueue as Pila # Del modulo queue se importa la clase LifoQueue como Pila
 from queue import Queue as Cola 
 #clase 29/5
@@ -9,25 +21,17 @@ def pertenece(elemento, lista:list) -> bool:
         if(elemento == e):
             res = True
     return res
-"""PILAS   
+"""PILAS:   
 Para usar PILAS hay que importar queue
 Estructura de pilas:
 + p = Pila() #crea la pila
 + p.put(x) # apila a x
 + elemento = p.get() # desapila un elemento y lo guarda en la variable elemento
 + p.empty() # Pregunta si la pila esta vacía, devuelve un booleano
-
-Estructura para usar ARCHIVOS:
-+ mi_archivo = open("dir del archivos", "f") #f es la orden que puede ser lectura(r), escritura(w) (si el archivo no existe lo crea) o append(a)
-+ lineas:[str] = mi_archivo.readlines(x) #Devuelve las lineas del archivo
-                 mi_archivo.write(x)
-                    donde x es un str   
-+ mi_archivo.close()
 """
 
-"""         --- PILAS ---           """
-
-"""Ejercicio 9"""# ejercicio introductoria a pilas.
+"""Ejercicio 9
+"""# ejercicio introductoria a pilas.
 def contar_elementos_pila(p:Pila) -> int:
     cantidad:int = 0
     paux:Pila = copiar_pila(p) #trabaja con la copia.
@@ -36,7 +40,7 @@ def contar_elementos_pila(p:Pila) -> int:
         cantidad += 1
     return cantidad
 
-def copiar_pila(p:Pila) -> Pila:
+def copiar_pila(p:Pila) -> Pila: #Auxiliar
     paux = Pila()
     res = Pila()
     while (not p.empty()):
@@ -56,8 +60,8 @@ mi_pila.put(8)
                                         #para solucionar esto se propone usar una funcion que copie la pila
                                         #ahora ya funciona.
     
-#print( "\nEjericio 8")
-# Ejercicio 8
+"""Ejercicio 8
+"""
 def generar_nros_al_azar(cantidad:int, desde:int, hasta:int) -> 'Pila[int]':
     p = Pila()
     for _ in range(cantidad):
@@ -65,20 +69,14 @@ def generar_nros_al_azar(cantidad:int, desde:int, hasta:int) -> 'Pila[int]':
         p.put(valor)
     return p
 
-def imprimir_pila(p:'Pila[int]') -> int:
+def imprimir_pila(p:'Pila[int]') -> int: #Para imprimir pilas
     paux = copiar_pila(p)
     while(not paux.empty()):
         elem = paux.get()
         print(elem)
 
-#p = generar_nros_al_azar (20, 0, 100)
-#imprimir_pila(p)
-#print("cuantos elementos tiene?")
-#print(contar_elementos_pila(p))
-#print("\nComo lista:")
-#print(p.queue) #muestra la pila como una lista
-
-#print("\nEjercicio 10")
+"""Ejercicio 10
+"""
 def buscar_el_maximo(p:'Pila[int]') -> int:
     paux = copiar_pila(p)
     res:int = paux.get()
@@ -87,10 +85,39 @@ def buscar_el_maximo(p:'Pila[int]') -> int:
         if valor > res:
             res = valor
     return res
-
 #print(buscar_el_maximo(p))
 
-"""         ---  ARCHIVOS ---           """
+"""Ejercicio 11 | no es relevante.
+Implementar una funcion esta bien balanceada(in s : str) → bool que dado un string con una formula aritmetica sobre
+los enteros, diga si los parentesis estan bien balanceados. Las formulas pueden formarse con:
+    los numeros enteros
+    las operaciones basicas +, −, x y /
+    parentesis
+    espacios
+"""
+        
+   
+
+
+
+"""Auxiliares
+"""
+def aparaciones_elemento_en_cola(elemento, cl:Cola) -> int:
+    res:int = 0
+    copia:Cola = copiar_cola(cl)
+    while (not(copia.empty())):
+        v == copia.get()
+        if (v == elemento):
+            res += 1
+    return res
+
+"""ARCHIVOS:
+Funciones para usar archivos:
+    + mi_archivo = open("dir del archivos", "f") #f es la orden que puede ser lectura(r), escritura(w) (si el archivo no existe lo crea) o append(a)
+    + lineas:[str] = mi_archivo.readlines(x) #Devuelve las lineas del archivo
+                 mi_archivo.write(x)
+                    donde x es un str   
+    + mi_archivo.close()"""
 
 """
 Ejercicio 1.1
