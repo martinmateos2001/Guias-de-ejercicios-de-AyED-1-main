@@ -421,3 +421,23 @@ Revisar archivo del profe tranquilo en casa, es el link que ya tengo.
 """Ejercicio 19:
 Implementar un funcion que devuelve la palabra mas frecuente, se aconseja usar diccionarios.
 """
+
+
+"""Ejercicio 23
+"""
+def agregar_producto(inventario:dict, nombre:str, precio:float, cantidad:int) -> dict:
+    if not(pertenece_dict(inventario, nombre)):
+        inventario[nombre] = {
+                'precio' : precio,
+                'cantidad' : cantidad
+        }
+    else:
+        print("El producto ya fue ingresado")
+    return inventario
+"""Pruebas de funcionamiento:
+mi_inventario_aux:dict = {}
+mi_inventario = agregar_producto(mi_inventario_aux, "leche", 1499.99, 5)
+print(mi_inventario)
+mi_inventario = agregar_producto(mi_inventario, "manteca", 1200.00, 1)
+print(mi_inventario)
+"""
