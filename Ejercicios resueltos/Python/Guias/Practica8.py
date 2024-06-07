@@ -497,3 +497,14 @@ def actualizar_precios(inventario:'dict[str, dict]', nombre:str, precio:float) -
     else:
         print("El producto no pertenece al inventario.")
     return inventario
+
+def calcular_valor_inventario(inventario:'dict[str, dict]') -> float:
+    valores:list = [x for x in inventario.values()]
+    res:int = 0
+    for valor in valores:
+        i:int = 0
+        i = valor['cantidad'] * valor['precio']
+        res += i
+    return res
+
+#print(calcular_valor_inventario(mi_inventario)) YEY :)
