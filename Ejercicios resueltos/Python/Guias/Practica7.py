@@ -401,7 +401,15 @@ def historial_movimientos_sube() -> 'list[(str, int)]':
     return res
 #print(historial_movimientos_sube())
 
-#5.2, pertenece a cada uno, usar pertenece_In
+"""5.1
+Dada una lista de lista de enteros, una lista de booleanos y un elemento e, si este pertenece a algun elemento de la lista en la posicion i
+entoces res[i] = true
+"""
+def pertenece_a_cada_uno_v1()
+
+"""5.2
+Pertenece a cada uno, usar pertenece_In
+"""
 def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
     res.clear() #se limpia.
     for v in s: #v es valor.
