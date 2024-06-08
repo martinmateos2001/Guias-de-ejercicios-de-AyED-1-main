@@ -100,3 +100,20 @@ Ejercicio 3:
     TIP: para dividir un número entero x por 2 y obtener como resultado un número
     entero puede utilizarse la siguiente instrucción: int(x/2)
 """
+m = [[1,2,1,2],[-5,6,-5,6],[0,1,0,1]]
+def columnas_repetidas(mat:'list[list[int]]') -> bool:
+    correctas:list[bool] = []
+    for fila in mat:
+        i:int = 0
+        mitad1:int = 0
+        mitad2:int = 0
+        while i < len(fila)/2:  
+            mitad1 += fila[i]
+            i += 1
+        while i <len(fila):
+            mitad2 += fila[i]
+            i += 1
+        b:bool = mitad1 == mitad2
+        correctas.append(b)
+    return not(False in correctas)
+print(columnas_repetidas(m))
