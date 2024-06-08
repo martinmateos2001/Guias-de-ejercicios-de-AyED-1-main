@@ -167,7 +167,14 @@ def cuenta_posiciones_por_nacion(naciones: list, torneos: dict) -> dict:
     for nacion in naciones:
         res[nacion] = [0] * len(naciones)
 
-    for anio in torneos.keys():
-        for i in range(len(torneos[anio])):
-            res[torneos[anio][i]][i] += 1
+    for anio in torneos.keys(): 
+        for i in range(len(torneos[anio])): 
+            res[torneos[anio][i]][i] += 1 
     return res
+
+
+naciones= ["arg", "aus", "nz", "sud"]
+torneos= {2023:["nz", "sud", "arg", "aus"], 2022:["nz", "sud", "aus", "arg"]}
+#se debería devolver res = {"arg": [0,0,1,1], "aus": [0,0,1,1], "nz": [2,0,0,0],
+#"sud": [0,2,0,0]}
+print(cuenta_posiciones_por_nacion(naciones, torneos))
