@@ -50,20 +50,60 @@ def sumar_lista(ls:list):
     print("La suma de los elementos es " + str(sum(ls))) 
 #sumar_lista([1,2,3])
 
-#1.4, si estan ordenados de menor a mayor da true.
-#usando funciones nativas: sort(), ordena de menor a mayor la lista.
-#prueba=[4,2,3]
+"""1.4, si estan ordenados de menor a mayor da true.
+Usando funciones nativas: sort(), ordena de menor a mayor la lista.
+prueba=[4,2,3]
 
-#list.sort() modifica la lista pero no retorna la lista actualizada.
-def ordenar(ls:list):
-    ls.sort()
-    return ls
-#print(ordenar(prueba))
+list.sort() modifica la lista pero no retorna la lista actualizada.
+En cambio sorted(list) si lo hace."""
+def copiar_lista(ls:list) -> list:
+    res:list = []
+    for e in ls:
+        res.append(e)
+    return res
 
-def ordenados(ls:list):
-    b= ls == ordenar(ls)
-    print(b)
-#ordenados(prueba)
+def ordenar_sort(ls:list) -> list:
+    res:list = copiar_lista(ls)
+    res.sort()
+    return res
+
+#Como si fuese en el parcial
+def menor_de_la_lista(ls:list) -> int:
+    menor:int = ls[0]
+    for i in range(1, len(ls)):
+        e = ls[i]
+        if e <= menor:
+            menor = e
+    return menor
+
+def obtener_indice(lista:list, elemento) -> int:
+    i:int = 0
+    res:int = 0
+    while i < len(lista):
+        if elemento == lista[i]:
+            res += i
+        i += 1
+    return res
+
+def ordenar(ls:list) -> list:
+    res:list = []
+    aux:list = copiar_lista(ls)
+    while len(aux) != 0:
+        e = menor_de_la_lista(aux)
+        res.append(e)
+        i:int = obtener_indice(aux, e)
+        aux.pop(i)
+    return res
+a = ordenar([2,43,5,7,3])
+print(a)
+    
+def ordenados(ls:list) -> bool:
+    b:bool = ls == sorted(ls)
+    return b
+"""Testeo
+prueba=[1,8,3]
+print(ordenados(prueba))"""
+
 
 #1.5, dada una lista de palabras, devolver true si alguna tiene longitud mayor a 7.
 def palabras_mayores_a_7(ls:list):
@@ -99,18 +139,16 @@ def palindromo(s):
     return(s == al_reves(s))
 #print(palindromo("aaaa"))
 
-"""
-Ejercicio 1.7
-    Analizar contraseña:
-        VERDE:
-            a) len(contraseña) > 8
-            b) Contiene al menos una letra minuscula
-            c) Contiene al menos una letra mayuscula
-            d) Tiene al menos un digito numerico
-        ROJA:
-            a) len(contraseña) < 5
-        AMARILLA:
-            Caso contrario
+"""1.7, Analizar contraseña:
+    VERDE:
+        a) len(contraseña) > 8
+        b) Contiene al menos una letra minuscula
+        c) Contiene al menos una letra mayuscula
+        d) Tiene al menos un digito numerico
+    ROJA:
+        a) len(contraseña) < 5
+    AMARILLA:
+        Caso contrario
 """
 def tiene_minuscula (cadena: str) -> bool :
     res: bool = False
@@ -171,8 +209,7 @@ def fortaleza_PWD_v1 (cadena: str) -> str:
     else :
         return "AMARILLA"
 
-"""
-Ejercicio 1.8
+"""Ejercicio 1.8
     Dada una lista de tuplas que representan operaciones bancarias donde la primer componente indica el ingreso ("I") o retiro ("R") de dinero y la segunda componente el monto de dinero
     devolver el saldo final tras las operaciones.
 """
@@ -197,7 +234,7 @@ def saldo_final_v2(movimientos:'list[(str, int)]'): #como son pocas operaciones 
         else:
             res = res - tupla[1]
     return res
-""""
+""""Testeo
 historial:'list[(str, int)]' = [("I", 2000), ("R", 20),("R", 1000),("I", 300)]
 print(saldo_final(historial))
 print(saldo_final_v2(historial))
@@ -213,9 +250,10 @@ def eliminar_repetidos(lista:list) -> list: #Este es el ejercicio 2.6
         if not(pertenece_for(res, e)):
             res.append(e)
     return res
-
+"""Testeo
 print(eliminar_repetidos([1,11,1,1,1,1,1]))
-print(eliminar_repetidos("holaaa"))
+print(eliminar_repetidos("holaaa"))"""
+
 
 
 def al_menos_3_vocales(cadena:str) -> bool:
@@ -227,12 +265,13 @@ def al_menos_3_vocales(cadena:str) -> bool:
             contador += 1
     res:bool = contador >= 3
     return res
-
+"""Testeo
 cadena1:str = "hello" #false
 cadena2:str = "hielo" #true
 
 print(cadena1 + " es " + str(al_menos_3_vocales(cadena1)))
-print(cadena2 + " es " + str(al_menos_3_vocales(cadena2)))
+print(cadena2 + " es " + str(al_menos_3_vocales(cadena2)))"""
+
         
 
 #print(al_menos_3_vocales("palabra")) #False
@@ -269,7 +308,7 @@ def reemplaza_pares_v2(ls:'list[int]') -> 'list[int]':
             e=0
         res.append(e) 
     return res
-print(reemplaza_pares_v2(lista))
+#print(reemplaza_pares_v2(lista))
 
 """
 Ejercicio 2.3:
@@ -284,7 +323,7 @@ def sin_vocales(cadena:str) -> str:
         if (pertenece_for(vocales, char)):
             cadena = cadena.replace(char, '')
     return cadena
-print("sin vocales: " + sin_vocales("hello"))
+#print("sin vocales: " + sin_vocales("hello"))
 
 """
 Ejercicio 2.4:
@@ -321,7 +360,8 @@ def da_vuelta_str(s:'list[chr]') -> 'list[chr]':
         i -= 1
     return s_al_reves
 
-print(da_vuelta_str("hola"))
+"""testeo
+print(da_vuelta_str("hola"))"""
 
 """
 Ejercicio 3:
@@ -403,10 +443,10 @@ def historial_movimientos_sube() -> 'list[(str, int)]':
 
 """5.1
 Dada una lista de lista de enteros, una lista de booleanos y un elemento e, si este pertenece a algun elemento de la lista en la posicion i
-entoces res[i] = true
+entoces res[i] = true.
+Es igual al 5.2 pero la diferencia es que len(res) >= len(s)
 """
-def pertenece_a_cada_uno_v1()
-
+  
 """5.2
 Pertenece a cada uno, usar pertenece_In
 """
@@ -423,5 +463,16 @@ pertenece_a_cada_uno_v2(lista, 5, res)
 print(f"pertenece_a_cada_uno_v2:{res}")
 """
 
-#Practicar recorrer columnas de matrices.
+"""5.3
+Dada una lista de listas de enteros, devuelve true <-> todos los elementos tienen la misma longitud """
+def es_matriz(s:'list[list[int]]') -> bool:
+    longitud:int = len(s[0])
+    for i in range[1, len(s)]:
+        if len(s[i]) != longitud:
+            return False
+    return True
 
+"""5.4
+
+"""
+#Practicar recorrer columnas de matrices.
