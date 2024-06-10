@@ -289,5 +289,10 @@ def cuenta_regresiva_for(num:int):
             x -=1
         if x==0:
             print("Despegue")
-#cuenta_regresiva_for(3)
+
+def cuenta_regresiva_2(num:int):
+    for i in range(-num, 1):
+        print(str(-i))
+    print("DESPEGUEEE!!!")
+cuenta_regresiva_2(3)
 
