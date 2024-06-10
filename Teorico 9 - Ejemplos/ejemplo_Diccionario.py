@@ -20,3 +20,6 @@ for c, v in capitales.items():
 
 for k in capitales.keys(): 
     print(k)  # recorre las claves
+
+capitales.pop('Chile') # dicc.pop('clave'), elimina el par clave - valor
+print(capitales)
