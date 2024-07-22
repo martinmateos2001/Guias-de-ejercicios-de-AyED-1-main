@@ -55,7 +55,19 @@ comparar a b
 -- ejercicio 9
 f4 :: Float -> Float -> Float 
 f4 x y = (x+y)/2
-{- Suma dos variables del tipo Float, los suma y luego divide el resultado por dos-}
+{- Suma dos variables del tipo Float, los suma y luego divide el resultado por dos
+La especificacion puede ser:
+problema distanciaMedia (x:R, y:R) : R{
+    requiere:{True}
+    asegura:res=(x+y)/2
+    } 
+-}
 f5 :: (Float, Float) -> Float
 f5 (x, y) = (x+y)/2
-{-Toma los valores de la dupla y realiza el mismo calcula que f4-}
+{-Toma los valores de la dupla y realiza el mismo calcula que f4
+especificacion:
+problema distanciaMedia2 (b:(RxR)): R{
+    requiere: {True}
+    asegura: res = (b_0 + b_1)/2
+    }
+-}
