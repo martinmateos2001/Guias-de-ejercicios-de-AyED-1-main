@@ -158,12 +158,12 @@ esMultiplo a b = mod a b == 0
 {-Ejercicio 3.9, ordenar la lista de forma creciente (menor a mayor) | pista dada por la profesora: usar maximo y quitar.
 Uso la funcion menor, concatenar (:) y quitar, para ir armanda la lista de menor a mayor.-}
 ordenar :: [Integer]->[Integer]
-ordenar (x:[])= (x:[])
+ordenar [] = []
 ordenar lista = (menor lista):ordenar(quitar (menor lista) lista)
 
 --defino la funcion menor para poder ordenar agregando el menor de la lista primero.
 menor :: [Integer]->Integer
-menor (x:[]) = x
+menor [x] = x
 menor (x:y:ys)
     |x<=y = menor(x:ys)
     |otherwise = menor(y:ys) 
