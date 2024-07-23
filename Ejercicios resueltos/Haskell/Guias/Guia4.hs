@@ -26,14 +26,11 @@ parteEntera n
  {-suma unos hasta que que n es cero, para los negativos es al revés-}
 
 -- ejercicio 3
-resta::Integer->Integer->Integer
-resta x y = x-y
-
 esDivisible :: Integer->Integer->Bool
 esDivisible x y 
-    |x-y==0=True
-    |x-y<0=False
-    |otherwise= esDivisible (resta x y) y 
+    |x-y == 0 = True
+    |x-y < y = False
+    |otherwise = esDivisible (x-y) y 
 
 --repaso implementar factorial, ¿que es pattern matching?
 factorial::Integer->Integer
