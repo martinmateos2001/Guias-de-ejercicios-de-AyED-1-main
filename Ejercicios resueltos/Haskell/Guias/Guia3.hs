@@ -1,19 +1,17 @@
-import Distribution.Simple.Utils (xargs)
-import System.Console.Haskeline (Interrupt, InputT)
 dobleMe :: Int -> Int
 dobleMe x = x+x
+
 --ejercicio 3
 estanRelacionados :: Integer->Integer->Bool
 estanRelacionados a b 
-    |a=b/=0
-    |mod -(a*a)/(a*b) k == 0
-
-
+    |mod a b == 0 = True
+    |otherwise = False
+    
 -- ejercicio 4
--- b
-
+--b
 todoMenor :: (Float, Float) -> (Float, Float) -> Bool
 todoMenor (a, b) (c, d) = (a < c) && (b < d)
+
 --todoMenor t1 t2 = (fst t1) < (fst t2) && (snd t1) < (snd t2)
 
 --f
@@ -46,10 +44,13 @@ decenas x = mod x 100
 dosCifras :: Integer->Integer
 dosCifras x = decenas x + unidades x
 
+sumaUltimosDosDigitos :: Int -> Int
+sumaUltimosDosDigitos x = mod((absoluto x) 10) + mod((absoluto x)/10 10)  
+
 comparar :: Integer->Integer->Integer
 comparar a b    
-    |dosCifras a < dosCifras b = 1
-    |dosCifras a > dosCifras b = -1
+    |sumaUltimosDosDigitos a < sumaUltimosDosDigitos b = 1
+    |sumaUltimosDosDigitos a > sumaUltimosDosDigitos b = -1
     |otherwise = 0
 
 -- ejercicio 9
@@ -70,4 +71,15 @@ problema distanciaMedia2 (b:(RxR)): R{
     requiere: {True}
     asegura: res = (b_0 + b_1)/2
     }
+-}
+
+f6 :: Float -> Int -> Bool
+f6 a b = truncate a == b
+{-
+Si la parte entera de a es igual a b devuelve true
+Especificacion:
+problema compararParteReal (a:Q, b:Z): Bool {
+    requiere:{True}
+    asegura: {(res=True) <--> a-  = b}
+    }   
 -}
