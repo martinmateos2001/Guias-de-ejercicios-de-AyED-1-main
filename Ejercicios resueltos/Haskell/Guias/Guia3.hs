@@ -30,8 +30,8 @@ bisiesto x
 
 --ejercicio 7
 absoluto :: Float -> Float
-absoluto x |x<0 = -x
-            |otherwise=x
+absoluto x  |x < 0 = -x
+            |otherwise = x
 distanciaManhattan :: (Float,Float,Float)->(Float,Float,Float)->Float
 distanciaManhattan (x1,y1,z1) (x2, y2, z2) = absoluto(x1-x2) + absoluto(y1-y2)+ absoluto(z1-z2)
 
@@ -44,13 +44,13 @@ decenas x = mod x 100
 dosCifras :: Integer->Integer
 dosCifras x = decenas x + unidades x
 
-sumaUltimosDosDigitos :: Int -> Int
-sumaUltimosDosDigitos x = mod((absoluto x) 10) + mod((absoluto x)/10 10)  
+sumaUltimosDosDigitos :: Integer -> Integer
+sumaUltimosDosDigitos x = unidades(abs x) + (mod (div (abs x) 10) 10) 
 
-comparar :: Integer->Integer->Integer
+comparar :: Integer -> Integer -> Integer
 comparar a b    
-    |sumaUltimosDosDigitos a < sumaUltimosDosDigitos b = 1
-    |sumaUltimosDosDigitos a > sumaUltimosDosDigitos b = -1
+    |(sumaUltimosDosDigitos a) < (sumaUltimosDosDigitos b) = 1
+    |(sumaUltimosDosDigitos a) > (sumaUltimosDosDigitos b) = -1
     |otherwise = 0
 
 -- ejercicio 9

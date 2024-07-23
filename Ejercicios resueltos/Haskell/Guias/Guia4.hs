@@ -46,13 +46,13 @@ factorial n=n*factorial(n-1)
 
 --Ejercicio 4, suma de los primeros n numeros impares
 sumaImpares :: Int -> Int
-sumaImpares n
-    |n==0 = 0 
-    |n>=1 = (2*n-1) + sumaImpares (n-1)
+sumaImpares 0 = 0
+sumaImpares n |n > 1 = (2*n-1) + sumaImpares (n-1)
+    
 
 
 -- Ejercicio 5, implentar medioFact donde n!!= n*(n-2)*(n-4)... | i=0 -> (n-1)/2 sum (n-2i)
-medioFact ::Integer->Integer
+medioFact :: Integer->Integer
 medioFact n 
     |n==0 = 1
     |n==1 = 1
