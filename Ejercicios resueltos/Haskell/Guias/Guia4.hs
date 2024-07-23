@@ -47,7 +47,8 @@ factorial n=n*factorial(n-1)
 --Ejercicio 4, suma de los primeros n numeros impares
 sumaImpares :: Int -> Int
 sumaImpares 0 = 0
-sumaImpares n |n > 1 = (2*n-1) + sumaImpares (n-1)
+sumaImpares 1 = 2
+sumaImpares n = (2*n-1) + sumaImpares (n-1)
     
 
 
