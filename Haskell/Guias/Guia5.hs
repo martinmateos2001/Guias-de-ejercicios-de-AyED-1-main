@@ -132,9 +132,8 @@ sumarElPrimero lista = sumarN (head lista) lista
  
 {-3.6, igual al anterior pero sumo el ultimo elemento-}
 sumarElUltimo :: [Integer] -> [Integer]
-sumarElUltimo lista 
-    |contarElementos lista > 0 = sumarN ultimoLista lista
-    where ultimoLista = ultimo lista
+sumarElUltimo lista = sumarN u lista
+    where u = ultimo lista
 
 {-3.7, dada una lista de numeros, devuelvo la lista pero solo con numeros pares.-}
 pares :: [Integer] -> [Integer]
