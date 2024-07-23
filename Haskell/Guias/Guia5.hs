@@ -24,16 +24,15 @@ contarElementos [] = 0
 contarElementos [x] = 1
 contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 
-principio :: (Eq t) => [t] -> [t]
-principio (a:b:[]) = [a]
-principio (a:rLista) 
-    |contarElementos (a:rLista) > 0 && (a:rLista) /= [] = (a:(principio rLista))
+sacarUltimoElementoLs :: (Eq t) => [t] -> [t]
+sacarUltimoElementoLs (a:b:[]) = [a]
+sacarUltimoElementoLs (a:rLista) = (a:principio(rLista))
 
 {-1.4 reverso, devuelve la lista al reves-}
 reverso :: (Eq t)=> [t]->[t]
 reverso []=[]
 reverso [x]=[x]
-reverso lista = ((ultimo lista):(reverso (principio lista)))
+reverso lista = ((ultimo lista):(reverso (sacarUltimoElementoLs lista)))
 -------------------------------------------------------------------------------------------2
 {-Ejercicio 2.1 -}
 pertenece :: (Eq t) => t -> [t] -> Bool -- Eq significa cualquier tipo
