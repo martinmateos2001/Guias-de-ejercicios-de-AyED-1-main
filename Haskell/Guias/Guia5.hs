@@ -113,10 +113,10 @@ productoria (x:xs) = x * productoria xs
 Ejercicio 3.3 
 -}
 
-maximo :: [Integer]->Integer
+maximo :: [Integer] -> Integer
 maximo (x:[]) = x -- es lo ultimo que recorre
-maximo (x:y:ys) |contarElementos (x:y:ys) >1 && x>=y = maximo (x:ys) -- x>=y me evaluo de nuevo x con la cola que se dividira en en y':ys por la forma de la funcion, que quedara en maximo x:y':ys y asi hasya el caso de arriba 
-                |contarElementos (x:y:ys) >1 && x<y = maximo (y:ys) -- si no es mayor o igual entonces es menor y quedaria maximo y:y':xs 
+maximo (x:y:ys) |x>=y = maximo (x:ys) -- x>=y me evaluo de nuevo x con la cola que se dividira en en y':ys por la forma de la funcion, que quedara en maximo x:y':ys y asi hasya el caso de arriba 
+                |x<y = maximo (y:ys) -- si no es mayor o igual entonces es menor y quedaria maximo y:y':xs 
 
 {-3.4, dados un numero n y una lista L, devuelvo una lista L' que es igual a los elementos de L pero sumado a cada uno n
 asegura:
