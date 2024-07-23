@@ -26,7 +26,7 @@ contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 
 sacarUltimoElementoLs :: (Eq t) => [t] -> [t]
 sacarUltimoElementoLs (a:b:[]) = [a]
-sacarUltimoElementoLs (a:rLista) = (a:principio(rLista))
+sacarUltimoElementoLs (a:rLista) = (a:sacarUltimoElementoLs(rLista))
 
 {-1.4 reverso, devuelve la lista al reves-}
 reverso :: (Eq t)=> [t]->[t]
@@ -137,9 +137,7 @@ sumarElUltimo lista = sumarN u lista
 
 {-3.7, dada una lista de numeros, devuelvo la lista pero solo con numeros pares.-}
 pares :: [Integer] -> [Integer]
-pares [x]   
-    |esPar x == True = [x]
-    |otherwise = []
+pares [] = []
 pares (x:xs) 
     |esPar x == True = x:pares(xs)
     |otherwise = pares xs
@@ -149,11 +147,9 @@ esPar x = mod x 2 == 0
 
 {-3.8, dada una lista y un numero, devuelvo otra lista con los numeros que son multiplos del numero.-}
 multiplosDeN :: Integer -> [Integer] -> [Integer]
-multiplosDeN n [x]
-    |esMultiplo x n == True = [x]
-    |otherwise = []
+multiplosDeN n [] = []
 multiplosDeN n (x:xs) 
-    |esMultiplo x n == True = x:multiplosDeN n xs
+    |esMultiplo x n = x:multiplosDeN n xs
     |otherwise = multiplosDeN n xs
 
 esMultiplo :: Integer -> Integer -> Bool -- leer como ¿a esMultiplo de b?
