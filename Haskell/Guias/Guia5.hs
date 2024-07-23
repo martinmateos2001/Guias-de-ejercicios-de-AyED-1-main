@@ -12,8 +12,7 @@ ejercicio 1.2, devolver el ultimo valor la lista.
 
 ultimo :: (Eq a) => [a] -> a
 ultimo (x:[]) = x
-ultimo (x:xs) 
-    |(x:xs) /= [] = ultimo (xs)
+ultimo (x:xs) = ultimo xs
 
 {-
 1.3
