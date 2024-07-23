@@ -128,8 +128,7 @@ sumarN n (x:xs) = ((x+n):sumarN n xs)
 
 {-3.5, Dada una lista de numeros devuelvo otra con los elementos de la anterior pero sumando el primer elemento-}
 sumarElPrimero :: [Integer] -> [Integer]
-sumarElPrimero lista
-    |contarElementos lista > 0 = sumarN (head lista) lista
+sumarElPrimero lista = sumarN (head lista) lista
  
 {-3.6, igual al anterior pero sumo el ultimo elemento-}
 sumarElUltimo :: [Integer] -> [Integer]
