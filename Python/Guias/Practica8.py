@@ -423,7 +423,7 @@ Implementar un funcion que devuelve la palabra mas frecuente, se aconseja usar d
 """
 
 
-"""Ejercicio 23
+"""Ejercicio 23.1
 """
 def agregar_producto(inventario:dict, nombre:str, precio:float, cantidad:int) -> dict:
     if not(pertenece_dict(inventario, nombre)):
@@ -442,7 +442,7 @@ mi_inventario = agregar_producto(mi_inventario, "manteca", 1200.00, 1)
 print(mi_inventario)
 """
 
-
+#23.2
 def actualizar_stock(inventario:'dict[str, dict]', nombre:str, cantidad:int) -> dict:
     claves:list = inventario.keys()
     valores:list = list(inventario.values()) # otra forma es  valores = [x for x in inventario.values()]
@@ -482,6 +482,7 @@ print(mi_inventario)
 actualizar_stock(mi_inventario, "d", 0)
 print(mi_inventario)"""
 
+#23.3
 def actualizar_precios(inventario:'dict[str, dict]', nombre:str, precio:float) -> dict:
     claves:list = inventario.keys()
     valores:list = list(inventario.values()) # otra forma es  valores = [x for x in inventario.values()]
@@ -498,6 +499,7 @@ def actualizar_precios(inventario:'dict[str, dict]', nombre:str, precio:float) -
         print("El producto no pertenece al inventario.")
     return inventario
 
+#23.4
 def calcular_valor_inventario(inventario:'dict[str, dict]') -> float:
     valores:list = [x for x in inventario.values()]
     res:int = 0

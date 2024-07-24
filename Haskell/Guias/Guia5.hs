@@ -189,15 +189,23 @@ contP (x:y:ys)
     |x/=y && y==' ' = 1 + contP (y:ys)
     |otherwise = 0 + contP (y:ys)
 
+{-4c, palabras :: [Char] -> [[Char]], que dada una lista arma una nueva lista con las palabras de la lista original
+¿Que herramientas tengo?-}
+palabras :: [Char] -> [[Char]]
 
+
+obtenerPalabras :: [Char]->[Char]
+obtenerPalabras [] = []
+obtenerPalabras (x:y:ys) 
+    |y==' ' = (x:[])
+    |otherwise = (x:obtenerPalabra(y:ys))
 {-
 4D, dada una lista de caracteres devuelve la palabra mas larga.
 -}
-
 palabraMasLarga :: [Char]->[Char]
 palabraMasLarga (x:[])=(x:[])
 palabraMasLarga (x:y:ys) 
-    |contadorChar (primerPalabra(x:y:ys)) >= contadorChar(primerPalabra(cortarLista (x:y:ys))) = primerPalabra (x:y:ys)
+    |contadorChar (obtenerPalabra(x:y:ys)) >= contadorChar(obtenerPalabra(cortarLista (x:y:ys))) = obtenerPalabras (x:y:ys)
     |otherwise = palabraMasLarga (cortarLista(x:y:ys))
 
 contadorChar :: [Char]->Integer
@@ -210,9 +218,5 @@ cortarLista (x:y:ys)
     |x/=y && y == ' ' = ys
     |otherwise = cortarLista(y:ys)
 
-primerPalabra :: [Char]->[Char]
-primerPalabra (x:y:ys) 
-    |y==' ' = (x:[])
-    |otherwise = (x:primerPalabra(y:ys))
 
 --compararTamaño :: []
