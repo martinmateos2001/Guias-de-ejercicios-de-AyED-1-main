@@ -1,3 +1,5 @@
+import random
+
 # Primera Parte
 #1.1, ejecutar de tres formas distintas a pertence, dada una seq de num, ver si x pertece.
 def pertence_In(ls:'list[int]', n:int) -> bool:
@@ -310,8 +312,7 @@ def reemplaza_pares_v2(ls:'list[int]') -> 'list[int]':
     return res
 #print(reemplaza_pares_v2(lista))
 
-"""
-Ejercicio 2.3:
+"""Ejercicio 2.3:
     Dada una cadena de caracteres devolver la misma cadena sin caracteres.
 """
 def sin_vocales(cadena:str) -> str:
@@ -325,8 +326,7 @@ def sin_vocales(cadena:str) -> str:
     return cadena
 #print("sin vocales: " + sin_vocales("hello"))
 
-"""
-Ejercicio 2.4:
+"""Ejercicio 2.4:
     Dada una lista de caracteres si alguno es una vocal se reemplaza por: '_' |
     El parametro de entrada es tipo in.
 """
@@ -441,6 +441,30 @@ def historial_movimientos_sube() -> 'list[(str, int)]':
     return res
 #print(historial_movimientos_sube())
 
+"""Ejercicio 4.3
+"""
+def siete_y_medio():
+    puntaje:int = 0
+    historial:'list[int]' = []
+    plantarse:str = ""
+    while plantarse != "si":
+        carta:int = random.randint(1, 12)
+        while carta in [8, 9]:
+            carta = random.randint(1, 12)
+        historial.append(carta)
+        if carta in [10, 11, 12]:
+            puntaje += 0.5
+        else:
+            puntaje += carta
+        print("El valor de su carta es: " + str(carta))
+        print("Si desea PLANTARSE escriba 'si', caso contrario escriba 'no' ")
+        if puntaje > 7.5:
+            print("Usted ha perdido :(")
+            return print("El historial de cartas es" + str(historial))
+        plantarse = input()
+    print("Usted ha ganado :)")
+    return print("El historial de cartas es" + str(historial))
+siete_y_medio()
 """5.1
 Dada una lista de lista de enteros, una lista de booleanos y un elemento e, si este pertenece a algun elemento de la lista en la posicion i
 entoces res[i] = true.
