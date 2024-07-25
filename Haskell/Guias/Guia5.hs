@@ -181,13 +181,13 @@ sacarBlancosRepetidos (x:y:ys)
 {-
 4b, contar palabras, dada una lista de caracteres devuelve la cantidad de palabras que tiene.
 -}
-contP :: [Char]->Integer
-contP [x, y]
+cantP :: [Char]->Integer
+cantP [x, y]
     |x == ' ' && y == x = 0
     |x /= ' ' || y /= ' ' = 1
-contP (x:y:ys)
-    |x/=y && y==' ' = 1 + contP (y:ys)
-    |otherwise = 0 + contP (y:ys)
+cantP (x:y:ys)
+    |x/=y && y==' ' = 1 + cantP (y:ys)
+    |otherwise = 0 + cantP (y:ys)
 
 {-4c, palabras :: [Char] -> [[Char]], que dada una lista arma una nueva lista con las palabras de la lista original
 ¿Que herramientas tengo?-}
@@ -197,14 +197,20 @@ palabras lista = [obtenerPalabra lista] ++ palabras (cortarLista lista)
 
 obtenerPalabra :: [Char]->[Char]
 obtenerPalabra [] = []
-obtenerPalabra [x] = [x]
+obtenerPalabra [x]
+    |x == ' ' = []
+    |otherwise = [x]
 obtenerPalabra (x:y:ys) 
-    |y==' ' = (x:[])
-    |otherwise = (x:obtenerPalabra(y:ys))
+    |x/= ' ' && y ==' ' = (x:[])
+    |x/= ' ' && y /= ' ' = (x:(obtenerPalabra (y:ys)))
+    |x == ' ' && y /= ' ' = obtenerPalabra (y:ys)
+    |x == ' ' && y == ' ' = obtenerPalabra ys
 
 cortarLista :: [Char]->[Char]
 cortarLista [] = []
-cortarLista [x] = []
+cortarLista [x] 
+    |x /= ' ' = [x]
+    |otherwise = []
 cortarLista (x:y:ys) 
     |x/=y && y == ' ' = ys
     |otherwise = cortarLista(y:ys)
@@ -212,17 +218,22 @@ cortarLista (x:y:ys)
 4D, dada una lista de caracteres devuelve la palabra mas larga.
 -}
 palabraMasLarga :: [Char]->[Char]
+palabraMasLarga [x]
+    |x /= ' ' = []
+    |otherwise = [x]
+palabraMasLarga lista = palabraMasLargaAux (obtenerPalabra lista) (palabras (cortarLista lista))
 
-palabraMasLarga [x]= [x]
-palabraMasLarga (x:y:ys) 
-    |contadorChar (obtenerPalabra(x:y:ys)) >= contadorChar(obtenerPalabra(cortarLista (x:y:ys))) = obtenerPalabra (x:y:ys)
-    |otherwise = palabraMasLarga (cortarLista(x:y:ys))
+palabraMasLargaAux :: [Char] -> [[Char]] -> [Char]
+palabraMasLargaAux x [] = x
+palabraMasLargaAux w1 (x:xs) 
+    |contadorChar w1 >= contadorChar x = palabraMasLargaAux w1 xs
+    |otherwise = palabraMasLargaAux x xs
 
-contadorChar :: [Char]->Integer
-contadorChar (x:y:ys) | x==' ' = 0
-contadorChar (x:y:ys)
-    |x /= ' ' = 1 + contadorChar (y:ys)
-
+contadorChar :: [Char]->Int
+contadorChar [] = 0
+contadorChar (x:xs)
+    |x /= ' ' = 1 + contadorChar xs
+    | x==' ' = 0 + contadorChar xs
 
 
 
