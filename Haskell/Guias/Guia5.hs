@@ -192,20 +192,30 @@ contP (x:y:ys)
 {-4c, palabras :: [Char] -> [[Char]], que dada una lista arma una nueva lista con las palabras de la lista original
 ¿Que herramientas tengo?-}
 palabras :: [Char] -> [[Char]]
+palabras [] = []
+palabras lista = [obtenerPalabra lista] ++ palabras (cortarLista lista)
 
-
-obtenerPalabras :: [Char]->[Char]
-obtenerPalabras [] = []
-obtenerPalabras (x:y:ys) 
+obtenerPalabra :: [Char]->[Char]
+obtenerPalabra [] = []
+obtenerPalabra [x] = [x]
+obtenerPalabra (x:y:ys) 
     |y==' ' = (x:[])
     |otherwise = (x:obtenerPalabra(y:ys))
+
+cortarLista :: [Char]->[Char]
+cortarLista [] = []
+cortarLista [x] = []
+cortarLista (x:y:ys) 
+    |x/=y && y == ' ' = ys
+    |otherwise = cortarLista(y:ys)
 {-
 4D, dada una lista de caracteres devuelve la palabra mas larga.
 -}
 palabraMasLarga :: [Char]->[Char]
-palabraMasLarga (x:[])=(x:[])
+
+palabraMasLarga [x]= [x]
 palabraMasLarga (x:y:ys) 
-    |contadorChar (obtenerPalabra(x:y:ys)) >= contadorChar(obtenerPalabra(cortarLista (x:y:ys))) = obtenerPalabras (x:y:ys)
+    |contadorChar (obtenerPalabra(x:y:ys)) >= contadorChar(obtenerPalabra(cortarLista (x:y:ys))) = obtenerPalabra (x:y:ys)
     |otherwise = palabraMasLarga (cortarLista(x:y:ys))
 
 contadorChar :: [Char]->Integer
@@ -213,10 +223,7 @@ contadorChar (x:y:ys) | x==' ' = 0
 contadorChar (x:y:ys)
     |x /= ' ' = 1 + contadorChar (y:ys)
 
-cortarLista :: [Char]->[Char]
-cortarLista (x:y:ys) 
-    |x/=y && y == ' ' = ys
-    |otherwise = cortarLista(y:ys)
+
 
 
 --compararTamaño :: []
