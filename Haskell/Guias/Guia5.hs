@@ -208,12 +208,12 @@ obtenerPalabra (x:y:ys)
 
 cortarLista :: [Char]->[Char]
 cortarLista [] = []
-cortarLista [x] 
-    |x /= ' ' = [x]
-    |otherwise = []
+cortarLista [x] = []
 cortarLista (x:y:ys) 
-    |x/=y && y == ' ' = ys
-    |otherwise = cortarLista(y:ys)
+    |x /= ' ' && y == ' ' = (y:ys)
+    |x /= ' ' && y /= ' ' = cortarLista (y:ys)
+    |x == ' ' && y == ' ' = cortarLista (y:ys)
+    |x == ' ' && y /= ' ' = (y:ys)
 {-
 4D, dada una lista de caracteres devuelve la palabra mas larga.
 -}
