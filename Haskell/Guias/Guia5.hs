@@ -253,3 +253,16 @@ aplanarConBlancos :: [[Char]] -> [Char]
 aplanarConBlancos [x] = x
 aplanarConBlancos (p:ps) = p ++ [' '] ++ aplanarConBlancos ps
 
+{-
+4G: aplanarConNBlancos :: [[Char]] -> Integer -> [Char]
+A partir de una lista de palabras y un entero n,
+arma una lista de caracteres concatenandolas e insertando n blancos entre cada palabra (n debe ser no negativo).
+-}
+
+aplanarConNBlancos :: [[Char]] -> Integer -> [Char]
+aplanarConNBlancos [x] n = x 
+aplanarConNBlancos (p:ps) n = p ++ (nBlancos n) ++ aplanarConNBlancos ps n
+
+nBlancos :: Integer -> [Char]
+nBlancos 1 = [' ']
+nBlancos n = [' '] ++ nBlancos (n-1)
