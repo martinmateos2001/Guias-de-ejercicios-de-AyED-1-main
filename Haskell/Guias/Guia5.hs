@@ -25,6 +25,7 @@ contarElementos [x] = 1
 contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 
 sacarUltimoElementoLs :: (Num t) => [t] -> [t]
+sacarUltimoElementoLs [x] = []
 sacarUltimoElementoLs (a:b:[]) = [a]
 sacarUltimoElementoLs (a:rLista) = (a:sacarUltimoElementoLs(rLista))
 
@@ -281,5 +282,8 @@ osea si s = [1,2,3], res=[1, 1+2, 1+2+3]
 
 sumaAcumulada :: (Num t) => [t] -> [t]
 sumaAcumulada [x] = [x]
-sumaAcumulada lista = reverso ([sumatoria(lista)] ++ sumaAcumulada(sacarUltimoElementoLs lista))
+sumaAcumulada lista = reverso (sumaAcumuladaAux lista)
 
+sumaAcumuladaAux :: (Num t) => [t] -> [t]
+sumaAcumuladaAux [x] = [x]
+sumaAcumuladaAux lista = [sumatoria(lista)] ++ sumaAcumuladaAux(sacarUltimoElementoLs lista)
