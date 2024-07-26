@@ -10,7 +10,7 @@ longList (x:xs)
 ejercicio 1.2, devolver el ultimo valor la lista.
 -}
 
-ultimo :: (Eq a) => [a] -> a
+ultimo :: (Num a) => [a] -> a
 ultimo (x:[]) = x
 ultimo (x:xs) = ultimo xs
 
@@ -24,12 +24,12 @@ contarElementos [] = 0
 contarElementos [x] = 1
 contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 
-sacarUltimoElementoLs :: (Eq t) => [t] -> [t]
+sacarUltimoElementoLs :: (Num t) => [t] -> [t]
 sacarUltimoElementoLs (a:b:[]) = [a]
 sacarUltimoElementoLs (a:rLista) = (a:sacarUltimoElementoLs(rLista))
 
 {-1.4 reverso, devuelve la lista al reves-}
-reverso :: (Eq t)=> [t]->[t]
+reverso :: (Num t)=> [t] -> [t]
 reverso []=[]
 reverso [x]=[x]
 reverso lista = ((ultimo lista):(reverso (sacarUltimoElementoLs lista)))
@@ -94,13 +94,13 @@ esSubConjunto :: (Eq t) => [t] -> [t] ->Bool
 esSubConjunto [x] lista = pertenece x lista
 esSubConjunto (x:xs) lista = pertenece x (eliminarRepetidos(lista)) && esSubConjunto (eliminarRepetidos xs) lista 
 
-{-2.9, un numero es capicua si se lee igual en ambos sentidos, ejemplo 11,112211, etc.-}
+{-2.9, un numero es capicua si se lee igual en ambos sentidos, ejemplo 11,112211, etc.
 capicua :: (Eq t) => [t] -> Bool
 capicua lista = lista == reverso lista
-
+-}
 -------------------------------------------------------------------3
 {-3.1, implementar sumatoria desde i=0 a n=elem(lista)-1 de una lista de numeros, osea la sumatoria de todos los elementos de la lista-}
-sumatoria :: [Integer]->Integer
+sumatoria :: (Num t) => [t] -> t
 sumatoria [] = 0
 sumatoria (x:xs) = x + sumatoria(xs)
 
@@ -266,3 +266,20 @@ aplanarConNBlancos (p:ps) n = p ++ (nBlancos n) ++ aplanarConNBlancos ps n
 nBlancos :: Integer -> [Char]
 nBlancos 1 = [' ']
 nBlancos n = [' '] ++ nBlancos (n-1)
+
+-------------------------------------------------------------- 5
+{-
+5.1 sumaAcumulada :: (Num t) => [t] -> [t]
+problema sumaAcumulada (s: seq⟨T⟩) : seq⟨T⟩ {
+requiere: {T es un tipo num´erico}
+requiere: {cada elemento de s es mayor estricto que cero}
+asegura: {|s| = |resultado| ∧ el valor en la posici´on i de resultado es Sum(k=0, i) s[k]}
+
+osea si s = [1,2,3], res=[1, 1+2, 1+2+3]
+}
+-}
+
+sumaAcumulada :: (Num t) => [t] -> [t]
+sumaAcumulada [x] = [x]
+sumaAcumulada lista = reverso ([sumatoria(lista)] ++ sumaAcumulada(sacarUltimoElementoLs lista))
+
