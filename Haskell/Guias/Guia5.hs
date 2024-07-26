@@ -243,7 +243,13 @@ A partir de una lista de palabras arma una lista de caracteres concatenandolas
 
 aplanar :: [[Char]] -> [Char]
 aplanar [] = []
-aplanar (p:ps) = obtenerPalabra p ++ aplanar ps
+aplanar (p:ps) = p ++ aplanar ps
 
-obtenerPalabraDeLista :: [[Char]] -> [Char]
-obtenerPalabraDeLista (p:ps) = p
+{-
+4F: aplanarConBlancos :: [[char]] -> [char]
+Aplanar pero insertando blancos entre cada palabra
+-}
+aplanarConBlancos :: [[Char]] -> [Char]
+aplanarConBlancos [x] = x
+aplanarConBlancos (p:ps) = p ++ [' '] ++ aplanarConBlancos ps
+
