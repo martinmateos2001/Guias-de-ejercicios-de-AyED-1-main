@@ -236,5 +236,14 @@ contadorChar (x:xs)
     | x==' ' = 0 + contadorChar xs
 
 
+{-
+4E:  aplanar :: [[char]] -> [char]
+A partir de una lista de palabras arma una lista de caracteres concatenandolas
+-}
 
---compararTamaño :: []
+aplanar :: [[Char]] -> [Char]
+aplanar [] = []
+aplanar (p:ps) = obtenerPalabra p ++ aplanar ps
+
+obtenerPalabraDeLista :: [[Char]] -> [Char]
+obtenerPalabraDeLista (p:ps) = p
