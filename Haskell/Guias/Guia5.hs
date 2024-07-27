@@ -287,3 +287,33 @@ sumaAcumulada lista = reverso (sumaAcumuladaAux lista)
 sumaAcumuladaAux :: (Num t) => [t] -> [t]
 sumaAcumuladaAux [x] = [x]
 sumaAcumuladaAux lista = [sumatoria(lista)] ++ sumaAcumuladaAux(sacarUltimoElementoLs lista)
+
+{-
+5.2 descomponerEnPrimos :: [Integer] -> [[Integer]]
+Ejemplo: descomponerEnPrimos [2, 10, 6] es [[2], [2, 5], [2, 3]].
+-}
+
+esPrimo :: Integer -> Bool
+esPrimo n = esPrimoAux n (n-1)
+
+esPrimoAux :: Integer -> Integer -> Bool
+esPrimoAux n 1 = True
+esPrimoAux n k
+    |mod n k == 0 = False
+    |otherwise = esPrimoAux n (k-1)
+
+factorizarEnPrimos :: Integer -> [Integer]
+factorizarEnPrimos n = factorizarEnPrimosAux n 2
+
+
+factorizarEnPrimosAux :: Integer -> Integer -> [Integer] 
+factorizarEnPrimosAux n k |k == n  = []
+factorizarEnPrimosAux n k 
+    |esPrimo k == True && mod n k == 0 = [k] ++ factorizarEnPrimosAux n (k+1)
+    |otherwise = factorizarEnPrimosAux n (k+1)
+
+descomponerEnPrimos :: [Integer] -> [[Integer]]
+descomponerEnPrimos [] = []
+descomponerEnPrimos (x:xs)
+    |esPrimo x == True = [[x]] ++ descomponerEnPrimos xs
+    |otherwise = [factorizarEnPrimos x] ++ descomponerEnPrimos xs
