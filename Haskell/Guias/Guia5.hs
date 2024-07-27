@@ -312,8 +312,26 @@ factorizarEnPrimosAux n k
     |esPrimo k == True && mod n k == 0 = [k] ++ factorizarEnPrimosAux n (k+1)
     |otherwise = factorizarEnPrimosAux n (k+1)
 
+descomponerEnPrimosAux :: [Integer] -> [[Integer]]
+descomponerEnPrimosAux [] = []
+descomponerEnPrimosAux (x:xs)
+    |esPrimo x == True = [[x]] ++ descomponerEnPrimosAux xs
+    |otherwise = [factorizarEnPrimos x] ++ descomponerEnPrimosAux xs
+
+dividir :: Integer -> Integer -> Integer --division entre enteros, require n 'mod' k = 0
+dividir n k |n == k = 1 
+dividir n k
+    |n-k /= 0 = 1 + dividir (n-k) k
+
+productoLista :: [Integer] -> Integer
+productoLista [] = 1
+productoLista (x:xs) = x * productoLista xs
+
+descomponerEnPrimosAux2 :: [Integer] -> [[Integer]] -> [[Integer]]
+descomponerEnPrimosAux2 [] [] = []
+descomponerEnPrimosAux2 (x:xs) (y:ys) 
+    |dividir x (productoLista y) == 1 = (y:descomponerEnPrimosAux2 xs ys)
+    |otherwise = (((dividir x (productoLista y)):y):descomponerEnPrimosAux2 xs ys)
+
 descomponerEnPrimos :: [Integer] -> [[Integer]]
-descomponerEnPrimos [] = []
-descomponerEnPrimos (x:xs)
-    |esPrimo x == True = [[x]] ++ descomponerEnPrimos xs
-    |otherwise = [factorizarEnPrimos x] ++ descomponerEnPrimos xs
+descomponerEnPrimos lista = descomponerEnPrimosAux2 lista (descomponerEnPrimosAux lista)
