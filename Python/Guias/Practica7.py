@@ -464,17 +464,26 @@ def siete_y_medio():
         plantarse = input()
     print("Usted ha ganado :)")
     return print("El historial de cartas es" + str(historial))
-siete_y_medio()
+#siete_y_medio()
 """5.1
+problema pertenece_a_cada_uno_version_1 (in s:seq⟨seq⟨Z⟩⟩, in e:Z, out res: seq⟨Bool⟩) {
+requiere: { True }
+asegura: { |res| ≥ |s|}
+asegura: { Para todo i ∈ Z si 0 ≤ i < |s| → (res[i] = true ↔ pertenece(s[i], e))}
+}
 Dada una lista de lista de enteros, una lista de booleanos y un elemento e, si este pertenece a algun elemento de la lista en la posicion i
 entoces res[i] = true.
 Es igual al 5.2 pero la diferencia es que len(res) >= len(s)
 """
+def pertenece_a_cada_uno_version_1(s:'list[list[int]]', e:int, res:'list[bool]') -> 'list[bool]':
+    res.clear()
+    for v in s:
+        res.append(pertenece_for(v, e))
   
 """5.2
 Pertenece a cada uno, usar pertenece_In
 """
-def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]')->None:
+def pertenece_a_cada_uno_v2(s:'list[list[int]]', e:int, res:'list[bool]'):
     res.clear() #se limpia.
     for v in s: #v es valor.
         res.append(pertenece_for(v, e))
@@ -497,6 +506,21 @@ def es_matriz(s:'list[list[int]]') -> bool:
     return True
 
 """5.4
-
+problema filas_ordenadas (in m:seq⟨seq⟨Z⟩⟩, out res: seq⟨Bool⟩) {
+requiere: { esMatriz(m)}
+asegura: { Para todo i ∈ Z si 0 ≤ i < |res| → (res[i] = true ↔ ordenados(s[i])) }
+}
 """
-#Practicar recorrer columnas de matrices.
+def filas_ordenadas(m:'list[list[int]]', res:'list[bool]') ->'list[bool]':
+    res.clear()
+    for v in m:
+        if ordenados(v):
+            res.append(True)
+        else:
+            res.append(False)
+    return res
+"""testeo
+m=[[5,2], [5,6]]
+res=[]
+print(filas_ordenadas(m, res))"""
+

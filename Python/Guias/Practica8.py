@@ -31,6 +31,10 @@ Estructura de pilas:
 """
 
 """Ejercicio 9
+problema cantidad_elementos(in p:Pila): Int{
+Requiere: True
+Asegura:{res=cantidad de elementos de p}
+}
 """# ejercicio introductoria a pilas.
 def contar_elementos_pila(p:Pila) -> int:
     cantidad:int = 0
