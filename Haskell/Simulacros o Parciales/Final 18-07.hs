@@ -7,29 +7,35 @@ asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9
             se repiten numeros del 1 al 9}
 }
 -}
+pertenece :: [Int] -> Int -> Bool
+pertenece [] n = False
+pertenece (x:xs) n 
+    |x == n = True
+    |otherwise = pertenece xs n
+
 hayRepetidos :: [Int] -> Bool
-hayRepetidos lista = hayRepetidosAux lista lista
+hayRepetidos [] = False
+hayRepetidos (x:xs)
+    |pertenece xs x == True = True
+    |otherwise = hayRepetidos xs
 
-hayRepetidosAux :: [Int] -> [Int] -> Bool
-hayRepetidosAux lista (x:xs) = esRepetido lista x || hayRepetidosAux lista xs
-
-esRepetido :: [Int] -> Int -> Bool
-esRepetido [] n = False
-esRepetido (x:xs) n
-    |x==n = True
-    |otherwise = esRepetido xs n
+secuenciasValidas :: [[Int]] -> Bool
+secuenciasValidas [] = True
+secuenciasValidas (x:xs) = not(hayRepetidos x) && secuenciasValidas xs
 
 obtenerColumna :: [[Int]] -> [Int]
 obtenerColumna [] = []
-obtenerColumna (x:xs) = [head (x)] ++ obtenerColumna xs 
+obtenerColumna (x:xs) |x==[] = []
+obtenerColumna ((x:xs):ys) = [x] ++ obtenerColumna ys 
+
+eliminarPrimeros :: [[Int]] -> [[Int]]
+eliminarPrimeros [] = []
+eliminarPrimeros (x:xs) |x==[] = []
+eliminarPrimeros ((x:xs):ys) = [xs] ++ eliminarPrimeros ys
 
 obtenerColumnas :: [[Int]] -> [[Int]]
-obtenerColumnas [] = []
-obtenerColumnas lista = [obtenerColumna(lista)] ++ obtenerColumnas(tail lista)
-
-secuenciaValida :: [[Int]] -> Bool
-secuenciaValida [] = True
-secuenciaValida (x:xs) = not (hayRepetidos x && secuenciaValida xs)
+obtenerColumnas (x:xs) |x==[] = []
+obtenerColumnas lista = [obtenerColumna lista] ++ obtenerColumnas (eliminarPrimeros lista)
 
 esSudokuvalido :: [[Int]] -> Bool
-esSudokuvalido lista = secuenciaValida lista && hayRepetidos(obtenerColumnas lista)
+esSudokuvalido lista = secuenciasValidas lista && secuenciasValidas(obtenerColumnas lista)

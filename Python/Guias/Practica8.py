@@ -254,7 +254,7 @@ def palabras_de_archivo(nombre_archivo:str) -> list:
                 res.append(palabra)
                 palabra = ""
     return res
-print(palabras_de_archivo(archivo_de_pruebas)) # :)
+#print(palabras_de_archivo(archivo_de_pruebas)) # :)
 
 """Ejercicio 7:
 Implementar una funcion calcular_promedio_por_estudiante(in nombre archivo notas : str, in nombre archivo promedios : str), 
@@ -502,7 +502,6 @@ def actualizar_precios(inventario:'dict[str, dict]', nombre:str, precio:float) -
     else:
         print("El producto no pertenece al inventario.")
     return inventario
-
 #23.4
 def calcular_valor_inventario(inventario:'dict[str, dict]') -> float:
     valores:list = [x for x in inventario.values()]
@@ -514,3 +513,4 @@ def calcular_valor_inventario(inventario:'dict[str, dict]') -> float:
     return res
 
 #print(calcular_valor_inventario(mi_inventario)) YEY :)
+
