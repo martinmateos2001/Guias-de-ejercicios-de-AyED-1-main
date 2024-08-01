@@ -70,7 +70,7 @@ def ordenar_sort(ls:list) -> list:
     return res
 
 #Como si fuese en el parcial
-def menor_de_la_lista(ls:list) -> int:
+def menor_de_la_lista(ls:'list[int]') -> int:
     menor:int = ls[0]
     for i in range(1, len(ls)):
         e = ls[i]
