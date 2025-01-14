@@ -9,24 +9,24 @@ asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9
 -}
 pertenece :: [Int] -> Int -> Bool
 pertenece [] n = False
-pertenece (x:xs) n 
+pertenece (x:xs) n
     |x == n = True
     |otherwise = pertenece xs n
 
-hayRepetidos :: [Int] -> Bool
+hayRepetidos :: [Int] -> Bool -- verifica si hay repetidos
 hayRepetidos [] = False
 hayRepetidos (x:xs)
     |pertenece xs x == True = True
     |otherwise = hayRepetidos xs
 
-secuenciasValidas :: [[Int]] -> Bool
+secuenciasValidas :: [[Int]] -> Bool -- verifica si en cada secuencias NO hay repetidos 
 secuenciasValidas [] = True
-secuenciasValidas (x:xs) = not(hayRepetidos x) && secuenciasValidas xs
+secuenciasValidas (x:xs) = not (hayRepetidos x) && secuenciasValidas xs
 
 obtenerColumna :: [[Int]] -> [Int]
 obtenerColumna [] = []
 obtenerColumna (x:xs) |x==[] = []
-obtenerColumna ((x:xs):ys) = [x] ++ obtenerColumna ys 
+obtenerColumna ((x:xs):ys) = [x] ++ obtenerColumna ys
 
 eliminarPrimeros :: [[Int]] -> [[Int]]
 eliminarPrimeros [] = []
@@ -35,7 +35,7 @@ eliminarPrimeros ((x:xs):ys) = [xs] ++ eliminarPrimeros ys
 
 obtenerColumnas :: [[Int]] -> [[Int]]
 obtenerColumnas (x:xs) |x==[] = []
-obtenerColumnas lista = [obtenerColumna lista] ++ obtenerColumnas (eliminarPrimeros lista)
+obtenerColumnas lista = obtenerColumna lista : obtenerColumnas (eliminarPrimeros lista)
 
 esSudokuvalido :: [[Int]] -> Bool
-esSudokuvalido lista = secuenciasValidas lista && secuenciasValidas(obtenerColumnas lista)
+esSudokuvalido lista = secuenciasValidas lista && secuenciasValidas (obtenerColumnas lista)

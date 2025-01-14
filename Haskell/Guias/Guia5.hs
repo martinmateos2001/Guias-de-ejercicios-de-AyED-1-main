@@ -27,7 +27,7 @@ contarElementos lista   |lista /= [] = 1 + contarElementos(tail lista)
 sacarUltimoElementoLs :: (Num t) => [t] -> [t]
 sacarUltimoElementoLs [x] = []
 sacarUltimoElementoLs (a:b:[]) = [a]
-sacarUltimoElementoLs (a:rLista) = (a:sacarUltimoElementoLs(rLista))
+sacarUltimoElementoLs (a:rLista) = a:sacarUltimoElementoLs(rLista)
 
 {-1.4 reverso, devuelve la lista al reves-}
 reverso :: (Num t)=> [t] -> [t]
