@@ -67,11 +67,16 @@ from queue import Queue as Cola
 El diccionario, define una relación uno a uno entre claves y valores.
 
 Metodos
+diccionario['key'] = valor -> añade la clave valor o la actualiza si ya exista la key
+del diccionario['key'] -> elimina el par clave valor.
+diccionario['key'] ó diccionario.get('key')-> devuelve el valor
 diccionario.clear() --> vacía el diccionario
 copiadicciconario = diccionario.copy()
 diccionario.items() -> devuelve una 'lista' con los pares clave - valor: [(k1, v1), (k2, v2), ... , (kn, vn)]
 diccionario.keys() -> devuelve 'lista' con todas las llaves del diccionario
 diccionario.values() -> devuelve 'lista' con todas los valores del diccionario
+diccionario.pop('key') -> busca y elimina la key y devuelve su valor
+diccionario.update(otroDiccionario) -> actualiza el diccionario.
 """
 #Ejemplo de diccionario donde la clave es 
 jerga_Argentina:dict={
@@ -79,7 +84,8 @@ jerga_Argentina:dict={
     'joda':'fiesta',
     'boludo':'estupido',
     'gato':'hombre mujeriego o mujer prostituta',
-    'fierro':'arma'
+    'fierro':'arma',
+    'a':'ksksksks'
 }
 
 
@@ -107,3 +113,8 @@ print(list(paresKV)) #transformado a lista de tuplas clave valor
 
 listaParesKV = list(paresKV)
 print(listaParesKV[0]) # -> (joda, fiesta)
+
+#uso pop
+print(list(jerga_Argentina.values()))
+print(jerga_Argentina.pop('a'))
+print(list(jerga_Argentina.values()))
