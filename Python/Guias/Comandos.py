@@ -52,15 +52,13 @@ print(ls)
 ls.extend(range(5,10))
 print("Extiendo la lista:", ls)
 
-"""PILAS
+"""PILAS y COLAS
 queue es un modulo utilizado para manipular colas.
 
 from queue import LifoQueue as Pila
 from queue import Queue as Cola
 
-"""
 
-"""COLAS
 """
 
 """DICCIONARIOS
@@ -78,6 +76,8 @@ diccionario.values() -> devuelve 'lista' con todas los valores del diccionario
 diccionario.pop('key') -> busca y elimina la key y devuelve su valor
 diccionario.update(otroDiccionario) -> actualiza el diccionario.
 """
+
+''' Practica de diccionarios
 #Ejemplo de diccionario donde la clave es 
 jerga_Argentina:dict={
     #'claves':'valores'
@@ -118,3 +118,4 @@ print(listaParesKV[0]) # -> (joda, fiesta)
 print(list(jerga_Argentina.values()))
 print(jerga_Argentina.pop('a'))
 print(list(jerga_Argentina.values()))
+'''

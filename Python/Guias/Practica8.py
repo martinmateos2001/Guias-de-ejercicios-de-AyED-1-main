@@ -21,6 +21,7 @@ def pertenece(elemento, lista:list) -> bool:
         if(elemento == e):
             res = True
     return res
+
 """PILAS:   
 Para usar PILAS hay que importar queue
 Estructura de pilas:
