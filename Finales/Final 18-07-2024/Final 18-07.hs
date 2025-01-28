@@ -1,3 +1,5 @@
+module ParcialFinal where
+
 {-
 problema esSudokuvalido (in m:seq(seq(Z)):Bool{
 requiere: {todos los elementos de m tienen longitud 9}
@@ -7,6 +9,8 @@ asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9
             se repiten numeros del 1 al 9}
 }
 -}
+
+
 pertenece :: [Int] -> Int -> Bool
 pertenece [] n = False
 pertenece (x:xs) n
