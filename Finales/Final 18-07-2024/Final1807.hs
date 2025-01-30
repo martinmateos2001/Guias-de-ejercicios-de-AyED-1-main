@@ -12,6 +12,8 @@ asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9
 listaValida :: [Int] -> Bool --si no hay repetidos da True
 listaValida [] = True
 listaValida (x:xs)    
-    |elem x xs == True = False
+    |(elem x xs == True) and (x != 0) = False
     |otherwise = listaValida xs
 
+filasValidas :: [[Int]] -> Bool
+filasValidas [] ->
