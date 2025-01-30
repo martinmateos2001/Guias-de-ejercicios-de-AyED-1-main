@@ -11,7 +11,19 @@ testListaValida = test [
     listaValida [1,2,3,4] ~?= True,
     listaValida [1,1] ~?= False,
     listaValida [] ~?= True,
-    listaValida [2] ~?= True
+    listaValida [2] ~?= True,
+    listaValida [1,2,3,4,4] ~?= False,
+    listaValida [1,2,2,3] ~?= False
+    ]
+
+testFilasValidas = test [
+    filasValidas [] ~?= True,
+    filasValidas [[]] ~?= True,
+    filasValidas [[1,2,3]] ~?= True, --Un solo elemento valido
+    filasValidas [[1,2,3], [4,5,6], [7,8,9]] ~?= True, --Varios elementos validos
+    filasValidas [[1,1]] ~?= False, -- un solo elemento no valido
+    filasValidas [[1,2,3], [1,1]] ~?= False, --ultimo no valido
+    filasValidas [[1,2], [1,1], [1,2]] ~?= False -- medio no valido
     ]
 {-
 testEsSudokuValido = test[
