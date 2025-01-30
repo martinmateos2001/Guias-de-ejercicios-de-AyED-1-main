@@ -11,8 +11,8 @@ BOOLEANOS
 <, <=, >, >= --> menor, menor o igual, mayor, mayor o igual
 x == y --> verifica si x es igual a y 
 x /= y --> verifica si x es distinto de y
-and 'o' && --> conjuncion
-or 'o' || --> disyuncion
+&& --> conjuncion
+|| --> disyuncion
 even x --> verifica si x es par
 odd x --> verifica si x es impar
 
