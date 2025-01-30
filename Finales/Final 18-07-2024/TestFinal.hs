@@ -5,7 +5,8 @@ runFinal = runTestTT allTests
 
 allTests = test [
     "lista valida" ~: testListaValida,
-    "filas validas" ~: testFilasValidas
+    "filas validas" ~: testFilasValidas,
+    "obtener las columnas" ~: testObtenerColumnas
     ]
 
 testListaValida = test [
@@ -21,10 +22,39 @@ testFilasValidas = test [
     filasValidas [] ~?= True,
     filasValidas [[]] ~?= True,
     filasValidas [[1,2,3]] ~?= True, --Un solo elemento valido
-    filasValidas [[1,2,3], [4,5,6], [7,8,9]] ~?= True, --Varios elementos validos
+    filasValidas [
+        [1,2,3], 
+        [4,5,6], 
+        [7,8,9]] ~?= True, --Varios elementos validos
     filasValidas [[1,1]] ~?= False, -- un solo elemento no valido
-    filasValidas [[1,2,3], [1,1]] ~?= False, --ultimo no valido
-    filasValidas [[1,2], [1,1], [1,2]] ~?= False -- medio no valido
+    filasValidas [
+        [1,2,3], 
+        [1,1]] ~?= False, --ultimo no valido
+    filasValidas [
+        [1,2], 
+        [1,1], 
+        [1,2]] ~?= False -- medio no valido
+    ]
+
+testObtenerColumnas = test[
+    obtenerColumna [[1]] ~?= [1],
+    obtenerColumna [[1,2]] ~?= [1],
+    obtenerColumna [
+        [1],
+        [1]] ~?= [1,1],
+    obtenerColumna [
+        [1,2],
+        [2,1]] ~?= [1,2],
+    obtenerColumna [
+        [1], []] ~?= [1],
+    obtenerColumna [
+        [1,2],
+        [2,3],
+        [3,4]] ~?= [1,2,3]
+    ]
+testSacarColumna = test[
+    sacarColumna [[]] ~?= [[]],
+    sacarColumna [[1]] ~?= [[]],
     ]
 {-
 testEsSudokuValido = test[
