@@ -1,15 +1,4 @@
-module ParcialFinal where
-
-{-
-problema esSudokuvalido (in m:seq(seq(Z)):Bool{
-requiere: {todos los elementos de m tienen longitud 9}
-requiere: {|m|=9}
-requiere: {todos los elementos en todas las secuencias de m son numeros del 0 al 9}
-asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9 && en cada columna de m no
-            se repiten numeros del 1 al 9}
-}
--}
-
+module Final1807 where
 
 pertenece :: [Int] -> Int -> Bool
 pertenece [] n = False
@@ -43,3 +32,13 @@ obtenerColumnas lista = obtenerColumna lista : obtenerColumnas (eliminarPrimeros
 
 esSudokuvalido :: [[Int]] -> Bool
 esSudokuvalido lista = secuenciasValidas lista && secuenciasValidas (obtenerColumnas lista)
+
+
+{-
+problema esSudokuvalido (in m:seq(seq(Z)):Bool{
+requiere: {todos los elementos de m tienen longitud 9}
+requiere: {|m|=9}
+requiere: {todos los elementos en todas las secuencias de m son numeros del 0 al 9}
+asegura: {(res = True) <-> en cada fila de de m no se repiten numeros del 1 al 9 && en cada columna de m no
+            se repiten numeros del 1 al 9}}
+-}

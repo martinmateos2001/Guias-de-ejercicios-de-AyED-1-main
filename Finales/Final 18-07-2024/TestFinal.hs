@@ -1,5 +1,5 @@
+import Final1807 
 import Test.HUnit
-import ParcialFinal 
 
 runTestFinal = runTestTT allTests
 
