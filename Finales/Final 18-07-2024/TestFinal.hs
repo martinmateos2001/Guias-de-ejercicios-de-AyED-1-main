@@ -1,10 +1,11 @@
 import Final1807 
 import Test.HUnit
 
-runTestFinal = runTestTT allTests
+runFinal = runTestTT allTests
 
 allTests = test [
-    "lista valida" ~: testListaValida
+    "lista valida" ~: testListaValida,
+    "filas validas" ~: testFilasValidas
     ]
 
 testListaValida = test [
