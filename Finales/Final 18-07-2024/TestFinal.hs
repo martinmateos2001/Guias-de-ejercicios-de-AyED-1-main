@@ -5,6 +5,14 @@ runTestFinal = runTestTT allTests
 
 allTests = test [
     "esSudokuValido" ~: testEsSudokuValido
+    "lista valida" ~: 
+    ]
+
+testListaValida = test [
+    listaValida [1,2,3,4] ~?= True,
+    listaValida [1,1] ~?= False,
+    listaValida [] ~?= True
+    listaValida [2] ~?= True
     ]
 
 testEsSudokuValido = test[
