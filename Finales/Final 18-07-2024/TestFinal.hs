@@ -56,6 +56,7 @@ testSacarColumna = test[
     sacarColumna [[]] ~?= [[]],
     sacarColumna [[1]] ~?= [[]],
     ]
+
 {-
 testEsSudokuValido = test[
         esSudokuvalido [

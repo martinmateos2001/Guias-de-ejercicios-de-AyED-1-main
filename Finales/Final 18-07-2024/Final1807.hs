@@ -29,5 +29,5 @@ sacarColumna :: [[Int]] -> [[Int]]
 sacarColumna [] = []
 sacarColumna [x]
     |null x == True = []
-    |otherwise = tail x
+    |otherwise = [tail x]
 sacarColumna (x:xs) = (tail x:sacarColumna xs)
