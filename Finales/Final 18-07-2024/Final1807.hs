@@ -22,12 +22,16 @@ filasValidas (x:xs) = listaValida x && filasValidas xs
 
 obtenerColumna :: [[Int]] -> [Int]
 obtenerColumna [] = []
-obtenerColumna [[]] = []
-obtenerColumna (x:xs) = [head x] ++ obtenerColumna xs 
+obtenerColumna (x:xs) 
+    |x /= [] = [head x] ++ obtenerColumna xs 
+    |otherwise = obtenerColumna xs
 
 sacarColumna :: [[Int]] -> [[Int]]
 sacarColumna [] = []
-sacarColumna [x]
-    |null x == True = []
-    |otherwise = [tail x]
-sacarColumna (x:xs) = (tail x:sacarColumna xs)
+sacarColumna ((x:xs):ys) 
+    |null (x:xs) || xs == [] = sacarColumna ys
+    |otherwise = [xs] ++ sacarColumna ys
+
+columnasSudoku :: [[Int]] -> [[Int]]
+columnasSudoku [] = []
+columnasSudoku ls = [obtenerColumna ls] ++ columnasSudoku (sacarColumna ls)

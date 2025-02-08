@@ -1,12 +1,14 @@
-import Final1807 
-import Test.HUnit
+import Final1807
+import Test.HUnit 
 
 runFinal = runTestTT allTests
 
 allTests = test [
     "lista valida" ~: testListaValida,
     "filas validas" ~: testFilasValidas,
-    "obtener las columnas" ~: testObtenerColumnas
+    "obtener columna" ~: testObtenerColumna,
+    "sacar columna" ~: testSacarColumna,
+    "obtener las columnas" ~: testColumnasSudoku
     ]
 
 testListaValida = test [
@@ -36,7 +38,7 @@ testFilasValidas = test [
         [1,2]] ~?= False -- medio no valido
     ]
 
-testObtenerColumnas = test[
+testObtenerColumna = test[
     obtenerColumna [[1]] ~?= [1],
     obtenerColumna [[1,2]] ~?= [1],
     obtenerColumna [
@@ -52,11 +54,35 @@ testObtenerColumnas = test[
         [2,3],
         [3,4]] ~?= [1,2,3]
     ]
+
 testSacarColumna = test[
-    sacarColumna [[]] ~?= [[]],
-    sacarColumna [[1]] ~?= [[]],
+    sacarColumna [] ~?= [],
+    sacarColumna [[]] ~?= [],
+    sacarColumna [[1]] ~?= [],
+    sacarColumna [
+        [1],
+        [2],
+        [3]] ~?= [],
+    sacarColumna [
+        [1,2,3],
+        [1,2,3],
+        [1,2,3]] ~?= [
+            [2,3],
+            [2,3], 
+            [2,3]]
     ]
 
+testColumnasSudoku = test [
+    columnasSudoku [
+        [1,2,3],
+        [1,2,3],
+        [1,2,3]
+    ] ~?= [[1,1,1], [2,2,2], [3,3,3]],
+    columnasSudoku [
+        [1],
+        [1],
+        [1]] ~?= [[1,1,1]]
+    ]
 {-
 testEsSudokuValido = test[
         esSudokuvalido [
