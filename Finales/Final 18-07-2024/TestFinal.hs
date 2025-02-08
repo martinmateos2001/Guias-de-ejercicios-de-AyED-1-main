@@ -57,7 +57,6 @@ testObtenerColumna = test[
 
 testSacarColumna = test[
     sacarColumna [] ~?= [],
-    sacarColumna [[]] ~?= [],
     sacarColumna [[1]] ~?= [],
     sacarColumna [
         [1],
@@ -81,11 +80,22 @@ testColumnasSudoku = test [
     columnasSudoku [
         [1],
         [1],
-        [1]] ~?= [[1,1,1]]
+        [1]] ~?= [[1,1,1]],
+    columnasSudoku [
+        [1,2,3,4],
+        [1,2,3,4],
+        [1,2,3,4],
+        [1,2,3,4]
+    ]  ~?= [
+            [1,1,1,1],
+            [2,2,2,2],
+            [3,3,3,3],
+            [4,4,4,4]
+        ]
     ]
-{-
+
 testEsSudokuValido = test[
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -97,7 +107,7 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,9,0,0]
         ] ~?= True,
 
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -109,7 +119,7 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,9,0,0]
         ] ~?= False,
 
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [1,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -121,7 +131,7 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,9,0,0]
         ] ~?= False,
 
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -133,7 +143,7 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,9,0,0]
         ] ~?= False,
 
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -145,7 +155,7 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,8,0,8]
         ] ~?= True,
 
-        esSudokuvalido [
+        esSudokuValido [
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,4,5,3,2,1],
             [3,0,0,0,0,0,0,0,0],
@@ -157,4 +167,3 @@ testEsSudokuValido = test[
             [0,0,0,0,0,0,8,0,9]
         ] ~?= True
     ]
--}

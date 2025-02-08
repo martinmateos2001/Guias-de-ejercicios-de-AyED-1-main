@@ -35,3 +35,6 @@ sacarColumna ((x:xs):ys)
 columnasSudoku :: [[Int]] -> [[Int]]
 columnasSudoku [] = []
 columnasSudoku ls = [obtenerColumna ls] ++ columnasSudoku (sacarColumna ls)
+
+esSudokuValido :: [[Int]] -> Bool
+esSudokuValido ls = filasValidas ls && filasValidas (columnasSudoku ls)
