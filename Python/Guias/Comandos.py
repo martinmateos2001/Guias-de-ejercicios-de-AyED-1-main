@@ -80,7 +80,7 @@ diccionario.update(otroDiccionario) -> actualiza el diccionario.
 ''' Practica de diccionarios
 #Ejemplo de diccionario donde la clave es 
 jerga_Argentina:dict={
-    #'claves':'valores'
+    'claves':'valores'
     'joda':'fiesta',
     'boludo':'estupido',
     'gato':'hombre mujeriego o mujer prostituta',
