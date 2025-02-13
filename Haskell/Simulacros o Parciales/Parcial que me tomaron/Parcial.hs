@@ -33,8 +33,8 @@ sumNumeros (x:xs) = x + sumNumeros xs
 Ejercicio 3
 -}
 
-losPrimerosNPefectos :: Int -> [Int] --Funciona
-losPrimerosNPefectos n = losPrimerosNPefectosAux n 1
+losPrimerosNPerfectos :: Int -> [Int] --Funciona
+losPrimerosNPerfectos n = losPrimerosNPefectosAux n 1
 
 esPerfecto :: Int -> Bool
 esPerfecto x = sumNumeros(divisoresPropios x) == x
