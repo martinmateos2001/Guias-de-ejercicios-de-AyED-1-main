@@ -1,3 +1,15 @@
+"""COMANDOS Y FUNCIONES NATIVAS
+
+Operaciones para tipo int
++ suma
+- resta
+/ division
+* producto
+** potencia 
+=  ; x = 10 asigna valor a una variable
+
+"""
+
 """CONTROLES DE FLUJO
 
 while (condicion):
