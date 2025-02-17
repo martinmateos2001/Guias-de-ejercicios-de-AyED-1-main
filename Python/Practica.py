@@ -3,9 +3,9 @@ def determinante2x2 (matriz2x2:'list[list[int]]') -> int:
     return res
 
 """especificacion:
-Problema subMatriz(matriz:[[Int]]): [[Int]]
+Problema subMatriz(in matriz:[[Int]], in fila:Int, in columna:int): [[Int]]
     requiere: |matriz| > 1
-    asegura: res es igual
+    asegura: res es igual a la matriz resultante de eliminar la fila y columna mencionada
 """
 def subMatriz (matriz:'list[list[int]]', fila:int, columna:int) -> 'list[list[int]]':
     #res:list = [fila_matriz for fila_matriz in matriz if matriz.index(fila_matriz) != fila]
@@ -34,7 +34,7 @@ print(subMatriz(matriz, fila, columna))
 print(matriz)"""
 
 """ especificación:
-Problema determinante3x3 (matriz: [[int]]): int
+Problema determinante3x3 (in matriz: [[int]]): int
     requiere: |matriz| = 3
     requiere: sea e pertenenciente a matriz, |e| = 3
     asegura: res es igual al calculo del determinante por producto mixto
