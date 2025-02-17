@@ -50,12 +50,23 @@ ls[x] [i] --> para listas anidadas
 ls[i] = x --> cambia el valor del elemento en la posicion i de la lista por x
 ls.append(x) --> añade a x al final de la lista
 ls.remove(x) --> elimina la primera aparicion de x en la lista
+del ls[i] --> elimina el elemento con indice i de la lista
+ls.pop() --> elimina el ultimo elemento de la lista, si se pasa como parametro un indice, elimina el elemento de la posicion
 ls.count(x) --> devuelve el numero de apariciones de x
 ls.index(x) --> devuelve el indice de la primera aparicion de x
 ls.insert(p, x) --> inserta el elemento x delante de la posicion p
 ls.sort() --> ordena los elementos de la lista de menor a mayor
 ls.sort(reverse = True) --> ordena los elementos en sentido inverso
 ls.extend(iterable) --> extiende la lista colocando el iterable al final
+
+forma de crear una lista
+
+nueva_lista = [expresión for elemento in iterable if condición]
+
+expresión: Es lo que se añadirá a la nueva lista.
+elemento: Es la variable que toma cada valor del iterable.
+iterable: Es la secuencia de la que se extraen los elementos (lista, tupla, rango, etc.).
+if condición: (Opcional) Filtra los elementos que cumplen una condición.
 """
 ls:list = []
 for i in range(0,5):
