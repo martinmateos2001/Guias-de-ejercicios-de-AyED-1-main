@@ -344,8 +344,7 @@ def reemplaza_vocales(caracteres:'list[chr]') -> 'list[chr]':
 
 #print(reemplaza_vocales('hola'))
 
-"""
-Ejercicio 2.5:
+"""Ejercicio 2.5:
     problema da vuelta str (in s:seq⟨Char⟩) : seq⟨Char⟩ {
         requiere: { T rue }
         asegura: {|res| = |s|}
