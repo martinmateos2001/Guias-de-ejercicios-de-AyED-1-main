@@ -8,17 +8,21 @@ Problema subMatriz(matriz:[[Int]]): [[Int]]
     asegura: res es igual
 """
 def subMatriz (matriz:'list[list[int]]', fila:int, columna:int) -> 'list[list[int]]':
-    res:list = [e for e in matriz]
-    #copio la matriz
-
-    res.pop(fila) #elimino la fila con la que no trabajo
-    long = len(res)
-    for n in range(long):
-        res[n].pop(columna) #elimino la columna con la que no trabajo
+    #res:list = [fila_matriz for fila_matriz in matriz if matriz.index(fila_matriz) != fila]
+    res = []
+    for f in matriz:
+        aux = []
+        for e in f:
+            aux.append(e)
+        res.append(aux)
+    
+    res.pop(fila)
+    for f in res:
+        f.pop(columna)
 
     return res
 
-matriz = [
+"""matriz = [
         [1,2,3],
         [4,5,6],
         [7,8,9]]
@@ -27,6 +31,7 @@ fila = 2
 columna = 0
 
 print(subMatriz(matriz, fila, columna))
+print(matriz)"""
 
 """ especificación:
 Problema determinante3x3 (matriz: [[int]]): int
