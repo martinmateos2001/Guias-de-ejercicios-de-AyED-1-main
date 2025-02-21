@@ -36,7 +36,10 @@ sum xs --> suma de la lista numerica
 product xs --> producto de la lista numerica
 -}
 
+{-
+TUPLAS
 
+-}
 
 {-
 LISTAS
