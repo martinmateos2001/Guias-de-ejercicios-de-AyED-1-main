@@ -40,18 +40,42 @@ Problema determinante3x3 (in matriz: [[int]]): int
     asegura: res es igual al calculo del determinante por producto mixto
 """
 def determinante3x3 (matriz:'list[list[int]]') -> int:
-    res = matriz[0][0] * determinante2x2(subMatriz(matriz, 0, 0)) 
-    - matriz[0][1] * determinante2x2(subMatriz(matriz,0,1)) 
-    + matriz[0][2] * determinante2x2(subMatriz(matriz, 0, 2))
+    res = (matriz[0][0] * determinante2x2(subMatriz(matriz, 0, 0)) - 
+           matriz[0][1] * determinante2x2(subMatriz(matriz,0,1)) +  
+           matriz[0][2] * determinante2x2(subMatriz(matriz, 0, 2)))
     return res
 
 
 """Problema esPalindromo(palabra:string) -> bool
-    requiere: palabra contiene al menos un caracter
+    requiere: palabra contiene al menos dos caracteres.
+    asegura: si alguna letra contiene tilde, quitarsela.
+    asegura: las letras mayusculas seran minusculas.
     asegura: res es igual true si y solo si palabra se lee igual al derecho y al reves.
 """
+tildes:dict = {
+        'á':"a",
+        'é':"e",
+        'í':"i",
+        'ó':"o",
+        'ú':"u"
+    }
+
+def tieneTilde(palabra:str) -> bool:
+    for k in tildes:
+        if k in palabra:
+            return True
+    return False
+
+def quitarTilde (palabra:str) -> str:
+    if not tieneTilde(palabra):
+        return palabra
+    else:
+        for k, v in tildes.items():
+            palabra = palabra.replace(k, v)
+        return palabra
+
 def esPalindromo (palabra:str) -> bool:
-    res = palabra == reversed(palabra)
+    res = palabra == quitarTilde(reversed(palabra))
     return res
 
 
@@ -61,12 +85,12 @@ def esPalindromoV2 (palabra:str) -> bool:
     while i > 0:
         reves += palabra[i-1]
         i-=1
-    res = palabra == reves
+    res = palabra == quitarTilde(reves)
     return res
 
 def esPalindromoV3 (palabra:str) -> bool:
     aux = []
     for l in palabra:
         aux.insert[0, l]
-    res = palabra == sum(aux)
+    res = palabra == quitarTilde(sum(aux))
     return res
