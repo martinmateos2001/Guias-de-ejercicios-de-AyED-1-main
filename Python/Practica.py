@@ -45,3 +45,28 @@ def determinante3x3 (matriz:'list[list[int]]') -> int:
     + matriz[0][2] * determinante2x2(subMatriz(matriz, 0, 2))
     return res
 
+
+"""Problema esPalindromo(palabra:string) -> bool
+    requiere: palabra contiene al menos un caracter
+    asegura: res es igual true si y solo si palabra se lee igual al derecho y al reves.
+"""
+def esPalindromo (palabra:str) -> bool:
+    res = palabra == reversed(palabra)
+    return res
+
+
+def esPalindromoV2 (palabra:str) -> bool:
+    i = len(palabra)
+    reves = ""
+    while i > 0:
+        reves += palabra[i-1]
+        i-=1
+    res = palabra == reves
+    return res
+
+def esPalindromoV3 (palabra:str) -> bool:
+    aux = []
+    for l in palabra:
+        aux.insert[0, l]
+    res = palabra == sum(aux)
+    return res
