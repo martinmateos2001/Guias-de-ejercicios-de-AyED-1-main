@@ -75,7 +75,7 @@ def quitarTilde (palabra:str) -> str:
         return palabra
 
 def esPalindromo (palabra:str) -> bool:
-    res = palabra == quitarTilde(reversed(palabra))
+    res = palabra.lower() == quitarTilde(reversed(palabra)).lower()
     return res
 
 
@@ -85,12 +85,12 @@ def esPalindromoV2 (palabra:str) -> bool:
     while i > 0:
         reves += palabra[i-1]
         i-=1
-    res = palabra == quitarTilde(reves)
+    res = palabra.lower() == quitarTilde(reves).lower()
     return res
 
 def esPalindromoV3 (palabra:str) -> bool:
     aux = []
     for l in palabra:
         aux.insert[0, l]
-    res = palabra == quitarTilde(sum(aux))
+    res = palabra.lower() == quitarTilde(sum(aux)).lower()
     return res

@@ -41,8 +41,63 @@ class TestSubMatriz (unittest.TestCase):
         resT3 = subMatriz(matriz, 0,2)
         self.assertEqual(resT3, [[4,5], [7,8]])
 
-"""class TestDeterminanteMatriz3x3(unittest.TestCase):
-    def test"""
+    def test4(self):
+        x=[
+            [1,2,3],
+            [1,5,3],
+            [7,3,1]
+        ]
+        res = subMatriz(x, 0, 0)
+        self.assertEqual(res, [[5,3], [3,1]])
+
+    def test5(self):
+        x=[
+            [1,2,3],
+            [1,5,3],
+            [7,3,1]
+        ]
+        res = subMatriz(x, 0, 1)
+        self.assertEqual(res, [[1,3], [7,1]])
+    
+    def test6(self):
+        x=[
+            [1,2,3],
+            [1,5,3],
+            [7,3,1]
+        ]
+        res = subMatriz(x, 0, 2)
+        self.assertEqual(res, [[1,5], [7,3]])
+
+class TestDeterminanteMatriz3x3(unittest.TestCase):
+    
+    def test1(self):
+        x = [
+        [0,0,0],
+        [1,2,3],
+        [1,2,3]
+    ]
+        res = determinante3x3(x)
+        self.assertEqual(res, 0)
+    
+    def test2(self):
+        x=[
+            [1,2,3],
+            [1,5,3],
+            [7,3,1]
+        ]
+        res = determinante3x3(x)
+        self.assertEqual(res, -60)
+
+#Palabras para testear palindromo
+"""
+Necesito palabras de tres letras y mas de tres,
+cantidad par e impar pero por como estan hechos 
+los codigos no importa.
+"""
+p1 = "oso"
+p2 = "ana"
+
+
 
 if __name__ == '__main__':
     unittest.main()
