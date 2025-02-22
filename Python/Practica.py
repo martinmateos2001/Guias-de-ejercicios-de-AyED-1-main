@@ -66,16 +66,25 @@ def tieneTilde(palabra:str) -> bool:
             return True
     return False
 
+print(tieneTilde("osó"))
+
 def quitarTilde (palabra:str) -> str:
+    res = ""
+    
     if not tieneTilde(palabra):
         return palabra
+
     else:
-        for k, v in tildes.items():
-            palabra = palabra.replace(k, v)
-        return palabra
+        for l in palabra:
+            if not l in tildes.keys():
+                res += l
+            else:
+                res += tildes[l]
+    return res
 
 def esPalindromo (palabra:str) -> bool:
-    res = palabra.lower() == quitarTilde(reversed(palabra)).lower()
+    aux = quitarTilde(reversed(palabra.lower))
+    res = quitarTilde(palabra.lower()) == aux
     return res
 
 
