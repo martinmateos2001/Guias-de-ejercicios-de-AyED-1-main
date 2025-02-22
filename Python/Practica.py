@@ -88,6 +88,7 @@ def esPalindromo (palabra:str) -> bool:
     return res
 
 
+    
 def esPalindromoV2 (palabra:str) -> bool:
     i = len(palabra)
     reves = ""
