@@ -100,7 +100,14 @@ class Test_tieneTilde(unittest.TestCase):
         self.assertEqual(res3, False)
         
 class Test_quitarTilde(unittest.TestCase):
+    def testSinTilde(self):
+        self.assertEqual(quitarTilde("a"), "a")
+        self.assertEqual(quitarTilde("Á"), "Á")
+        self.assertEqual(quitarTilde("É"), "É")
     
+    def testPalabraEntera(self):
+        self.assertEqual(quitarTilde("Canción"), "Cancion")
+        self.assertEqual(quitarTilde("hola"), "hola")
 
 if __name__ == '__main__':
     unittest.main()
