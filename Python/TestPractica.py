@@ -109,5 +109,15 @@ class Test_quitarTilde(unittest.TestCase):
         self.assertEqual(quitarTilde("Canción"), "Cancion")
         self.assertEqual(quitarTilde("hola"), "hola")
 
+class Test_acomodarPalabra(unittest.TestCase):
+    def test(self):
+        self.assertEqual(acomodarPalabra("ÁlAá"), "alaa")
+
+class Test_esPalindromo(unittest.TestCase):
+    def test_Da_True(self):
+        self.assertEqual(esPalindromo("alá"), True)
+    def test_Da_False(self):
+        self.assertEqual(esPalindromo("osos"), False)
+
 if __name__ == '__main__':
     unittest.main()
