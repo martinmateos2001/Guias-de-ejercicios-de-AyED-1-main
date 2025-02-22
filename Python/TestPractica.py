@@ -88,16 +88,19 @@ class TestDeterminanteMatriz3x3(unittest.TestCase):
         res = determinante3x3(x)
         self.assertEqual(res, -60)
 
-#Palabras para testear palindromo
-"""
-Necesito palabras de tres letras y mas de tres,
-cantidad par e impar pero por como estan hechos 
-los codigos no importa.
-"""
-p1 = "oso"
-p2 = "ana"
+class Test_tieneTilde(unittest.TestCase):
+    def test(self):
+        res1 = tieneTilde("osó")
+        self.assertEqual(res1, True)
 
+        res2 = tieneTilde("óso")
+        self.assertEqual(res2, True)
 
+        res3 = tieneTilde("oso")
+        self.assertEqual(res3, False)
+        
+class Test_quitarTilde(unittest.TestCase):
+    res = quitarTilde("osí")
 
 if __name__ == '__main__':
     unittest.main()
