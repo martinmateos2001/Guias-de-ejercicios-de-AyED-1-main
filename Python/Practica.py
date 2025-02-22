@@ -66,8 +66,6 @@ def tieneTilde(palabra:str) -> bool:
             return True
     return False
 
-print(tieneTilde("osó"))
-
 def quitarTilde (palabra:str) -> str:
     res = ""
     
@@ -82,9 +80,13 @@ def quitarTilde (palabra:str) -> str:
                 res += tildes[l]
     return res
 
+def acomodarPalabra (palabra:str) -> str:
+    res = quitarTilde(palabra.lower())
+    return res
+
 def esPalindromo (palabra:str) -> bool:
-    aux = quitarTilde(reversed(palabra.lower))
-    res = quitarTilde(palabra.lower()) == aux
+    al_reves:str = reversed(acomodarPalabra(palabra))
+    res = acomodarPalabra(palabra) == al_reves
     return res
 
 
