@@ -85,13 +85,15 @@ def acomodarPalabra (palabra:str) -> str:
     return res
 
 def esPalindromo (palabra:str) -> bool:
-    al_reves:str = reversed(acomodarPalabra(palabra))
-    res = acomodarPalabra(palabra) == al_reves
+    p = acomodarPalabra(palabra)
+    aux = reversed(p)
+    al_reves = ""
+    for l in aux:
+        al_reves += l
+    res = p == al_reves
     return res
-
-
     
-def esPalindromoV2 (palabra:str) -> bool:
+"""def esPalindromoV2 (palabra:str) -> bool:
     i = len(palabra)
     reves = ""
     while i > 0:
@@ -105,4 +107,4 @@ def esPalindromoV3 (palabra:str) -> bool:
     for l in palabra:
         aux.insert[0, l]
     res = palabra.lower() == quitarTilde(sum(aux)).lower()
-    return res
+    return res"""
