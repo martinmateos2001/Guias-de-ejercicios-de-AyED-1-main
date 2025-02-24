@@ -1,12 +1,29 @@
 """COMANDOS Y FUNCIONES NATIVAS
 
-Operaciones para tipo int
+Operaciones sobre tipo int
 + suma
 - resta
 / division
 * producto
 ** potencia 
 =  ; x = 10 asigna valor a una variable
+
+Operaciones sobre tipo bool
+
+== igualdad
+!= distinto
+not (p) negacion
+< menor que
+> mayor que
+<= menor o igual que
+>= mayor o igual que
+
+Operaciones sobre tipo float
+Ademas de las nombradas en tipo en int es importante nombrar.
+
+round(x, n) redondea al numero x en n digitos
+>>>round(3.256, 2)
+3.26
 
 """
 
