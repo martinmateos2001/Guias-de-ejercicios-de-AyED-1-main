@@ -38,7 +38,18 @@ product xs --> producto de la lista numerica
 
 {-
 TUPLAS
+Almacena varios elementos de distintos tipos en uno. La cantidad de estos es fija.
 
+t = ("Martin", "Mateos", 23)
+fst t -> "Martin"
+snd t -> "Mateos"
+-- para el tercer elemento hay que definir una funcion que lo extraiga :).
+thrd :: (a,b,c) -> c
+thrd (_,_,c) = c
+
+zip une pares de elementos entre dos listas.
+zip ["Nombre:", "Apellido:", "Años:"] ["Martin", "Mateos", "23"]
+--> [("Nombre:", "Martin"), ("Apellido:", "Mateos"), ("Años:", "23")]
 -}
 
 {-
@@ -66,12 +77,23 @@ tail xs --> devuelve la lista eliminando el primer elemento
 take n xs --> es la lista de los primeros n elementos de xs, ej: take 2 [0,1,2] = [0,1]
 drop n xs --> elimina los primeros n elementos de xs
 takeWhile p xs --> devuelve la lista de elementos de xs que cumplen la proposicion p
+ls !! n -> devuelve el n-esimo elemento de la lista
+-}
 
-Librería Data.List
+{-LIBRERIAS
+
+Data.List
 xs \\ ys --> lista de los elementos de xs que no pertencen a ys, ej: [3,2,5,7] \\ [5,6,3] = [2,7]
 delete x ys --> borra la primera aparicion de x en ys
 find p xs --> toma el primer elemento de xs que cumpla la proposicion p
 nub xs --> elimina elementos repetidos de xs
 sort xs --> ordena de menor a mayor los elementos de xs
 union xs ys --> es la union de xs e ys
+
+Data.Char
+
+
+
+
+
 -}
