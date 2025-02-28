@@ -8,6 +8,7 @@ Operaciones sobre tipo int
 ** potencia 
 =  ; x = 10 asigna valor a una variable
 % resto de la division entera: 10%3 =1
+// division entera: 10//3=3
 
 Operaciones sobre tipo bool
 
