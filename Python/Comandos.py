@@ -7,6 +7,7 @@ Operaciones sobre tipo int
 * producto
 ** potencia 
 =  ; x = 10 asigna valor a una variable
+% resto de la division entera: 10%3 =1
 
 Operaciones sobre tipo bool
 
