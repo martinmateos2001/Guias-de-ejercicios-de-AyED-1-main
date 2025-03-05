@@ -66,7 +66,7 @@ maximum xs --> maximo elemento de la lista xs
 minimum xs --> minimo elemento de la lista xs
 
 MANIPULACIONES
-x:xs --> añade el elemento x al principio de xs
+x:xs --> añade el elemento x al principio de xs 
 concat [xs, ys] = xs ++ ys --> concatenacion de listas, ej: [1,2] ++ [2,5] = [1,2,2,5] 
 xs !! n --> obtiene el elemento en la posicion 
 reverse xs --> devuelve la lista en orden inverso
