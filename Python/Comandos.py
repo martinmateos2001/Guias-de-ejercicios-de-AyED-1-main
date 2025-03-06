@@ -10,15 +10,18 @@ Operaciones sobre tipo int
 % resto de la division entera: 10%3 =1
 // division entera: 10//3=3
 
-Operaciones sobre tipo bool
+Operaciones booleanas
 
-== igualdad
-!= distinto
-not (p) negacion
 < menor que
 > mayor que
 <= menor o igual que
 >= mayor o igual que
+== igualdad
+!= distinto
+and --> conjuncion: x and y , si x=true e y=true entonces true, para otro caso es false
+or --> disyuncion x or y , si alguno es true devuelve true, para otro caso es false 
+not (p) --> negacion, si p es false entonces devuelve true
+
 
 Operaciones sobre tipo float
 Ademas de las nombradas en tipo en int es importante nombrar.
