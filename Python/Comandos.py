@@ -77,6 +77,7 @@ ls.insert(p, x) --> inserta el elemento x delante de la posicion p
 ls.sort() --> ordena los elementos de la lista de menor a mayor
 ls.sort(reverse = True) --> ordena los elementos en sentido inverso
 ls.extend(iterable) --> extiende la lista colocando el iterable al final
+                        Tambien dadas dos listas s1 y s2, se puede extender s1 con elementos de s2 haciendo s1 + s2
 
 forma de crear una lista
 
@@ -97,9 +98,14 @@ print("Extiendo la lista:", ls)
 """PILAS y COLAS
 queue es un modulo utilizado para manipular colas.
 
-from queue import LifoQueue as Pila
-from queue import Queue as Cola
+from queue import LifoQueue as Pila #LIFO Last In, First Out
+from queue import Queue as Cola  #FIFO First in, First Out
 
+pila = Pila(maxsize) --> Igual que en cola
+cola = Cola(maxsize = x) --> creo una instancia de Cola con tamaño maximo x (opcional)
+cola.put(x) --> coloca en la cola el objeto x
+cola.get() --> extrae un elemento de la cola 
+cola.empty() --> devulve true si la cola está vacía
 
 """
 
