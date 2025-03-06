@@ -70,17 +70,25 @@ ls:list[Tipo] = [] --> lista vacia
 ls[x] --> devuelve el elemento en la posicion x
 ls[x] [i] --> para listas anidadas
 ls[i] = x --> cambia el valor del elemento en la posicion i de la lista por x
+ls[i:j] --> devuelve los elementos desde el indice i hasta el indice j
+            ls = [1,2,3,4,5,6,7,8]
+            ls[0,4] --> [1,2,3,4]
+            ls[5,8] --> [5,6,7,8]
+            ls[2:8:2] --> [2,4,6,8], indico el paso 
 ls.append(x) --> añade a x al final de la lista
 ls.remove(x) --> elimina la primera aparicion de x en la lista
 del ls[i] --> elimina el elemento con indice i de la lista
 ls.pop() --> elimina el ultimo elemento de la lista, si se pasa como parametro un indice, elimina el elemento de la posicion
-ls.count(x) --> devuelve el numero de apariciones de x
+ls.count(x) --> devuelve el numero de apariciones de x en la lista
 ls.index(x) --> devuelve el indice de la primera aparicion de x
 ls.insert(p, x) --> inserta el elemento x delante de la posicion p
 ls.sort() --> ordena los elementos de la lista de menor a mayor
 ls.sort(reverse = True) --> ordena los elementos en sentido inverso
 ls.extend(iterable) --> extiende la lista colocando el iterable al final
                         Tambien dadas dos listas s1 y s2, se puede extender s1 con elementos de s2 haciendo s1 + s2
+len(ls) --> devuelve la cantatidad de elementos de la lista
+min(ls) --> devuelve el menor elemento de la lista
+max(ls) --> devuelve el mayor elemento de la lista
 
 forma de crear una lista
 
@@ -97,7 +105,8 @@ for i in range(0,5):
 print(ls)
 ls.extend(range(5,10))
 print("Extiendo la lista:", ls)
-
+print(ls[0:4])
+print(ls[5:10])
 """PILAS y COLAS
 queue es un modulo utilizado para manipular colas.
 
